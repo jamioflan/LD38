@@ -19,15 +19,17 @@ public class Game : MonoBehaviour
 
     public static Player thePlayer = null;
 
-    GameObject menuHUD = null;
-    GameObject menuStart = null;
-    GameObject menuSkills = null;
+    public GameObject menuHUD;
+    public GameObject menuStart;
+    public GameObject menuSkills;
 
 	// Use this for initialization
 	void Start ()
     {
-		
-	}
+//        menuHUD = transform.Find("HUD").gameObject;
+//        menuStart = transform.Find("Start").gameObject;
+//        menuSkills = transform.Find("SkillTree_Menu").gameObject;
+    }
 	
 	// Update is called once per frame
 	void Update ()
