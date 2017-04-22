@@ -5,10 +5,17 @@ using UnityEngine.UI;
 
 public class HUD_Manager : MonoBehaviour
 {
+    // The names of the GUI objects we're editing
     public string amountXPElementName;
     public string playerHealthElementName;
     public string equippedWeaponIconElementName;
 
+    // Equipped weapon icons to use
+    public Sprite equippedMeleeSprite;
+    public Sprite equippedRangedSprite;
+    public Sprite equippedMagicSprite;
+
+    // The GUI objects we're editing
     GUIText amountXPText;
     Slider playerHealthSlider;
     Image equippedWeaponIcon;
