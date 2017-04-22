@@ -50,8 +50,14 @@ public class Enemy : Entity
         if(target != null)
         {
             MoveToTarget();
+            SetAnimState(AnimState.WALKING);
             crosshair = target.transform.position;
             UseCurrentAttack(0);
+        }
+        else
+        {
+            SetAnimState(AnimState.IDLE);
+
         }
     }
 

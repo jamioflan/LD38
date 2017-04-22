@@ -83,11 +83,35 @@ public class RoomController : MonoBehaviour
         this.nextLayout = new PositionedRoom[MAX_ROOMS];
         for (int i=0; i<this.numRooms; i++)
         {
-            PositionedRoom.Position pos = new PositionedRoom.Position(i * 5, 0);
+            Grid.Position pos = new Grid.Position(i * 5, 0);
             nextLayout[i] = new PositionedRoom(this.roomShapes[i]);
             nextLayout[i].pos = pos;
             nextLayout[i].rotation = 0;
         }
+    }
+
+    private float getLayoutNiceness(PositionedRoom[] layout)
+    {
+        int minX = Grid.instance.width;
+        int minY = Grid.instance.height;
+        int maxX = 0;
+        int maxY = 0;
+        int numBlocks = 0;
+        foreach (PositionedRoom positionedRoom in layout)
+        {
+            if (positionedRoom != null)
+            {
+                positionedRoom.calculateBounds();
+                if (positionedRoom.bounds.minX < minX) minX = positionedRoom.bounds.minX;
+                if (positionedRoom.bounds.minY < minY) minY = positionedRoom.bounds.minY;
+                if (positionedRoom.bounds.maxX > maxX) maxX = positionedRoom.bounds.maxX;
+                if (positionedRoom.bounds.maxY > maxY) maxY = positionedRoom.bounds.maxY;
+                numBlocks += positionedRoom.room.getNumBlocks();
+            }
+        }
+        float niceness = (float)numBlocks / (float)((maxX - minX) * (maxY - minY));
+        return niceness;
+
     }
 
     public void updateToNextLayout()

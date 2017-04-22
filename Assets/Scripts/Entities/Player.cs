@@ -27,6 +27,17 @@ public class Player : Entity
 
         rigidBody.velocity = move * maxSpeed;
 
+        
+
+        if(move.sqrMagnitude > 0.1f)
+        {
+            SetAnimState(AnimState.WALKING);
+        }
+        else
+        {
+            SetAnimState(AnimState.IDLE);
+        }
+
         Vector3 mouse = Camera.main.ScreenPointToRay(Input.mousePosition).origin;
         crosshair = mouse;
 

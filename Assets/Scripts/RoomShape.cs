@@ -20,6 +20,8 @@ public class RoomShape
     }
     public Bounds bounds;
 
+    private int numBlocks = -1;
+
     public DungeonPiece dungeonPiece;
 
     public class Position
@@ -43,15 +45,19 @@ public class RoomShape
 
     public int getNumBlocks()
     {
-        int num = 0;
+        if (this.numBlocks > -1)
+        {
+            return this.numBlocks;
+        }
+        this.numBlocks = 0;
         foreach (RoomBlock block in this.matrix)
         {
             if (block != null)
             {
-                num++;
+                this.numBlocks++;
             }
         }
-        return num;
+        return this.numBlocks;
     }
 
     public void calculateBounds()
@@ -60,13 +66,14 @@ public class RoomShape
         {
             return;
         }
+        this.bounds = new Bounds();
         this.bounds.minX = maxMatrixWidth - 1;
         this.bounds.minY = maxMatrixWidth - 1;
         this.bounds.maxX = 0;
         this.bounds.maxY = 0;
         for (int x = 0; x < maxMatrixWidth; x++)
         {
-            for (int y = 0; x < maxMatrixHeight; x++)
+            for (int y = 0; y < maxMatrixHeight; y++)
             {
                 if (matrix[x, y] != null)
                 {
@@ -99,10 +106,22 @@ public class RoomShape
         return Mathf.Max(width, height) * width * height / numBlocks;
     }
 
-    //public RoomDoor[] getDoors()
-    //{
-    //    RoomDoor[] doorList = new RoomDoor[];
-    //}
+    public RoomBlock getBlock(Position position)
+    {
+        if (position.x < 0 || position.y < 0 || position.x > RoomShape.maxMatrixWidth || position.y > RoomShape.maxMatrixHeight)
+        {
+            return null;
+        }
+        else
+        {
+            return this.matrix[position.x, position.y];
+        }
+    }
+
+        //public RoomDoor[] getDoors()
+        //{
+        //    RoomDoor[] doorList = new RoomDoor[];
+        //}
 
 
 }

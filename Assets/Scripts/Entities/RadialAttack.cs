@@ -19,7 +19,7 @@ public class RadialAttack : Attack {
             }
         }
 
-
+        parent.SetAttackAnimState(Entity.AnimState.SWORD_SLASH, animTime);
 
     }
 }
