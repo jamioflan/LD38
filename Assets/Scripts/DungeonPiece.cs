@@ -18,7 +18,21 @@ public class DungeonPiece : MonoBehaviour {
 	// Update is called once per frame
 	void Update ()
     {
-		
+	    if(positionedRoom != null)
+        {
+            if (positionedRoom.pos == null)
+            {
+                transform.position = new Vector3(100.0f, 0.0f, 0.0f);
+                gameObject.SetActive(false);
+            }
+            else
+            {
+                gameObject.SetActive(true);
+                transform.position = new Vector3(positionedRoom.pos.x, positionedRoom.pos.y, 0) * tilesToWorldUnitsConversion;
+                transform.localEulerAngles = new Vector3(0.0f, 0.0f, 90.0f * positionedRoom.rotation);
+            }
+        }	
+        
 	}
 
     void GenerateEdges()
@@ -66,7 +80,7 @@ public class DungeonPiece : MonoBehaviour {
                 }
             }
         }
-
+1
         // Walls - Vertical
         for (int i = 0; i < RoomShape.maxMatrixWidth + 1; i++)
         {
@@ -103,8 +117,5 @@ public class DungeonPiece : MonoBehaviour {
                 }
             }
         }
-
-        transform.position = new Vector3(positionedRoom.pos.x, positionedRoom.pos.y, 0) * tilesToWorldUnitsConversion;
-        transform.localEulerAngles = new Vector3(0.0f, 0.0f, 90.0f * positionedRoom.rotation);
     }
 }
