@@ -10,7 +10,9 @@ public class RoomController : MonoBehaviour
     public static readonly int MAX_ROOMS = 100;
 
     public RoomShape[] roomShapes;
+    public int numRooms = 0;
     public PositionedRoom[] currentLayout;
+    public PositionedRoom[] nextLayout;
 
     // Use this for initialization
     void Start ()
@@ -29,7 +31,7 @@ public class RoomController : MonoBehaviour
 
     public void generateShapes(int num)
     {
-        this.roomShapes = new RoomShape[num];
+        this.roomShapes = new RoomShape[MAX_ROOMS];
         for (int i=0; i<num; i++)
         {
             int size = Random.Range(2, 10);
@@ -57,6 +59,24 @@ public class RoomController : MonoBehaviour
             Debug.Assert(loopsDone < 1000, "Infinite shape generation loop detected");
             this.roomShapes[i] = roomShape;
         }
-        Debug.Log("Done");
+        this.numRooms = num;
     }
+
+    public void generateNextLayout()
+    {
+        this.nextLayout = new PositionedRoom[MAX_ROOMS];
+        for (int i=0; i<this.numRooms; i++)
+        {
+            PositionedRoom.Position pos = new PositionedRoom.Position(i * 5, 0);
+            nextLayout[i] = new PositionedRoom(this.roomShapes[i], pos, 0);
+        }
+    }
+
+    public void updateToNextLayout()
+    {
+        this.currentLayout = this.nextLayout;
+        this.nextLayout = null;
+    }
+
+
 }
