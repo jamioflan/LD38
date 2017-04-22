@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Upgrade : MonoBehaviour {
 
-	public bool playerOwns = false;
+	//public bool playerOwns = false;
 	public List<Upgrade> dependencies = new List<Upgrade>();
 	public string description = "";
 	public int cost = 100;
@@ -22,6 +22,28 @@ public class Upgrade : MonoBehaviour {
 
 	public bool isAvailable ()
 	{
-		return true;
+		bool has = true;
+		foreach(Upgrade upgrade in dependencies)
+		{
+			if(Game.thePlayer.upgrades.Contains(upgrade))
+			{
+				has = has && true;
+			}
+			else
+			{
+				has = false;
+			}
+		}
+	}
+
+	public bool canAfford ()
+	{
+		return Game.thePlayer.XP >= cost;
+	}
+
+	public void grant ()
+	{
+		Game.thePlayer.upgrades.Add(this);
+		Game.thePlayer.XP = Game.thePlayer.XP - cost;
 	}
 }
