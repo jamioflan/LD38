@@ -19,6 +19,10 @@ public class Game : MonoBehaviour
 
     public static Player thePlayer = null;
 
+    GameObject menuHUD = null;
+    GameObject menuStart = null;
+    GameObject menuSkills = null;
+
 	// Use this for initialization
 	void Start ()
     {
@@ -40,6 +44,7 @@ public class Game : MonoBehaviour
 
     public void OnPressStart()
     {
+        menuStart.SetActive(false);
         StartNextLevel();
     }
 
@@ -50,35 +55,29 @@ public class Game : MonoBehaviour
 
     private void ExecuteState_InLevel()
     {
-        // Check the HUD is open
-        GameObject HUD = GameObject.Find("HUD");
-
         // Check if we should open the skill tree menu
         if (Input.GetAxis("Tab") > 0)
         {
             SwitchToState(GameState.IN_INGAME_MENUS);
-            HUD.SetActive(false);
+            menuHUD.SetActive(false);
         }
         else
         {
-            HUD.SetActive(true);
+            menuHUD.SetActive(true);
         }
     }
 
     private void ExecuteState_InInGameMenus()
     {
-        // Check the skill tree menu is open
-        GameObject skillTreeMenu = GameObject.Find("SkillTree_Menu");
-
         // Check if we should return to game
         if (Input.GetAxis("Cancel") > 0)
         {
             SwitchToState(GameState.IN_LEVEL);
-            skillTreeMenu.SetActive(false);
+            menuSkills.SetActive(false);
         }
         else
         {
-            skillTreeMenu.SetActive(true);
+            menuSkills.SetActive(true);
         }
     }
 
