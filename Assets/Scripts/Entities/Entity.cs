@@ -8,6 +8,7 @@ public class Entity : MonoBehaviour
     public int currentAttack;
     public float maxHealth = 10.0f;
     public float health = 10.0f;
+    public float moveSpeed = 1.0f;
 
     public int facing = 0;
     public SpriteRenderer body, leftHand, rightHand;
@@ -18,11 +19,14 @@ public class Entity : MonoBehaviour
     public float maxInvulnerabilityCooldown = 1.0f;
     public float invulnerabilityCooldown = 1.0f;
 
-    public Vector2 target;
+    public Rigidbody2D rb;
+
+    public Vector2 crosshair;
 
     // Use this for initialization
     void Start ()
     {
+        rb = GetComponent<Rigidbody2D>();
         health = maxHealth;
     }
 	
@@ -41,7 +45,7 @@ public class Entity : MonoBehaviour
 
     protected void UseCurrentAttack(int attackMode)
     {
-        attacks[currentAttack].Use(attackMode, transform.position, (Vector3)target - transform.position);
+        attacks[currentAttack].Use(attackMode, transform.position, (Vector3)crosshair - transform.position);
     }
 
     public void Damage(Attack attack)

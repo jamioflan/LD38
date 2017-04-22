@@ -105,6 +105,6 @@ public class DungeonPiece : MonoBehaviour {
         }
 
         transform.position = new Vector3(positionedRoom.pos.x, positionedRoom.pos.y, 0) * tilesToWorldUnitsConversion;
-        transform.localEulerAngles = new Vector3(0.0f, 0.0f, 90.0f * positionedRoom.Rotation);
+        transform.localEulerAngles = new Vector3(0.0f, 0.0f, 90.0f * positionedRoom.rotation);
     }
 }

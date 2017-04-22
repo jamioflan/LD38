@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Enemy : Entity
 {
-    public Vector2 targetPos;
+    public Entity target;
 
     public enum EnemyState
     {
@@ -21,12 +21,41 @@ public class Enemy : Entity
 	}
 	
 	// Update is called once per frame
-	void Update ()
+	void FixedUpdate ()
     {
-        if(Game.thePlayer.currentRoom == currentRoom)
+        switch(state)
         {
-            targetPos = Game.thePlayer.transform.position;
+            case EnemyState.IDLE:
+            {
+                if (Game.thePlayer.currentRoom == currentRoom)
+                {
+                    state = EnemyState.ATTACKING;
+                    target = Game.thePlayer;
+                }
+                break;
+            }
+            case EnemyState.ATTACKING:
+            {
+                if (Game.thePlayer.currentRoom != currentRoom)
+                {
+                    state = EnemyState.IDLE;
+                    target = null;
+                }
+                break;
+            }
         }
 
+        if(target != null)
+        {
+            MoveToTarget();
+            crosshair = target.transform.position;
+            UseCurrentAttack(0);
+        }
+    }
+
+    private void MoveToTarget()
+    {
+        Vector3 dPos = (target.transform.position - transform.position).normalized;
+        rb.velocity = dPos * moveSpeed;
     }
 }
