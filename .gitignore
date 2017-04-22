@@ -31,3 +31,5 @@ sysinfo.txt
 *.meta
 *~*
 *.db
+*.db
+Assets/Textures/Thumbs.db
