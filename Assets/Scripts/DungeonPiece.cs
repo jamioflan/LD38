@@ -80,7 +80,7 @@ public class DungeonPiece : MonoBehaviour {
                 }
             }
         }
-1
+
         // Walls - Vertical
         for (int i = 0; i < RoomShape.maxMatrixWidth + 1; i++)
         {
