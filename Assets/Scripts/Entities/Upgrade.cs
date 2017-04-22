@@ -22,6 +22,6 @@ public class Upgrade : MonoBehaviour {
 
 	public bool isAvailable ()
 	{
-	
+		return true;
 	}
 }
