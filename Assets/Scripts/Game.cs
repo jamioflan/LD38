@@ -15,7 +15,7 @@ public class Game : MonoBehaviour
     public float timeInState = 0.0f;
     public float shiftTime = 3.0f;
 
-    //public Player thePlayer = null;
+    public static Player thePlayer = null;
 
 	// Use this for initialization
 	void Start ()

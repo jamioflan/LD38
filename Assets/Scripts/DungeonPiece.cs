@@ -6,15 +6,13 @@ public class DungeonPiece : MonoBehaviour {
 
     public static readonly float tilesToWorldUnitsConversion = 2.0f;
 
-    public RoomShape shape;
+    public PositionedRoom positionedRoom;
     public Transform floorTemplate, cornerTemplate, wallTemplate, doorTemplate;
 
 	// Use this for initialization
 	void Start ()
     {
-        shape = RoomShapeTemplates.test;
         GenerateEdges();
-
     }
 	
 	// Update is called once per frame
@@ -25,9 +23,9 @@ public class DungeonPiece : MonoBehaviour {
 
     void GenerateEdges()
     {
-        if(shape == null)
+        if(positionedRoom == null)
         {
-            Debug.Assert(false, "Shape is null!");
+            Debug.Assert(false, "Positioned room for DungeonPiece is null!");
         }
 
         // Floors
@@ -35,7 +33,7 @@ public class DungeonPiece : MonoBehaviour {
         {
             for(int j = 0; j < RoomShape.maxMatrixHeight; j++)
             {
-                if(shape.matrix[i,j] != null)
+                if(positionedRoom.room.matrix[i,j] != null)
                 {
                     Transform floor = Instantiate<Transform>(floorTemplate);
                     floor.SetParent(transform);
@@ -74,8 +72,8 @@ public class DungeonPiece : MonoBehaviour {
         {
             for (int j = 0; j < RoomShape.maxMatrixHeight; j++)
             {
-                bool leftAdjacent = i != 0 && shape.matrix[i - 1, j] != null;
-                bool rightAdjacent = i != RoomShape.maxMatrixWidth && shape.matrix[i, j] != null;
+                bool leftAdjacent = i != 0 && positionedRoom.room.matrix[i - 1, j] != null;
+                bool rightAdjacent = i != RoomShape.maxMatrixWidth && positionedRoom.room.matrix[i, j] != null;
                 if (leftAdjacent != rightAdjacent)
                 {
                     Transform wall = Instantiate<Transform>(doorTemplate);
@@ -92,8 +90,8 @@ public class DungeonPiece : MonoBehaviour {
         {
             for (int j = 0; j < RoomShape.maxMatrixHeight + 1; j++)
             {
-                bool leftAdjacent = j != 0 && shape.matrix[i, j - 1] != null;
-                bool rightAdjacent = j != RoomShape.maxMatrixHeight && shape.matrix[i, j] != null;
+                bool leftAdjacent = j != 0 && positionedRoom.room.matrix[i, j - 1] != null;
+                bool rightAdjacent = j != RoomShape.maxMatrixHeight && positionedRoom.room.matrix[i, j] != null;
                 if (leftAdjacent != rightAdjacent)
                 {
                     // TODO - Doors!
@@ -106,5 +104,7 @@ public class DungeonPiece : MonoBehaviour {
             }
         }
 
+        transform.position = new Vector3(positionedRoom.pos.x, positionedRoom.pos.y, 0) * tilesToWorldUnitsConversion;
+        transform.localEulerAngles = new Vector3(0.0f, 0.0f, 90.0f * positionedRoom.Rotation);
     }
 }

@@ -10,7 +10,10 @@ public class Entity : MonoBehaviour
     public float health = 10.0f;
 
     public int facing = 0;
-    public Sprite body, leftHand, rightHand;
+    public SpriteRenderer body, leftHand, rightHand;
+    public Sprite[] directionalSprites = new Sprite[4];
+
+    public DungeonPiece currentRoom;
 
     public float maxInvulnerabilityCooldown = 1.0f;
     public float invulnerabilityCooldown = 1.0f;
@@ -33,7 +36,7 @@ public class Entity : MonoBehaviour
     protected void SetFacing(int dir)
     {
         facing = dir;
-        body.
+        body.sprite = directionalSprites[dir];
     }
 
     protected void UseCurrentAttack(int attackMode)
