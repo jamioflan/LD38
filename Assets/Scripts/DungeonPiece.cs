@@ -9,8 +9,10 @@ public class DungeonPiece : MonoBehaviour {
     public PositionedRoom positionedRoom;
     public Transform floorTemplate, cornerTemplate, wallTemplate, doorTemplate;
 
-	// Use this for initialization
-	void Start ()
+    public float complexity;
+
+    // Use this for initialization
+    void Start ()
     {
         GenerateEdges();
     }
@@ -25,6 +27,7 @@ public class DungeonPiece : MonoBehaviour {
     {
         if (this.positionedRoom != null)
         {
+            this.complexity = this.positionedRoom.room.getComplexity();
             if (this.positionedRoom.pos == null)
             {
                 transform.position = new Vector3(100.0f, 0.0f, 0.0f);
