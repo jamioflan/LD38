@@ -32,9 +32,10 @@ public class HUD_Manager : MonoBehaviour
 	// Update is called once per frame
 	void Update ()
     {
-        // Update player health, XP and equipped weapon icon
-        // TODO
+        // Update player XP, health and equipped weapon icon
+        amountXPText.text = Game.thePlayer.XP.ToString();
         playerHealthSlider.value = Game.thePlayer.health / Game.thePlayer.maxHealth;
+        // TODO: equipped weapon
 
     }
 }
