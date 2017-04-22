@@ -50,10 +50,18 @@ public class Game : MonoBehaviour
 
     private void ExecuteState_InLevel()
     {
+        // Check the HUD is open
+        GameObject HUD = GameObject.Find("HUD");
+
         // Check if we should open the skill tree menu
         if (Input.GetAxis("Tab") > 0)
         {
             SwitchToState(GameState.IN_INGAME_MENUS);
+            HUD.SetActive(false);
+        }
+        else
+        {
+            HUD.SetActive(true);
         }
     }
 
