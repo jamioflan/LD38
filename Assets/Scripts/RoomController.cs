@@ -14,6 +14,15 @@ public class RoomController : MonoBehaviour
 	
 	// Update is called once per frame
 	void Update () {
-		
-	}
+        // Hacky way to trigger it
+        if(Input.GetKeyDown(KeyCode.G))
+        {
+            Generate();
+        }
+    }
+
+    public void Generate()
+    {
+
+    }
 }
