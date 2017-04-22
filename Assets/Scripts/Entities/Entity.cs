@@ -23,19 +23,26 @@ public class Entity : MonoBehaviour
 
     public Vector2 crosshair;
 
+    public virtual void Awake()
+    {
+
+    }
+
     // Use this for initialization
-    void Start ()
+    public virtual void Start ()
     {
         rb = GetComponent<Rigidbody2D>();
         health = maxHealth;
     }
-	
-	// Update is called once per frame
-	void Update ()
+
+    // Update is called once per frame
+    public virtual void Update ()
     {
         invulnerabilityCooldown -= Time.deltaTime;
 
     }
+
+    public virtual void FixedUpdate() { }
 
     protected void SetFacing(int dir)
     {
@@ -45,7 +52,10 @@ public class Entity : MonoBehaviour
 
     protected void UseCurrentAttack(int attackMode)
     {
-        attacks[currentAttack].Use(attackMode, transform.position, (Vector3)crosshair - transform.position);
+        if (attacks != null && currentAttack >= 0 && currentAttack < attacks.Length)
+        {
+            attacks[currentAttack].Use(attackMode, transform.position, (Vector3)crosshair - transform.position);
+        }
     }
 
     public void Damage(Attack attack)

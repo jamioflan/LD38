@@ -9,13 +9,16 @@ public class Player : Entity
     public int XP = 0;
     public List<Upgrade> upgrades = new List<Upgrade>();
 
-    void Start()
+    public override void Awake()
     {
+        base.Awake();
 
+        Game.thePlayer = this;
     }
 
-    void FixedUpdate()
+    public override void FixedUpdate()
     {
+        base.FixedUpdate();
 
         Rigidbody2D rigidBody = GetComponent<Rigidbody2D>();
 

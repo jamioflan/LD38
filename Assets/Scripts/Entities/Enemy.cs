@@ -15,14 +15,16 @@ public class Enemy : Entity
     public EnemyState state = EnemyState.IDLE;
 
 	// Use this for initialization
-	void Start ()
+	public override void Start ()
     {
-		
+        base.Start();
 	}
-	
-	// Update is called once per frame
-	void FixedUpdate ()
+
+    // Update is called once per frame
+    public override void FixedUpdate ()
     {
+        base.FixedUpdate();
+
         switch(state)
         {
             case EnemyState.IDLE:
