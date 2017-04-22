@@ -26,9 +26,7 @@ public class Game : MonoBehaviour
 	// Use this for initialization
 	void Start ()
     {
-//        menuHUD = transform.Find("HUD").gameObject;
-//        menuStart = transform.Find("Start").gameObject;
-//        menuSkills = transform.Find("SkillTree_Menu").gameObject;
+
     }
 	
 	// Update is called once per frame
