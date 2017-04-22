@@ -19,11 +19,9 @@ public class PositionedRoom
     }
     public Position pos;
 
-    public PositionedRoom(RoomShape room, Position pos, int rotation)
+    public PositionedRoom(RoomShape room)
     {
         this.room = room;
-        this.pos = pos;
-        this.rotation = rotation;
     }
 
 }

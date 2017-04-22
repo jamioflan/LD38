@@ -20,6 +20,8 @@ public class RoomShape
     }
     public Bounds bounds;
 
+    public DungeonPiece dungeonPiece;
+
     public class Position
     {
         public int x;

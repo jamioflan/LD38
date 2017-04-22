@@ -28,16 +28,30 @@ public class RoomController : MonoBehaviour
         if(Input.GetKeyDown(KeyCode.G))
         {
             generateShapes(10);
+            generateNextLayout();
+            updateToNextLayout();
         }
+    }
+
+    private RoomShape createShape()
+    {
+        RoomShape roomShape = new RoomShape();
+        PositionedRoom PosRoom = new PositionedRoom(roomShape);
+        DungeonPiece newPiece = Instantiate<DungeonPiece>(pieceTemplate);
+        newPiece.positionedRoom = PosRoom;
+        roomShape.dungeonPiece = newPiece;
+        return roomShape;
     }
 
     public void generateShapes(int num)
     {
         this.roomShapes = new RoomShape[MAX_ROOMS];
+        this.currentLayout = null;
+        this.nextLayout = null;
         for (int i=0; i<num; i++)
         {
             int size = Random.Range(2, 10);
-            RoomShape roomShape = new RoomShape();
+            RoomShape roomShape = this.createShape();
             roomShape.addBlock(0,0);
             int blocksMade = 1;
             int loopsDone = 0;
@@ -62,8 +76,6 @@ public class RoomController : MonoBehaviour
             this.roomShapes[i] = roomShape;
         }
         this.numRooms = num;
-
-        generateNextLayout();
     }
 
     public void generateNextLayout()
@@ -72,15 +84,21 @@ public class RoomController : MonoBehaviour
         for (int i=0; i<this.numRooms; i++)
         {
             PositionedRoom.Position pos = new PositionedRoom.Position(i * 5, 0);
-            nextLayout[i] = new PositionedRoom(this.roomShapes[i], pos, 0);
-            DungeonPiece newPiece = Instantiate<DungeonPiece>(pieceTemplate);
-            newPiece.positionedRoom = nextLayout[i];
+            nextLayout[i] = new PositionedRoom(this.roomShapes[i]);
+            nextLayout[i].pos = pos;
+            nextLayout[i].rotation = 0;
         }
     }
 
     public void updateToNextLayout()
     {
         this.currentLayout = this.nextLayout;
+        for (int i = 0; i < this.numRooms; i++)
+        {
+            DungeonPiece dungeonPiece = this.roomShapes[i].dungeonPiece;
+            dungeonPiece.positionedRoom = this.currentLayout[i];
+            dungeonPiece.updatePiece();
+        }
         this.nextLayout = null;
     }
 

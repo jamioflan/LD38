@@ -18,9 +18,14 @@ public class DungeonPiece : MonoBehaviour {
 	// Update is called once per frame
 	void Update ()
     {
-	    if(positionedRoom != null)
+
+    }
+
+    public void updatePiece()
+    {
+        if (this.positionedRoom != null)
         {
-            if (positionedRoom.pos == null)
+            if (this.positionedRoom.pos == null)
             {
                 transform.position = new Vector3(100.0f, 0.0f, 0.0f);
                 gameObject.SetActive(false);
@@ -28,12 +33,13 @@ public class DungeonPiece : MonoBehaviour {
             else
             {
                 gameObject.SetActive(true);
-                transform.position = new Vector3(positionedRoom.pos.x, positionedRoom.pos.y, 0) * tilesToWorldUnitsConversion;
-                transform.localEulerAngles = new Vector3(0.0f, 0.0f, 90.0f * positionedRoom.rotation);
+                transform.position = new Vector3(this.positionedRoom.pos.x, this.positionedRoom.pos.y, 0) * tilesToWorldUnitsConversion;
+                transform.localEulerAngles = new Vector3(0.0f, 0.0f, 90.0f * this.positionedRoom.rotation);
             }
-        }	
-        
-	}
+        }
+
+    }
+
 
     void GenerateEdges()
     {
