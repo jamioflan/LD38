@@ -13,4 +13,9 @@ public class DungeonPiece : MonoBehaviour {
 	void Update () {
 		
 	}
+
+    void GenerateEdges()
+    {
+
+    }
 }
