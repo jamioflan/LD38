@@ -11,40 +11,60 @@ public class Upgrade : MonoBehaviour {
 
 
 	// Use this for initialization
-	void Start () {
+	void Start ()
+    {
 		
 	}
 	
 	// Update is called once per frame
-	void Update () {
+	void Update ()
+    {
 		
 	}
 
-	public bool isAvailable ()
+    public bool alreadyOwned()
+    {
+        if (Game.thePlayer.upgrades.Contains(this))
+        {
+            return true;
+        }
+
+        return false;
+    }
+
+    // isAvailableToUnlock() returns false if we already own it
+	public bool isAvailableToUnlock()
 	{
-		bool has = true;
+        if (alreadyOwned())
+        {
+            return false;
+        }
+
 		foreach(Upgrade upgrade in dependencies)
 		{
-			if(Game.thePlayer.upgrades.Contains(upgrade))
+			if(!Game.thePlayer.upgrades.Contains(upgrade))
 			{
-				has = has && true;
-			}
-			else
-			{
-				has = false;
+                // We don't have one of the dependencies - return false
+                return false;
 			}
 		}
-		return has;
+
+        // We've made it this far - either there are no dependencies, or we've got all of them
+		return true;
 	}
 
-	public bool canAfford ()
+	public bool canAfford()
 	{
 		return Game.thePlayer.XP >= cost;
 	}
 
-	public void grant ()
+	public void grant()
 	{
-		Game.thePlayer.upgrades.Add(this);
-		Game.thePlayer.XP = Game.thePlayer.XP - cost;
+        // Safety check so we don't add the same thing twice
+        if (!alreadyOwned())
+        {
+            Game.thePlayer.upgrades.Add(this);
+            Game.thePlayer.XP = Game.thePlayer.XP - cost;
+        }
 	}
 }
