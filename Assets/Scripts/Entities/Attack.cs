@@ -5,8 +5,9 @@ using UnityEngine;
 public class Attack : MonoBehaviour
 {
     public Entity parent;
-    public float damage;
+    public float minDamage = 0.0f, maxDamage = 0.0f;
     public float cooldown = 0.5f;
+    public float animTime = 0.25f;
     public float timeSinceUse = 0.0f;
     // Damage type
     // Debuffs
