@@ -2,7 +2,9 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class SkillTree_Manager : MonoBehaviour {
+public class Skill_Button : MonoBehaviour
+{
+    public string upgradeObjectName;
 
 	// Use this for initialization
 	void Start ()
@@ -16,8 +18,5 @@ public class SkillTree_Manager : MonoBehaviour {
 		
 	}
 
-    public void OnClick()
-    {
-
-    }
+    
 }
