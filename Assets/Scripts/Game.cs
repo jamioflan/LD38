@@ -8,6 +8,7 @@ public class Game : MonoBehaviour
     {
         IN_MENUS,
         IN_LEVEL,
+        IN_INGAME_MENUS,
         SHIFTING,
     }
 
@@ -29,24 +30,39 @@ public class Game : MonoBehaviour
         timeInState += Time.deltaTime;
         switch (state)
         {
-            case GameState.IN_MENUS:
-            {
-                break;
-            }
-            case GameState.IN_LEVEL:
-            {
-                break;
-            }
-            case GameState.SHIFTING:
-            {
-                if(timeInState >= shiftTime)
-                {
-                    StartNextLevel();
-                }
-                break;
-            }
+            case GameState.IN_MENUS:              { ExecuteState_InMenus();          break; }
+            case GameState.IN_LEVEL:              { ExecuteState_InLevel();          break; }
+            case GameState.IN_INGAME_MENUS:       { ExecuteState_InInGameMenus();    break; }
+            case GameState.SHIFTING:              { ExecuteState_Shifting();         break; }
         }
 	}
+
+    private void ExecuteState_InMenus()
+    {
+
+    }
+
+    private void ExecuteState_InLevel()
+    {
+
+    }
+
+    private void ExecuteState_InInGameMenus()
+    {
+        // Check if we should return to game
+        if (Input.GetAxis("Cancel") > 0)
+        {
+            SwitchToState(GameState.IN_LEVEL);
+        }
+    }
+
+    private void ExecuteState_Shifting()
+    {
+        if (timeInState >= shiftTime)
+        {
+            StartNextLevel();
+        }
+    }
 
     private void StartNextLevel()
     {

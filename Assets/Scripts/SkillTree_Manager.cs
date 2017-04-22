@@ -16,13 +16,14 @@ public class SkillTree_Manager : MonoBehaviour
 		
 	}
 
-    public void OnClick( string upgradeObjectName )
+    public void OnClick(GameObject upgradeObject)
     {
-        GameObject upgradeObject = GameObject.Find(upgradeObjectName);
+        Upgrade upgrade = upgradeObject.GetComponent<Upgrade>();
 
         // Check if it's available and we can afford it
-
-
-        // Do stuff with the attached script/function
+        if (upgrade.isAvailableToUnlock() && upgrade.canAfford())
+        {
+            upgrade.grant();
+        }
     }
 }
