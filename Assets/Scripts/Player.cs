@@ -2,9 +2,11 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Player : MonoBehaviour {
+public class Player : Entity {
 
 	public float maxSpeed = 10F;
+	public int XP = 0;
+	public List<Upgrade> upgrades = new List<Upgrade>();
 
 	void Start ()
 	{
