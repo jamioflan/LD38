@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class Game : MonoBehaviour
 {
@@ -18,11 +19,15 @@ public class Game : MonoBehaviour
 
     public static Player thePlayer = null;
 
+    public GameObject menuHUD;
+    public GameObject menuStart;
+    public GameObject menuSkills;
+
 	// Use this for initialization
 	void Start ()
     {
-		
-	}
+
+    }
 	
 	// Update is called once per frame
 	void Update ()
@@ -37,6 +42,12 @@ public class Game : MonoBehaviour
         }
 	}
 
+    public void OnPressStart()
+    {
+        menuStart.SetActive(false);
+        StartNextLevel();
+    }
+
     private void ExecuteState_InMenus()
     {
 
@@ -44,15 +55,33 @@ public class Game : MonoBehaviour
 
     private void ExecuteState_InLevel()
     {
-
+        // Check if we should open the skill tree menu
+        // Be careful that a Tab press to close the skills menu doesn't immediately
+        // open it again
+        if (timeInState > 0.1 && Input.GetAxis("Tab") > 0)
+        {
+            SwitchToState(GameState.IN_INGAME_MENUS);
+            menuHUD.SetActive(false);
+        }
+        else
+        {
+            menuHUD.SetActive(true);
+        }
     }
 
     private void ExecuteState_InInGameMenus()
     {
         // Check if we should return to game
-        if (Input.GetAxis("Cancel") > 0)
+        // Allow Esc or Tab to close the menu, but be careful that the Tab press that opens
+        // the menu doesn't close it again instantly.
+        if (Input.GetAxis("Cancel") > 0 || (timeInState > 0.1 && Input.GetAxis("Tab") > 0))
         {
             SwitchToState(GameState.IN_LEVEL);
+            menuSkills.SetActive(false);
+        }
+        else
+        {
+            menuSkills.SetActive(true);
         }
     }
 
@@ -74,6 +103,7 @@ public class Game : MonoBehaviour
 
     private void SwitchToState(GameState newState)
     {
-        state = newState; 
+        state = newState;
+        timeInState = 0.0f;
     }
 }
