@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Bunny.cs : MonoBehaviour {
+public class Bunny : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
