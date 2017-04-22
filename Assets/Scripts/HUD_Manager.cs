@@ -34,6 +34,6 @@ public class HUD_Manager : MonoBehaviour
     {
         // Update player XP, health and equipped weapon icon
         // TODO
-        
+           
     }
 }
