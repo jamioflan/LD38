@@ -16,10 +16,8 @@ public class SkillTree_Manager : MonoBehaviour
 		
 	}
 
-    public void OnClick( string upgradeObjectName )
+    public void OnClick(GameObject upgradeObject)
     {
-        GameObject upgradeObject = GameObject.Find(upgradeObjectName);
-
         // Check if it's available and we can afford it
 
 
