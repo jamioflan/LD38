@@ -34,6 +34,7 @@ public class Upgrade : MonoBehaviour {
 				has = false;
 			}
 		}
+		return has;
 	}
 
 	public bool canAfford ()
