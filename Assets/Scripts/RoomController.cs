@@ -14,6 +14,8 @@ public class RoomController : MonoBehaviour
     public PositionedRoom[] currentLayout;
     public PositionedRoom[] nextLayout;
 
+    public DungeonPiece pieceTemplate;
+
     // Use this for initialization
     void Start ()
     {
@@ -60,6 +62,8 @@ public class RoomController : MonoBehaviour
             this.roomShapes[i] = roomShape;
         }
         this.numRooms = num;
+
+        generateNextLayout();
     }
 
     public void generateNextLayout()
@@ -69,6 +73,8 @@ public class RoomController : MonoBehaviour
         {
             PositionedRoom.Position pos = new PositionedRoom.Position(i * 5, 0);
             nextLayout[i] = new PositionedRoom(this.roomShapes[i], pos, 0);
+            DungeonPiece newPiece = Instantiate<DungeonPiece>(pieceTemplate);
+            newPiece.positionedRoom = nextLayout[i];
         }
     }
 
