@@ -33,3 +33,5 @@ sysinfo.txt
 *.db
 *.db
 Assets/Textures/Thumbs.db
+*.db
+Assets/Thumbs.db
