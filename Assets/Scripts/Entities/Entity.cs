@@ -9,6 +9,7 @@ public class Entity : MonoBehaviour
     public float maxHealth = 10.0f;
     public float health = 10.0f;
     public float moveSpeed = 1.0f;
+    public int XP = 0;
 
     public int facing = 0;
     public SpriteRenderer body, leftHand, rightHand;
@@ -54,7 +55,7 @@ public class Entity : MonoBehaviour
     {
         if (attacks != null && currentAttack >= 0 && currentAttack < attacks.Length)
         {
-            attacks[currentAttack].Use(attackMode, transform.position, (Vector3)crosshair - transform.position);
+            attacks[currentAttack].TryToUse(attackMode, transform.position, (Vector3)crosshair - transform.position);
         }
     }
 
@@ -65,7 +66,19 @@ public class Entity : MonoBehaviour
             // Do damage;
             invulnerabilityCooldown = maxInvulnerabilityCooldown;
             health -= attack.damage;
+            if (health < 0)
+            {
+                Die();
+            }
         }
-       
+    }
+
+    public void Die()
+    {
+        if(this != Game.thePlayer)
+        {
+            Game.thePlayer.XP += XP;
+        }
+        Destroy(gameObject);
     }
 }

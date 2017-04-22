@@ -13,7 +13,7 @@ public class RadialAttack : Attack {
         {
             Entity entity = coll.GetComponent<Entity>();
             Vector3 dPos = coll.transform.position - (Vector3)pos;
-            if(entity && Mathf.Acos(Vector3.Dot(dPos.normalized, aim.normalized)) < arc)
+            if(entity != null && entity != parent && Mathf.Acos(Vector3.Dot(dPos.normalized, aim.normalized)) < arc)
             {
                 entity.Damage(this);
             }

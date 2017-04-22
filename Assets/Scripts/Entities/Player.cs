@@ -6,7 +6,6 @@ public class Player : Entity
 {
 
     public float maxSpeed = 10F;
-    public int XP = 0;
     public List<Upgrade> upgrades = new List<Upgrade>();
 
     public Transform crosshairObject;
@@ -32,5 +31,18 @@ public class Player : Entity
         crosshair = mouse;
 
         crosshairObject.position = crosshair;
+
+        if (Input.GetAxis("Fire1") > 0)
+        {
+            UseCurrentAttack(0);
+        }
+        if (Input.GetAxis("Fire2") > 0)
+        {
+            UseCurrentAttack(1);
+        }
+        if (Input.GetAxis("Fire3") > 0)
+        {
+            UseCurrentAttack(2);
+        }
     }
 }
