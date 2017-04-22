@@ -52,7 +52,7 @@ public class DungeonPiece : MonoBehaviour {
                 {
                     for(int y = j - 1; y < j + 1; y++)
                     {
-                        if(x >= 0 && y >= 0 && x < RoomShape.maxMatrixWidth && y < RoomShape.maxMatrixHeight && shape.matrix[x, y] != null)
+                        if(x >= 0 && y >= 0 && x < RoomShape.maxMatrixWidth && y < RoomShape.maxMatrixHeight && positionedRoom.room.matrix[x, y] != null)
                         {
                             numAdjacent++;
                         }
