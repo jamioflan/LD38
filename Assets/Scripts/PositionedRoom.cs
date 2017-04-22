@@ -9,8 +9,8 @@ public class PositionedRoom
     public int rotation; // Rotation: anticlockwise in steps of 90deg
     public class Position
     {
-        int x;
-        int y;
+        public int x;
+        public int y;
         public Position(int x, int y)
         {
             this.x = x;
