@@ -53,6 +53,11 @@ public class Upgrade : MonoBehaviour {
 		return true;
 	}
 
+    public bool isOwnedOrAvailableToUnlock()
+    {
+        return alreadyOwned() || isAvailableToUnlock();
+    }
+
 	public bool canAfford()
 	{
 		return Game.thePlayer.XP >= cost;
