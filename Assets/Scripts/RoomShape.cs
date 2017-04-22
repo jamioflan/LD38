@@ -10,5 +10,10 @@ public class RoomShape
 
     public RoomBlock[,] matrix = new RoomBlock[maxMatrixWidth, maxMatrixHeight];
 
+    //public RoomDoor[] getDoors()
+    //{
+    //    RoomDoor[] doorList = new RoomDoor[];
+    //}
+
 
 }

@@ -2,25 +2,50 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class RoomBlock {
-    
+public class RoomBlock
+{
+
+    public RoomShape parentRoomShape;
+
     public class Walls
     {
-        public bool north;
-        public bool west;
-        public bool south;
-        public bool east;
-
-        public Walls()
-        {
-            north = false;
-            east = false;
-            south = false;
-            west = false;
-        }
+        public RoomWall north;
+        public RoomWall west;
+        public RoomWall south;
+        public RoomWall east;
     }
 
-    public RoomShape parentRoom = null;
+}
 
+public class RoomWall
+{
+
+    public RoomBlock parentRoomBlock;
+
+    public RoomDoor door;
+
+    public RoomShape parentRoomShape()
+    {
+        return this.parentRoomBlock.parentRoomShape;
+    }
+
+}
+
+public class RoomDoor
+{
+
+    public RoomWall parentRoomWall;
+
+    public RoomDoor leadsTo;
+
+    public RoomBlock parentRoomBlock()
+    {
+        return this.parentRoomWall.parentRoomBlock;
+    }
+
+    public RoomShape parentRoomShape()
+    {
+        return this.parentRoomBlock().parentRoomShape;
+    }
 
 }
