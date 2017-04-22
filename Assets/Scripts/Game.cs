@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class Game : MonoBehaviour
 {
@@ -44,15 +45,27 @@ public class Game : MonoBehaviour
 
     private void ExecuteState_InLevel()
     {
-
+        // Check if we should open the skill tree menu
+        if (Input.GetAxis("Tab") > 0)
+        {
+            SwitchToState(GameState.IN_INGAME_MENUS);
+        }
     }
 
     private void ExecuteState_InInGameMenus()
     {
+        // Check the skill tree menu is open
+        GameObject skillTreeMenu = GameObject.Find("SkillTree_Menu");
+
         // Check if we should return to game
         if (Input.GetAxis("Cancel") > 0)
         {
             SwitchToState(GameState.IN_LEVEL);
+            skillTreeMenu.SetActive(false);
+        }
+        else
+        {
+            skillTreeMenu.SetActive(true);
         }
     }
 
@@ -74,6 +87,7 @@ public class Game : MonoBehaviour
 
     private void SwitchToState(GameState newState)
     {
-        state = newState; 
+        state = newState;
+        timeInState = 0.0f;
     }
 }
