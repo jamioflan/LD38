@@ -25,6 +25,7 @@ public class Entity : MonoBehaviour
     public int currentAttack;
     public float maxHealth = 10.0f;
     public float health = 10.0f;
+    public float healthRegenRate = 0.0f;
     public float moveSpeed = 1.0f;
     public int XP = 0;
 
@@ -59,7 +60,8 @@ public class Entity : MonoBehaviour
     {
         invulnerabilityCooldown -= Time.deltaTime;
         UpdateAnimations();
-        
+
+        health = Mathf.Min(health + healthRegenRate * Time.deltaTime, maxHealth);
     }
 
     public virtual void FixedUpdate() { }

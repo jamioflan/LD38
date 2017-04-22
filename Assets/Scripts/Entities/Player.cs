@@ -15,6 +15,8 @@ public class Player : Entity
         base.Awake();
 
         Game.thePlayer = this;
+
+        healthRegenRate = 0.1f;
     }
 
     public override void FixedUpdate()
