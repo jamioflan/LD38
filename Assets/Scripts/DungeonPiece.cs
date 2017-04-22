@@ -74,15 +74,15 @@ public class DungeonPiece : MonoBehaviour {
         {
             for (int j = 0; j < RoomShape.maxMatrixHeight; j++)
             {
-                int numAdjacent = 0;
-                if (i != 0 && shape.matrix[i - 1, j] != null) numAdjacent++;
-                if (i != RoomShape.maxMatrixWidth && shape.matrix[i, j] != null) numAdjacent++;
-                if (numAdjacent == 1)
+                bool leftAdjacent = i != 0 && shape.matrix[i - 1, j] != null;
+                bool rightAdjacent = i != RoomShape.maxMatrixWidth && shape.matrix[i, j] != null;
+                if (leftAdjacent != rightAdjacent)
                 {
-                    // TODO - Doors!
-                    Transform wall = Instantiate<Transform>(wallTemplate);
+                    Transform wall = Instantiate<Transform>(doorTemplate);
                     wall.SetParent(transform);
                     wall.localPosition = new Vector3(i, j + 0.5f, 0) * tilesToWorldUnitsConversion;
+                    if(leftAdjacent) wall.localEulerAngles = new Vector3(0.0f, 0.0f, 180.0f);
+
                 }
             }
         }
@@ -92,16 +92,16 @@ public class DungeonPiece : MonoBehaviour {
         {
             for (int j = 0; j < RoomShape.maxMatrixHeight + 1; j++)
             {
-                int numAdjacent = 0;
-                if (j != 0 && shape.matrix[i, j - 1] != null) numAdjacent++;
-                if (j != RoomShape.maxMatrixHeight && shape.matrix[i, j] != null) numAdjacent++;
-                if (numAdjacent == 1)
+                bool leftAdjacent = j != 0 && shape.matrix[i, j - 1] != null;
+                bool rightAdjacent = j != RoomShape.maxMatrixHeight && shape.matrix[i, j] != null;
+                if (leftAdjacent != rightAdjacent)
                 {
                     // TODO - Doors!
                     Transform wall = Instantiate<Transform>(wallTemplate);
                     wall.SetParent(transform);
                     wall.localPosition = new Vector3(i + 0.5f, j, 0) * tilesToWorldUnitsConversion;
-                    wall.localEulerAngles = new Vector3(0.0f, 0.0f, 90.0f);
+                    if (leftAdjacent) wall.localEulerAngles = new Vector3(0.0f, 0.0f, 90.0f);
+                    else wall.localEulerAngles = new Vector3(0.0f, 0.0f, -90.0f);
                 }
             }
         }
