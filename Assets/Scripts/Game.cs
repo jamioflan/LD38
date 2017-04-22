@@ -38,6 +38,11 @@ public class Game : MonoBehaviour
         }
 	}
 
+    public void OnPressStart()
+    {
+        StartNextLevel();
+    }
+
     private void ExecuteState_InMenus()
     {
 
