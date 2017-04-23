@@ -20,7 +20,7 @@ public class RoomController : MonoBehaviour
     public DungeonPiece pieceTemplate;
 
     // Use this for initialization
-    void Start ()
+    void Awake ()
     {
         instance = this;
 	}
@@ -57,6 +57,7 @@ public class RoomController : MonoBehaviour
         PositionedRoom PosRoom = new PositionedRoom(roomShape);
         DungeonPiece newPiece = Instantiate<DungeonPiece>(pieceTemplate);
         newPiece.positionedRoom = PosRoom;
+        newPiece.transform.SetParent(transform);
         roomShape.dungeonPiece = newPiece;
         return roomShape;
     }
@@ -195,6 +196,9 @@ public class RoomController : MonoBehaviour
                                 positionedRoom.pos = pos;
                                 positionedRoom.rotation = rotation;
                                 if (!positionedRoom.collides(attemptLayout)) break;
+                                positionedRoom.calculateBounds();
+                                if (positionedRoom.pos.x + positionedRoom.bounds.maxX >= Grid.instance.width) break;
+                                if (positionedRoom.pos.y + positionedRoom.bounds.maxY >= Grid.instance.height) break;
                             } while (loopsDone++ < 1000);
                             Debug.Assert(loopsDone < 1000, "Tried a lot of ways to position a shape; none of which worked. Hmmm.");
                             if (loopsDone >= 1000) continue;
@@ -256,7 +260,7 @@ public class RoomController : MonoBehaviour
         for (int x = 0; x < Grid.instance.width; x++)
         {
             pos.x = x;
-            for (int y = 0; y < Grid.instance.width; y++)
+            for (int y = 0; y < Grid.instance.height; y++)
             {
                 pos.y = y;
                 foreach (PositionedRoom positionedRoom in layout)
