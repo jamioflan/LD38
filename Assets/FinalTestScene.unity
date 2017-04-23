@@ -489,6 +489,9 @@ MonoBehaviour:
   menuHUD: {fileID: 623981894}
   menuStart: {fileID: 150866415}
   menuSkills: {fileID: 1127029439}
+  menuEndGame: {fileID: 781015204}
+  menuEndSuccess: {fileID: 82040423}
+  menuEndFailure: {fileID: 875189780}
 --- !u!1 &623981894 stripped
 GameObject:
   m_PrefabParentObject: {fileID: 1144700743826194, guid: 93f2203792cfd884ea42c64c2525ddd4,
