@@ -101,111 +101,181 @@ public class DungeonPiece : MonoBehaviour {
                 {
                     if (positionedRoom.room.matrix[i, j].walls[0] != null)
                     {
+                        Transform wall = null;
                         if (positionedRoom.room.matrix[i, j].walls[0].door == null)
                         {
-                            Transform wall = Instantiate<Transform>(wallTemplate);
-                            wall.SetParent(transform);
-                            wall.localPosition = new Vector3(i, j + 0.5f - wallOffsetTiles, 0) * tilesToWorldUnitsConversion;
-                            wall.localEulerAngles = new Vector3(0.0f, 0.0f, 90.0f);
+                            wall = Instantiate<Transform>(wallTemplate);
                         }
                         else
                         {
-                            WallDoor wall = Instantiate<WallDoor>(wallDoorTemplate);
-                            wall.transform.SetParent(transform);
-                            wall.transform.localPosition = new Vector3(i, j + 0.5f - wallOffsetTiles, 0) * tilesToWorldUnitsConversion;
-                            wall.transform.localEulerAngles = new Vector3(0.0f, 0.0f, 90.0f);
-                            wall.roomWall = positionedRoom.room.matrix[i, j].walls[0];
-                            wall.positionedRoom = positionedRoom;
-                            positionedRoom.room.matrix[i, j].walls[0].wallDoor = wall;
+                            wall = Instantiate<Transform>(doorTemplate);
                         }
+                        wall.SetParent(transform);
+                        wall.localPosition = new Vector3(i, j + 0.5f - wallOffsetTiles, 0) * tilesToWorldUnitsConversion;
+                        wall.localEulerAngles = new Vector3(0.0f, 0.0f, 90.0f);
                     }
                     if (positionedRoom.room.matrix[i, j].walls[1] != null)
                     {
+                        Transform wall = null;
                         if (positionedRoom.room.matrix[i, j].walls[1].door == null)
                         {
-                            Transform wall = Instantiate<Transform>(wallTemplate);
-                            wall.SetParent(transform);
-                            wall.localPosition = new Vector3(i - 0.5f + wallOffsetTiles, j, 0) * tilesToWorldUnitsConversion;
-                            wall.localEulerAngles = new Vector3(0.0f, 0.0f, 180.0f);
+                            wall = Instantiate<Transform>(wallTemplate);
                         }
                         else
                         {
-                            WallDoor wall = Instantiate<WallDoor>(wallDoorTemplate);
-                            wall.transform.SetParent(transform);
-                            wall.transform.localPosition = new Vector3(i - 0.5f + wallOffsetTiles, j, 0) * tilesToWorldUnitsConversion;
-                            wall.transform.localEulerAngles = new Vector3(0.0f, 0.0f, 180.0f);
-                            wall.roomWall = positionedRoom.room.matrix[i, j].walls[1];
-                            wall.positionedRoom = positionedRoom;
-                            positionedRoom.room.matrix[i, j].walls[1].wallDoor = wall;
+                            wall = Instantiate<Transform>(doorTemplate);
                         }
-                        // Transform wall;
-                        // if (positionedRoom.room.matrix[i, j].walls[1].door == null)
-                        //     wall = Instantiate<Transform>(wallTemplate);
-                        // else
-                        //     wall = Instantiate<Transform>(doorTemplate);
-                        // wall.SetParent(transform);
-                        // wall.localPosition = new Vector3(i - 0.5f + wallOffsetTiles, j, 0) * tilesToWorldUnitsConversion;
-                        // wall.localEulerAngles = new Vector3(0.0f, 0.0f, 180.0f);
+                        wall.SetParent(transform);
+                        wall.localPosition = new Vector3(i - 0.5f + wallOffsetTiles, j, 0) * tilesToWorldUnitsConversion;
+                        wall.localEulerAngles = new Vector3(0.0f, 0.0f, 180.0f);
                     }
                     if (positionedRoom.room.matrix[i, j].walls[2] != null)
                     {
+                        Transform wall = null;
                         if (positionedRoom.room.matrix[i, j].walls[2].door == null)
                         {
-                            Transform wall = Instantiate<Transform>(wallTemplate);
-                            wall.SetParent(transform);
-                            wall.localPosition = new Vector3(i, j - 0.5f + wallOffsetTiles, 0) * tilesToWorldUnitsConversion;
-                            wall.localEulerAngles = new Vector3(0.0f, 0.0f, -90.0f);
+                            wall = Instantiate<Transform>(wallTemplate);
                         }
                         else
                         {
-                            WallDoor wall = Instantiate<WallDoor>(wallDoorTemplate);
-                            wall.transform.SetParent(transform);
-                            wall.transform.localPosition = new Vector3(i, j - 0.5f + wallOffsetTiles, 0) * tilesToWorldUnitsConversion;
-                            wall.transform.localEulerAngles = new Vector3(0.0f, 0.0f, -90.0f);
-                            wall.roomWall = positionedRoom.room.matrix[i, j].walls[2];
-                            wall.positionedRoom = positionedRoom;
-                            positionedRoom.room.matrix[i, j].walls[2].wallDoor = wall;
+                            wall = Instantiate<Transform>(doorTemplate);
                         }
-                        // Transform wall;
-                        // if (positionedRoom.room.matrix[i, j].walls[2].door == null)
-                        //     wall = Instantiate<Transform>(wallTemplate);
-                        // else
-                        //     wall = Instantiate<Transform>(doorTemplate);
-                        // wall.SetParent(transform);
-                        // wall.localPosition = new Vector3(i, j - 0.5f + wallOffsetTiles, 0) * tilesToWorldUnitsConversion;
-                        // wall.localEulerAngles = new Vector3(0.0f, 0.0f, -90.0f);
+                        wall.SetParent(transform);
+                        wall.localPosition = new Vector3(i, j - 0.5f + wallOffsetTiles, 0) * tilesToWorldUnitsConversion;
+                        wall.localEulerAngles = new Vector3(0.0f, 0.0f, -90.0f);
                     }
                     if (positionedRoom.room.matrix[i, j].walls[3] != null)
                     {
+                        Transform wall = null;
                         if (positionedRoom.room.matrix[i, j].walls[3].door == null)
                         {
-                            Transform wall = Instantiate<Transform>(wallTemplate);
-                            wall.SetParent(transform);
-                            wall.localPosition = new Vector3(i + 0.5f - wallOffsetTiles, j, 0) * tilesToWorldUnitsConversion;
-                            wall.localEulerAngles = new Vector3(0.0f, 0.0f, 0.0f);
+                            wall = Instantiate<Transform>(wallTemplate);
                         }
                         else
                         {
-                            WallDoor wall = Instantiate<WallDoor>(wallDoorTemplate);
-                            wall.transform.SetParent(transform);
-                            wall.transform.localPosition = new Vector3(i + 0.5f - wallOffsetTiles, j, 0) * tilesToWorldUnitsConversion;
-                            wall.transform.localEulerAngles = new Vector3(0.0f, 0.0f, 0.0f);
-                            wall.roomWall = positionedRoom.room.matrix[i, j].walls[3];
-                            wall.positionedRoom = positionedRoom;
-                            positionedRoom.room.matrix[i, j].walls[3].wallDoor = wall;
+                            wall = Instantiate<Transform>(doorTemplate);
                         }
-                        // Transform wall;
-                        // if (positionedRoom.room.matrix[i, j].walls[3].door == null)
-                        //     wall = Instantiate<Transform>(wallTemplate);
-                        // else
-                        //     wall = Instantiate<Transform>(doorTemplate);
-                        // wall.SetParent(transform);
-                        // wall.localPosition = new Vector3(i + 0.5f - wallOffsetTiles, j, 0) * tilesToWorldUnitsConversion;
-                        // wall.localEulerAngles = new Vector3(0.0f, 0.0f, 0.0f);
+                        wall.SetParent(transform);
+                        wall.localPosition = new Vector3(i + 0.5f - wallOffsetTiles, j, 0) * tilesToWorldUnitsConversion;
+                        wall.localEulerAngles = new Vector3(0.0f, 0.0f, 0.0f);
                     }
                 }
             }
         }
+
+        // for (int i = 0; i < RoomShape.maxMatrixWidth; i++)
+        // {
+        //     for (int j = 0; j < RoomShape.maxMatrixHeight; j++)
+        //     {
+        //         if (positionedRoom.room.matrix[i, j] != null)
+        //         {
+        //             if (positionedRoom.room.matrix[i, j].walls[0] != null)
+        //             {
+        //                 if (positionedRoom.room.matrix[i, j].walls[0].door == null)
+        //                 {
+        //                     Transform wall = Instantiate<Transform>(wallTemplate);
+        //                     wall.SetParent(transform);
+        //                     wall.localPosition = new Vector3(i, j + 0.5f - wallOffsetTiles, 0) * tilesToWorldUnitsConversion;
+        //                     wall.localEulerAngles = new Vector3(0.0f, 0.0f, 90.0f);
+        //                 }
+        //                 else
+        //                 {
+        //                     WallDoor wall = Instantiate<WallDoor>(wallDoorTemplate);
+        //                     wall.transform.SetParent(transform);
+        //                     wall.transform.localPosition = new Vector3(i, j + 0.5f - wallOffsetTiles, 0) * tilesToWorldUnitsConversion;
+        //                     wall.transform.localEulerAngles = new Vector3(0.0f, 0.0f, 90.0f);
+        //                     wall.roomWall = positionedRoom.room.matrix[i, j].walls[0];
+        //                     wall.positionedRoom = positionedRoom;
+        //                     positionedRoom.room.matrix[i, j].walls[0].wallDoor = wall;
+        //                 }
+        //             }
+        //             if (positionedRoom.room.matrix[i, j].walls[1] != null)
+        //             {
+        //                 if (positionedRoom.room.matrix[i, j].walls[1].door == null)
+        //                 {
+        //                     Transform wall = Instantiate<Transform>(wallTemplate);
+        //                     wall.SetParent(transform);
+        //                     wall.localPosition = new Vector3(i - 0.5f + wallOffsetTiles, j, 0) * tilesToWorldUnitsConversion;
+        //                     wall.localEulerAngles = new Vector3(0.0f, 0.0f, 180.0f);
+        //                 }
+        //                 else
+        //                 {
+        //                     WallDoor wall = Instantiate<WallDoor>(wallDoorTemplate);
+        //                     wall.transform.SetParent(transform);
+        //                     wall.transform.localPosition = new Vector3(i - 0.5f + wallOffsetTiles, j, 0) * tilesToWorldUnitsConversion;
+        //                     wall.transform.localEulerAngles = new Vector3(0.0f, 0.0f, 180.0f);
+        //                     wall.roomWall = positionedRoom.room.matrix[i, j].walls[1];
+        //                     wall.positionedRoom = positionedRoom;
+        //                     positionedRoom.room.matrix[i, j].walls[1].wallDoor = wall;
+        //                 }
+        //                 // Transform wall;
+        //                 // if (positionedRoom.room.matrix[i, j].walls[1].door == null)
+        //                 //     wall = Instantiate<Transform>(wallTemplate);
+        //                 // else
+        //                 //     wall = Instantiate<Transform>(doorTemplate);
+        //                 // wall.SetParent(transform);
+        //                 // wall.localPosition = new Vector3(i - 0.5f + wallOffsetTiles, j, 0) * tilesToWorldUnitsConversion;
+        //                 // wall.localEulerAngles = new Vector3(0.0f, 0.0f, 180.0f);
+        //             }
+        //             if (positionedRoom.room.matrix[i, j].walls[2] != null)
+        //             {
+        //                 if (positionedRoom.room.matrix[i, j].walls[2].door == null)
+        //                 {
+        //                     Transform wall = Instantiate<Transform>(wallTemplate);
+        //                     wall.SetParent(transform);
+        //                     wall.localPosition = new Vector3(i, j - 0.5f + wallOffsetTiles, 0) * tilesToWorldUnitsConversion;
+        //                     wall.localEulerAngles = new Vector3(0.0f, 0.0f, -90.0f);
+        //                 }
+        //                 else
+        //                 {
+        //                     WallDoor wall = Instantiate<WallDoor>(wallDoorTemplate);
+        //                     wall.transform.SetParent(transform);
+        //                     wall.transform.localPosition = new Vector3(i, j - 0.5f + wallOffsetTiles, 0) * tilesToWorldUnitsConversion;
+        //                     wall.transform.localEulerAngles = new Vector3(0.0f, 0.0f, -90.0f);
+        //                     wall.roomWall = positionedRoom.room.matrix[i, j].walls[2];
+        //                     wall.positionedRoom = positionedRoom;
+        //                     positionedRoom.room.matrix[i, j].walls[2].wallDoor = wall;
+        //                 }
+        //                 // Transform wall;
+        //                 // if (positionedRoom.room.matrix[i, j].walls[2].door == null)
+        //                 //     wall = Instantiate<Transform>(wallTemplate);
+        //                 // else
+        //                 //     wall = Instantiate<Transform>(doorTemplate);
+        //                 // wall.SetParent(transform);
+        //                 // wall.localPosition = new Vector3(i, j - 0.5f + wallOffsetTiles, 0) * tilesToWorldUnitsConversion;
+        //                 // wall.localEulerAngles = new Vector3(0.0f, 0.0f, -90.0f);
+        //             }
+        //             if (positionedRoom.room.matrix[i, j].walls[3] != null)
+        //             {
+        //                 if (positionedRoom.room.matrix[i, j].walls[3].door == null)
+        //                 {
+        //                     Transform wall = Instantiate<Transform>(wallTemplate);
+        //                     wall.SetParent(transform);
+        //                     wall.localPosition = new Vector3(i + 0.5f - wallOffsetTiles, j, 0) * tilesToWorldUnitsConversion;
+        //                     wall.localEulerAngles = new Vector3(0.0f, 0.0f, 0.0f);
+        //                 }
+        //                 else
+        //                 {
+        //                     WallDoor wall = Instantiate<WallDoor>(wallDoorTemplate);
+        //                     wall.transform.SetParent(transform);
+        //                     wall.transform.localPosition = new Vector3(i + 0.5f - wallOffsetTiles, j, 0) * tilesToWorldUnitsConversion;
+        //                     wall.transform.localEulerAngles = new Vector3(0.0f, 0.0f, 0.0f);
+        //                     wall.roomWall = positionedRoom.room.matrix[i, j].walls[3];
+        //                     wall.positionedRoom = positionedRoom;
+        //                     positionedRoom.room.matrix[i, j].walls[3].wallDoor = wall;
+        //                 }
+        //                 // Transform wall;
+        //                 // if (positionedRoom.room.matrix[i, j].walls[3].door == null)
+        //                 //     wall = Instantiate<Transform>(wallTemplate);
+        //                 // else
+        //                 //     wall = Instantiate<Transform>(doorTemplate);
+        //                 // wall.SetParent(transform);
+        //                 // wall.localPosition = new Vector3(i + 0.5f - wallOffsetTiles, j, 0) * tilesToWorldUnitsConversion;
+        //                 // wall.localEulerAngles = new Vector3(0.0f, 0.0f, 0.0f);
+        //             }
+        //         }
+        //     }
+        // }
         
          // // Walls - Vertical
          // for (int i = 0; i < RoomShape.maxMatrixWidth + 1; i++)

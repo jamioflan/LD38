@@ -12,7 +12,7 @@ public class RoomController : MonoBehaviour
     public static readonly int G_LAYOUT_IT = 3; // The number of attempts the algorithm makes at generating a good layout
     public static readonly int G_SHAPE_POS_IT = 100; // The number of attempts the generation algorithm makes when placing a shape
 
-    public static readonly int START_ROOMS = 5;
+    public static readonly int START_ROOMS = 7;
     public static readonly int ADVANCE_NEW_ROOMS = 2;
     public static readonly int EXTRA_DOOR_LINKS_P = 1; // The number of extra door links to add per room, in addition to the base connecting links. 
 
