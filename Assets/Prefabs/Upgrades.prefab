@@ -21,7 +21,7 @@ GameObject:
   - component: {fileID: 4581030192407536}
   - component: {fileID: 114648486095769278}
   m_Layer: 0
-  m_Name: Melee Increased Health
+  m_Name: meleeIncreasedHealth
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -37,7 +37,7 @@ GameObject:
   - component: {fileID: 4345298520623646}
   - component: {fileID: 114209271085223200}
   m_Layer: 0
-  m_Name: PlusMeleeDamage
+  m_Name: meleePlusDamage
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -53,7 +53,7 @@ GameObject:
   - component: {fileID: 4012624562306410}
   - component: {fileID: 114115850173771418}
   m_Layer: 0
-  m_Name: Magic Residue
+  m_Name: magicResidue
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -69,7 +69,7 @@ GameObject:
   - component: {fileID: 4996886007103978}
   - component: {fileID: 114112544898203216}
   m_Layer: 0
-  m_Name: Magic Ranged Invisibility
+  m_Name: magicRangedInvisibility
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -85,7 +85,7 @@ GameObject:
   - component: {fileID: 4843078594686432}
   - component: {fileID: 114194052351411944}
   m_Layer: 0
-  m_Name: Melee Magic Trails
+  m_Name: meleeMagicTrails
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -116,7 +116,7 @@ GameObject:
   - component: {fileID: 4699604521675676}
   - component: {fileID: 114067047352126738}
   m_Layer: 0
-  m_Name: Melee Ranged Enemies Splatter
+  m_Name: meleeRangedEnemiesSplatter
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -132,7 +132,7 @@ GameObject:
   - component: {fileID: 4001216171877956}
   - component: {fileID: 114345293674200646}
   m_Layer: 0
-  m_Name: Melee Magic Attacks Heal You
+  m_Name: meleeMagicAttacksHealYou
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -148,7 +148,7 @@ GameObject:
   - component: {fileID: 4944816307753346}
   - component: {fileID: 114378270006334284}
   m_Layer: 0
-  m_Name: PlusMagicDamage
+  m_Name: magicPlusDamage
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -164,7 +164,7 @@ GameObject:
   - component: {fileID: 4342926598688624}
   - component: {fileID: 114331165160021070}
   m_Layer: 0
-  m_Name: Ranged Triple Attack
+  m_Name: rangedTripleAttack
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -180,7 +180,7 @@ GameObject:
   - component: {fileID: 4181796681963892}
   - component: {fileID: 114207095688287716}
   m_Layer: 0
-  m_Name: PlusRangedDamage
+  m_Name: rangedPlusDamage
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -196,7 +196,7 @@ GameObject:
   - component: {fileID: 4783835342819842}
   - component: {fileID: 114594789970855920}
   m_Layer: 0
-  m_Name: Melee Ranged Multiattack
+  m_Name: meleeRangedMultiattack
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -212,7 +212,7 @@ GameObject:
   - component: {fileID: 4937033159467028}
   - component: {fileID: 114736874784427940}
   m_Layer: 0
-  m_Name: Magic Increased Range
+  m_Name: magicIncreasedDistance
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -228,7 +228,7 @@ GameObject:
   - component: {fileID: 4404184236821724}
   - component: {fileID: 114859678461956176}
   m_Layer: 0
-  m_Name: Magic Max Damage
+  m_Name: magicMaxDamage
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -244,7 +244,7 @@ GameObject:
   - component: {fileID: 4216015013645568}
   - component: {fileID: 114186550956430404}
   m_Layer: 0
-  m_Name: Magic Ranged Elemental Arrows
+  m_Name: magicRangedElementalArrows
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -260,7 +260,7 @@ GameObject:
   - component: {fileID: 4978930635399106}
   - component: {fileID: 114193032591249832}
   m_Layer: 0
-  m_Name: Melee Attack Move
+  m_Name: meleeAttackMove
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -276,7 +276,7 @@ GameObject:
   - component: {fileID: 4099994371664118}
   - component: {fileID: 114904988213127540}
   m_Layer: 0
-  m_Name: Magic Heavy Attack
+  m_Name: magicHeavyAttack
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -292,7 +292,7 @@ GameObject:
   - component: {fileID: 4515148337871996}
   - component: {fileID: 114356500817709920}
   m_Layer: 0
-  m_Name: Ranged Attack Move
+  m_Name: rangedAttackMove
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -308,7 +308,7 @@ GameObject:
   - component: {fileID: 4595700721365178}
   - component: {fileID: 114909496879923664}
   m_Layer: 0
-  m_Name: Ranged Max Damage
+  m_Name: rangedMaxDamage
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -324,7 +324,7 @@ GameObject:
   - component: {fileID: 4532491981897342}
   - component: {fileID: 114590241564176356}
   m_Layer: 0
-  m_Name: Melee 360
+  m_Name: melee360
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -340,7 +340,7 @@ GameObject:
   - component: {fileID: 4334355943560018}
   - component: {fileID: 114540643633314532}
   m_Layer: 0
-  m_Name: Ranged Increased Speed
+  m_Name: rangedIncreasedSpeed
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -356,7 +356,7 @@ GameObject:
   - component: {fileID: 4698115299671192}
   - component: {fileID: 114923325273212286}
   m_Layer: 0
-  m_Name: Magic Increased Regeneration
+  m_Name: magicIncreasedRegeneration
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -372,7 +372,7 @@ GameObject:
   - component: {fileID: 4158677745057302}
   - component: {fileID: 114927179996613416}
   m_Layer: 0
-  m_Name: Melee Power Attack
+  m_Name: meleePowerAttack
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -388,7 +388,7 @@ GameObject:
   - component: {fileID: 4530967113274354}
   - component: {fileID: 114945097897914640}
   m_Layer: 0
-  m_Name: Magic Attack Move
+  m_Name: magicAttackMove
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -404,7 +404,7 @@ GameObject:
   - component: {fileID: 4702028883883622}
   - component: {fileID: 114799110437205430}
   m_Layer: 0
-  m_Name: Melee Ranged Enemies Bleed
+  m_Name: meleeRangedEnemiesBleed
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -420,7 +420,7 @@ GameObject:
   - component: {fileID: 4547736343435416}
   - component: {fileID: 114297672727607072}
   m_Layer: 0
-  m_Name: Melee Increased Arc
+  m_Name: meleeIncreasedArc
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -436,7 +436,7 @@ GameObject:
   - component: {fileID: 4816727925303374}
   - component: {fileID: 114801923485635776}
   m_Layer: 0
-  m_Name: Melee Max Damage
+  m_Name: meleeMaxDamage
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -452,7 +452,7 @@ GameObject:
   - component: {fileID: 4749235317031506}
   - component: {fileID: 114832586959718916}
   m_Layer: 0
-  m_Name: Melee Magic Deflect Attacks
+  m_Name: meleeMagicDeflectAttacks
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -468,7 +468,7 @@ GameObject:
   - component: {fileID: 4778250088260500}
   - component: {fileID: 114276342597644752}
   m_Layer: 0
-  m_Name: Ranged Arrows Bounce
+  m_Name: rangedArrowsBounce
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -484,7 +484,7 @@ GameObject:
   - component: {fileID: 4138533605313614}
   - component: {fileID: 114469924755534340}
   m_Layer: 0
-  m_Name: Magic Ranged Farsight
+  m_Name: magicRangedFarsight
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -500,7 +500,7 @@ GameObject:
   - component: {fileID: 4198102733791848}
   - component: {fileID: 114702021188258354}
   m_Layer: 0
-  m_Name: Ranged Power Attack
+  m_Name: rangedPowerAttack
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -851,7 +851,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1194162270739358}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: -40.683186, y: 3.9090474, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4345298520623646}
@@ -1016,7 +1016,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   dependencies:
   - {fileID: 114297672727607072}
-  - {fileID: 114801923485635776}
+  - {fileID: 114648486095769278}
   description: Dashing Strike
   cost: 300
 --- !u!114 &114194052351411944
@@ -1031,8 +1031,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   dependencies:
-  - {fileID: 114193032591249832}
   - {fileID: 114345293674200646}
+  - {fileID: 114904988213127540}
   description: Flaming Footsteps
   cost: 400
 --- !u!114 &114207095688287716
@@ -1355,7 +1355,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   dependencies:
   - {fileID: 114207095688287716}
-  description: Increased Player Speed
+  description: Increased Ranged Damage
   cost: 200
 --- !u!114 &114923325273212286
 MonoBehaviour:
@@ -1385,7 +1385,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   dependencies:
   - {fileID: 114648486095769278}
-  - {fileID: 114648486095769278}
+  - {fileID: 114801923485635776}
   description: Heavy Strike
   cost: 300
 --- !u!114 &114945097897914640
