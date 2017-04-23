@@ -36,6 +36,8 @@ public class Entity : MonoBehaviour
 
     public DungeonPiece currentRoom;
 
+    public DamageNumbers damageNumbersPrefab;
+
     public float maxInvulnerabilityCooldown = 1.0f;
     public float invulnerabilityCooldown = 1.0f;
 
@@ -202,8 +204,15 @@ public class Entity : MonoBehaviour
         if(invulnerabilityCooldown <= 0.0f)
         {
             // Do damage;
+            float fDamage = Random.Range(attack.minDamage, attack.maxDamage);
+
             invulnerabilityCooldown = maxInvulnerabilityCooldown;
-            health -= Random.Range(attack.minDamage, attack.maxDamage);
+            health -= fDamage;
+            // Add some numbers
+            DamageNumbers numbers = Instantiate<DamageNumbers>(damageNumbersPrefab);
+            numbers.transform.position = transform.position + new Vector3(0.0f, 0.5f * animScale, 0.0f);
+            numbers.SetNumber(Mathf.RoundToInt(fDamage));
+
             if (health < 0)
             {
                 Die();

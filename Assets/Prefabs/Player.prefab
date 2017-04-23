@@ -296,12 +296,16 @@ MonoBehaviour:
   - {fileID: 21300000, guid: 2ce172d102d4d4342b3d824687e0a176, type: 3}
   - {fileID: 21300000, guid: 5bbf10bf49737d743a4b6b4c61e82eca, type: 3}
   currentRoom: {fileID: 0}
+  damageNumbersPrefab: {fileID: 114657264730176768, guid: de1192e18d0f0e74e98fc998616d6471,
+    type: 2}
   maxInvulnerabilityCooldown: 1
   invulnerabilityCooldown: 1
   rb: {fileID: 0}
   crosshair: {x: 0, y: 0}
   maxSpeed: 1
   upgrades: []
+  switchWeapon: 0
+  switchWeaponLast: 0
   crosshairObject: {fileID: 4880228922104986}
 --- !u!114 &114094299990263456
 MonoBehaviour:
