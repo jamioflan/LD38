@@ -37,9 +37,18 @@ public class Projectile : MonoBehaviour {
             return;
         }
 
-        speed = 0.0f;
-        rb.constraints = RigidbodyConstraints2D.FreezeAll;
-        timeToDeath = 1.0f;
+        if(true)//attack.parent.isBouncy())
+        {
+            float fNormalAngle = Mathf.Atan2(collision.contacts[0].normal.y, collision.contacts[0].normal.x);
+            transform.localEulerAngles = new Vector3(0.0f, 0.0f, -2.0f * fNormalAngle + transform.localEulerAngles.z);
+        }
+        else
+        {
+            speed = 0.0f;
+            rb.constraints = RigidbodyConstraints2D.FreezeAll;
+            timeToDeath = 1.0f;
+        }
+
 
         if (entity != null)
         {

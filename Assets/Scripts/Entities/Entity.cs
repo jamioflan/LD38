@@ -432,4 +432,9 @@ public class Entity : MonoBehaviour
 		// If we've made it this far, the player doesn't have the upgrade
 		return false;
 	}
+
+    public bool isBouncy()
+    {
+        return hasUpgrade("rangedArrowsBounce");
+    }
 }
