@@ -35,6 +35,8 @@ public class Entity : MonoBehaviour
 	public float timeSinceLastBleed = 0F;
 	public float knockback = 1F;
 
+	public List<Upgrade> upgrades = new List<Upgrade>();
+
     public int facing = 0;
     public SpriteRenderer body;
     public Transform leftHand, rightHand;
@@ -292,6 +294,12 @@ public class Entity : MonoBehaviour
 				bleedtimer = 5F;
 			}
 
+			// If the attacker has vampirism, heal them part of the damage
+			if ((attack.attackType == Attack.AttackType.MELEE || attack.attackType == Attack.AttackType.MAGIC) && ((Player)attack.parent).hasUpgrade("meleeMagicAttacksHealYou"))
+			{
+				attack.parent
+			}
+
             // Add some numbers
             DamageNumbers numbers = Instantiate<DamageNumbers>(damageNumbersPrefab);
             numbers.transform.position = transform.position + new Vector3(0.0f, 0.5f * animScale, 0.0f);
@@ -336,5 +344,19 @@ public class Entity : MonoBehaviour
 	public virtual float getMagicDamageMultiplier()
 	{
 		return magicDamageMultiplier;
+	}
+
+	public bool hasUpgrade(string sub)
+	{
+		// Iterate through the upgrades, and return true if we find the one we want
+		foreach (Upgrade upgrade in upgrades)
+		{
+			if (upgrade.name.Equals(sub))
+			{
+				return true;
+			}
+		}
+		// If we've made it this far, the player doesn't have the upgrade
+		return false;
 	}
 }

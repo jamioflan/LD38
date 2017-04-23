@@ -68,13 +68,22 @@ public class Upgrade : MonoBehaviour {
 		return Game.thePlayer.XP >= cost;
 	}
 
-	public void grant()
+	public void grant(Entity entity)
 	{
         // Safety check so we don't add the same thing twice
-		if (!(Game.thePlayer.hasUpgrade(this.name)))
+		if (!(entity.hasUpgrade(this.name)))
         {
-            Game.thePlayer.upgrades.Add(this);
-            Game.thePlayer.XP = Game.thePlayer.XP - cost;
+			entity.upgrades.Add(this);
+
+			// If entity is the player, make them pay for it
+			if (entity.isPlayer)
+			{
+				entity.XP = entity.XP - cost;
+			}
+			else
+			{
+				entity.XP = entity.XP + cost;
+			}
 
 			switch (this.name)
 			{

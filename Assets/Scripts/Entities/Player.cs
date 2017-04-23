@@ -4,7 +4,6 @@ using UnityEngine;
 
 public class Player : Entity
 {
-    public List<Upgrade> upgrades = new List<Upgrade>();
 
     public bool switchWeapon = false, switchWeaponLast = false;
 
@@ -166,19 +165,5 @@ public class Player : Entity
 			}
 		}
 		return multiplier;
-	}
-
-	public bool hasUpgrade(string sub)
-	{
-		// Iterate through the upgrades, and return true if we find the one we want
-		foreach (Upgrade upgrade in upgrades)
-		{
-			if (upgrade.name.Equals(sub))
-			{
-				return true;
-			}
-		}
-		// If we've made it this far, the player doesn't have the upgrade
-		return false;
 	}
 }

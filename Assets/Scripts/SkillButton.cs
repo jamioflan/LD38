@@ -33,7 +33,7 @@ public class SkillButton : MonoBehaviour
         // Check if it's available and we can afford it
         if (upgrade.isAvailableToUnlock() && upgrade.canAfford())
         {
-            upgrade.grant();
+			upgrade.grant(Game.thePlayer);
 
             foreach (Image link in linksFromDependencies)
             {
