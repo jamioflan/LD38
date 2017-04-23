@@ -60,11 +60,12 @@ public class SkillButton : MonoBehaviour, IPointerEnterHandler, IPointerExitHand
 
     public void OnPointerEnter( PointerEventData data )
     {
-        Debug.Log("Entered");
+        string tooltip = upgrade.cost.ToString() + "XP\n" + upgrade.description;
+        Game.theSkillTreeManager.ShowTooltip(tooltip);
     }
 
     public void OnPointerExit( PointerEventData data )
     {
-        Debug.Log("Exited");
+        Game.theSkillTreeManager.HideTooltip();
     }
 }
