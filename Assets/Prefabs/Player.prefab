@@ -316,7 +316,7 @@ MonoBehaviour:
   maxHealth: 10
   health: 10
   healthRegenRate: 0
-  moveSpeed: 0
+  moveSpeed: 3
   XP: 0
   facing: 0
   body: {fileID: 212421588748169886}
@@ -334,7 +334,6 @@ MonoBehaviour:
   invulnerabilityCooldown: 1
   rb: {fileID: 0}
   crosshair: {x: 0, y: 0}
-  maxSpeed: 3
   upgrades: []
   switchWeapon: 0
   switchWeaponLast: 0

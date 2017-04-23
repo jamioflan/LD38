@@ -75,6 +75,8 @@ public class Enemy : Entity
 
     private void MoveToTarget()
     {
+        if (rb == null) return;
+
         Vector3 dPos = (target.transform.position - transform.position).normalized;
 
 		if (bleedtimer > 0)
