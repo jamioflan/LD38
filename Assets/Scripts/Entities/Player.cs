@@ -90,6 +90,20 @@ public class Player : Entity
 		return multiplier;
 	}
 
+	public override float getMeleeDamageMultiplier()
+	{
+		float multiplier = meleeDamageMultiplier;
+		if (hasUpgrade("meleePlusDamage"))
+		{
+			multiplier = multiplier * 1.8F;
+			if (hasUpgrade ("meleeMaxDamage"))
+			{
+				multiplier = multiplier * 1.8F;
+			}
+		}
+		return multiplier;
+	}
+
 	public bool hasUpgrade(string sub)
 	{
 		// Iterate through the upgrades, and return true if we find the one we want
