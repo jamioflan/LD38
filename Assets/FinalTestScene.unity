@@ -10273,6 +10273,11 @@ Prefab:
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
       value: UnityEngine.Object, UnityEngine
       objectReference: {fileID: 0}
+    - target: {fileID: 114189960800761900, guid: 6755c542730f1ab44be8dafa04a18031,
+        type: 2}
+      propertyPath: m_Colors.m_NormalColor.a
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 6755c542730f1ab44be8dafa04a18031, type: 2}
   m_IsPrefabParent: 0
@@ -10331,7 +10336,7 @@ MonoBehaviour:
   linksFromDependencies:
   - {fileID: 1260744323}
   - {fileID: 72813561}
-  skillOwnedImage: {fileID: 0}
+  skillOwnedImage: {fileID: 1196284067}
 --- !u!114 &1898163845
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -10347,7 +10352,7 @@ MonoBehaviour:
   linksFromDependencies:
   - {fileID: 1482666703}
   - {fileID: 1401769197}
-  skillOwnedImage: {fileID: 0}
+  skillOwnedImage: {fileID: 1775045398}
 --- !u!114 &1898163846
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -10363,7 +10368,7 @@ MonoBehaviour:
   linksFromDependencies:
   - {fileID: 81410538}
   - {fileID: 1684738692}
-  skillOwnedImage: {fileID: 0}
+  skillOwnedImage: {fileID: 96442660}
 --- !u!114 &1898163847
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -10378,7 +10383,7 @@ MonoBehaviour:
   upgradeEntity: {fileID: 197749727}
   linksFromDependencies:
   - {fileID: 1024051086}
-  skillOwnedImage: {fileID: 0}
+  skillOwnedImage: {fileID: 861034603}
 --- !u!114 &1898163848
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -10393,7 +10398,7 @@ MonoBehaviour:
   upgradeEntity: {fileID: 1978912423}
   linksFromDependencies:
   - {fileID: 614870440}
-  skillOwnedImage: {fileID: 0}
+  skillOwnedImage: {fileID: 443745890}
 --- !u!114 &1898163849
 MonoBehaviour:
   m_ObjectHideFlags: 0
