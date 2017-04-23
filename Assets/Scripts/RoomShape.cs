@@ -8,7 +8,7 @@ public class RoomShape
 
     public static readonly int maxMatrixWidth = 4;
     public static readonly int maxMatrixHeight = 4;
-
+    
     public RoomBlock[,] matrix = new RoomBlock[maxMatrixWidth, maxMatrixHeight];
 
     public class Bounds
@@ -163,5 +163,25 @@ public class RoomShape
         //    RoomDoor[] doorList = new RoomDoor[];
         //}
 
+
+}
+
+
+public class GoldRoomShape : RoomShape
+{
+
+    public static int WIDTH = 3;
+    public static int HEIGHT = 3;
+
+    public GoldRoomShape()
+    {
+        for (int x = 0; x<WIDTH; x++)
+        {
+            for (int y=0; y<HEIGHT; y++)
+            {
+                this.matrix[x, y] = new RoomBlock(this,x,y);
+            }
+        }
+    }
 
 }

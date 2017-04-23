@@ -7,8 +7,8 @@ public class Grid : MonoBehaviour
 {
     public static Grid instance;
 
-    public int width = 20;
-    public int height = 20;
+    public int width = 16;
+    public int height = 9;
 
     [System.Serializable]
     public class Position

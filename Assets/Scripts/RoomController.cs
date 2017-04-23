@@ -7,12 +7,14 @@ public class RoomController : MonoBehaviour
 {
     public static RoomController instance;
 
-    public static readonly int MAX_ROOMS = 20;
+    public static readonly int MAX_ROOMS = 3;
 
-    public static readonly int G_LAYOUT_IT = 2; // The number of attempts the algorithm makes at generating a good layout
+    public static readonly int G_LAYOUT_IT = 3; // The number of attempts the algorithm makes at generating a good layout
     public static readonly int G_SHAPE_POS_IT = 100; // The number of attempts the generation algorithm makes when placing a shape
 
     public RoomShape[] roomShapes;
+    public GoldRoomShape goldRoomA;
+    public GoldRoomShape goldRoomB;
     public int numRooms = 0;
     public PositionedRoom[] currentLayout;
     public PositionedRoom[] nextLayout;
@@ -30,7 +32,7 @@ public class RoomController : MonoBehaviour
         // Hacky way to trigger it
         if(Input.GetKeyDown(KeyCode.G))
         {
-            generateShapes(10);
+            generateShapes(MAX_ROOMS);
             generateNextLayout();
             updateToNextLayout();
         }
@@ -64,12 +66,15 @@ public class RoomController : MonoBehaviour
     public void generateShapes(int num)
     {
         this.roomShapes = new RoomShape[MAX_ROOMS];
+        this.createCreateGoldShapes();
         this.currentLayout = null;
         this.nextLayout = null;
-        for (int i=0; i<num; i++)
+        for (int i=2; i<num; i++)
         {
             int size = Random.Range(2, 10);
             RoomShape roomShape = this.createShape();
+            int startx = Random.Range(0, RoomShape.maxMatrixWidth);
+            int starty = Random.Range(0, RoomShape.maxMatrixHeight);
             roomShape.addBlock(0,0);
             int blocksMade = 1;
             int loopsDone = 0;
@@ -118,7 +123,7 @@ public class RoomController : MonoBehaviour
                         if (block.walls[w] != null && block.walls[w].door != null)
                         {
                             int loopsDone = 0;
-                            RoomWall wall;
+                            RoomWall wall = null;
                             do
                             {
                                 int index = Random.Range(0, num);
@@ -141,6 +146,24 @@ public class RoomController : MonoBehaviour
         this.numRooms = num;
     }
 
+    private void createCreateGoldShapes()
+    {
+        this.goldRoomA = new GoldRoomShape();
+        this.goldRoomB = new GoldRoomShape();
+        roomShapes[0] = this.goldRoomA;
+        roomShapes[1] = this.goldRoomB;
+        this.goldRoomA.generateWalls();
+        this.goldRoomB.generateWalls();
+        PositionedRoom posRoomA = new PositionedRoom(this.goldRoomA);
+        PositionedRoom posRoomB = new PositionedRoom(this.goldRoomB);
+        DungeonPiece pieceA = Instantiate<DungeonPiece>(pieceTemplate);
+        DungeonPiece pieceB = Instantiate<DungeonPiece>(pieceTemplate);
+        pieceA.positionedRoom = posRoomA;
+        pieceB.positionedRoom = posRoomB;
+        this.goldRoomA.dungeonPiece = pieceA;
+        this.goldRoomB.dungeonPiece = pieceB;
+    }
+
     public void generateNextLayout()
     {
         this.nextLayout = new PositionedRoom[MAX_ROOMS];
@@ -155,6 +178,8 @@ public class RoomController : MonoBehaviour
         }
         System.Array.Sort(complexities);
         Utilities.shuffle<int>(shuffledIndicies);
+        attemptLayout[0].pos = new Grid.Position(0, 0);
+        attemptLayout[1].pos = new Grid.Position(Grid.instance.width-GoldRoomShape.WIDTH, 0);
         for (int j = 0; j < G_LAYOUT_IT; j++)
         {
             for (int i = 0; i < this.numRooms; i++)
@@ -165,7 +190,7 @@ public class RoomController : MonoBehaviour
             {
                 foreach (int index in shuffledIndicies)
                 {
-                    if (this.roomShapes[index].getComplexity() == complexity)
+                    if (!(this.roomShapes[index] is GoldRoomShape) && this.roomShapes[index].getComplexity() == complexity)
                     {
                         PositionedRoom positionedRoom = attemptLayout[index];
                         int bestNiceness;
@@ -187,17 +212,15 @@ public class RoomController : MonoBehaviour
                             int loopsDone = 0;
                             do
                             {
-                                x = Random.Range(0, Grid.instance.width);
-                                y = Random.Range(0, Grid.instance.height);
-                                pos = new Grid.Position(x, y);
                                 rotation = Random.Range(0, 4);
-                                rotation = 0;
-                                positionedRoom.pos = pos;
+                                rotation = 0; // TODO
                                 positionedRoom.rotation = rotation;
-                                if (!positionedRoom.collides(attemptLayout)) break;
                                 positionedRoom.calculateBounds();
-                                if (positionedRoom.pos.x + positionedRoom.bounds.maxX >= Grid.instance.width) break;
-                                if (positionedRoom.pos.y + positionedRoom.bounds.maxY >= Grid.instance.height) break;
+                                x = Random.Range(0 - positionedRoom.bounds.minX, Grid.instance.width - positionedRoom.bounds.maxX);
+                                y = Random.Range(0 - positionedRoom.bounds.minY, Grid.instance.height - positionedRoom.bounds.maxY);
+                                pos = new Grid.Position(x, y);
+                                positionedRoom.pos = pos;
+                                if (!positionedRoom.collides(attemptLayout)) break;
                             } while (loopsDone++ < 1000);
                             Debug.Assert(loopsDone < 1000, "Tried a lot of ways to position a shape; none of which worked. Hmmm.");
                             if (loopsDone >= 1000) continue;
@@ -259,7 +282,7 @@ public class RoomController : MonoBehaviour
         for (int x = 0; x < Grid.instance.width; x++)
         {
             pos.x = x;
-            for (int y = 0; y < Grid.instance.width; y++)
+            for (int y = 0; y < Grid.instance.height; y++)
             {
                 pos.y = y;
                 foreach (PositionedRoom positionedRoom in layout)

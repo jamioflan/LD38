@@ -63,10 +63,10 @@ public class PositionedRoom
     public PositionedRoom.Position toRelativePosition(RoomShape.Position rspos)
     {
         Position rrpos = new Position(0, 0);
-        if (this.rotation % 4 == 0) { rrpos.x = rspos.x; rrpos.y = rspos.y; }
-        if (this.rotation % 4 == 1) { rrpos.x = 0 - rspos.y; rrpos.y = rspos.x; }
-        if (this.rotation % 4 == 2) { rrpos.x = 0 - rspos.x; rrpos.y = 0 - rspos.y; }
-        if (this.rotation % 4 == 3) { rrpos.x = rspos.y; rrpos.y = 0 - rspos.x; }
+        if (this.rotation == 0) { rrpos.x = rspos.x; rrpos.y = rspos.y; }
+        if (this.rotation == 1) { rrpos.x = 0 - rspos.y; rrpos.y = rspos.x; }
+        if (this.rotation == 2) { rrpos.x = 0 - rspos.x; rrpos.y = 0 - rspos.y; }
+        if (this.rotation == 3) { rrpos.x = rspos.y; rrpos.y = 0 - rspos.x; }
         return rrpos;
     }
 
@@ -79,10 +79,10 @@ public class PositionedRoom
     public RoomShape.Position toInternalPosition(PositionedRoom.Position rpos)
     {
         RoomShape.Position rspos = new RoomShape.Position(0, 0);
-        if (this.rotation % 4 == 0) { rspos.x = rpos.x; rspos.y = rpos.y; }
-        if (this.rotation % 4 == 1) { rspos.x = rpos.y; rspos.y = 0 - rpos.x; }
-        if (this.rotation % 4 == 2) { rspos.x = 0 - rpos.x; rspos.y = 0 - rpos.y; }
-        if (this.rotation % 4 == 3) { rspos.x = 0 - rpos.y; rspos.y = rpos.x; }
+        if (this.rotation == 0) { rspos.x = rpos.x; rspos.y = rpos.y; }
+        if (this.rotation == 1) { rspos.x = rpos.y; rspos.y = 0 - rpos.x; }
+        if (this.rotation == 2) { rspos.x = 0 - rpos.x; rspos.y = 0 - rpos.y; }
+        if (this.rotation == 3) { rspos.x = 0 - rpos.y; rspos.y = rpos.x; }
         return rspos;
     }
 
