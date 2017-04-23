@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class Game : MonoBehaviour
 {
@@ -149,7 +150,7 @@ public class Game : MonoBehaviour
     {
         if (Input.GetAxisRaw("Play Again") > 0.0f)
         {
-            SwitchToState(GameState.IN_MENUS);
+            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
         }
     }
 
@@ -200,5 +201,8 @@ public class Game : MonoBehaviour
         // Set new start and end nodes
 
         // Tell generator to work on the next setup
+        RoomController.instance.generateShapes( RoomController.MAX_ROOMS );
+        RoomController.instance.generateNextLayout();
+        RoomController.instance.updateToNextLayout();
     }
 }
