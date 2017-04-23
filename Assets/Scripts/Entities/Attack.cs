@@ -9,9 +9,20 @@ public class Attack : MonoBehaviour
     public float cooldown = 0.5f;
     public float animTime = 0.25f;
     public float timeSinceUse = 0.0f;
+	public AttackType attackType = AttackType.NOTSET;
     // Damage type
     // Debuffs
     // Etc.
+
+	public enum AttackType
+	{
+		MELEE,
+		RANGED,
+		MAGIC,
+		OTHER,
+		BUNNY,
+		NOTSET
+	}
 
     public void Update()
     {
@@ -30,4 +41,9 @@ public class Attack : MonoBehaviour
             Use(attackMode, pos, aim);
         }
     }
+
+	public virtual float getDamageMultiplier()
+	{
+		return 1F;
+	}
 }

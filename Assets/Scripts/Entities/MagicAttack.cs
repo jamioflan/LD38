@@ -12,6 +12,8 @@ public class MagicAttack : Attack
 
     public override void Use(int attackMode, Vector2 pos, Vector2 aim)
     {
+		attackType = AttackType.MAGIC;
+
         float fAimAngle = Mathf.Rad2Deg * Mathf.Atan2(aim.y, aim.x);
         for(int i = 0; i < iNumOrbs; i++)
         {
@@ -26,7 +28,10 @@ public class MagicAttack : Attack
 
             parent.SetAttackAnimState(Entity.AnimState.BOW_FIRE, animTime);
         }
-
-      
     }
+
+	public override float getDamageMultiplier()
+	{
+		return parent.getMagicDamageMultiplier();
+	}
 }

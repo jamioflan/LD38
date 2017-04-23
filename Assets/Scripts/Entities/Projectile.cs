@@ -36,15 +36,15 @@ public class Projectile : MonoBehaviour {
         {
             return;
         }
-        if(entity != null)
-        {
-            entity.Damage(attack);
-        }
-
-        //collision.contacts[0].normal;
 
         speed = 0.0f;
         rb.constraints = RigidbodyConstraints2D.FreezeAll;
         timeToDeath = 1.0f;
+
+        if (entity != null)
+        {
+            entity.Damage(attack);
+            timeToDeath = 0.0f;
+        }
     }
 }

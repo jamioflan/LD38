@@ -78,6 +78,14 @@ public class Enemy : Entity
         if (rb == null) return;
 
         Vector3 dPos = (target.transform.position - transform.position).normalized;
-        rb.velocity = dPos * moveSpeed;
+
+		if (bleedtimer > 0)
+		{
+			rb.velocity = dPos * moveSpeed / 2;
+		}
+		else
+		{
+			rb.velocity = dPos * moveSpeed;
+		}
     }
 }

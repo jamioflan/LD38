@@ -27,7 +27,14 @@ public class Player : Entity
 
         Vector2 move = new Vector2(Input.GetAxis("Horizontal"), Input.GetAxis("Vertical"));
 
-        rigidBody.velocity = move * moveSpeed;
+		if (bleedtimer > 0)
+		{
+			rigidBody.velocity = move * moveSpeed / 2;
+		}
+		else
+		{
+			rigidBody.velocity = move * moveSpeed;
+		}
 
         
 
