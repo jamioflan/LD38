@@ -4,7 +4,6 @@ using UnityEngine;
 
 public class Player : Entity
 {
-    public List<Upgrade> upgrades = new List<Upgrade>();
 
     public bool switchWeapon = false, switchWeaponLast = false;
 
@@ -33,6 +32,8 @@ public class Player : Entity
             attackMoveTimer -= Time.fixedDeltaTime;
             move = attackMoveVector;
 
+            attacks[currentAttack].UpdateAttackMove();
+
             if (attackMoveTimer <= 0.0f)
             {
                 // Move ended
@@ -49,19 +50,29 @@ public class Player : Entity
 			rigidBody.velocity = move * moveSpeed;
 		}
 
-        
+		Vector3 mouse = Camera.main.ScreenPointToRay(Input.mousePosition).origin;
+		crosshair = mouse;
+		Vector3 dPos = (Vector3)crosshair - transform.position;
+		float fCurrentAngle = -Mathf.Rad2Deg * Mathf.Atan2(dPos.y, dPos.x) + 90.0f;
 
         if(move.sqrMagnitude > 0.1f)
         {
             SetAnimState(AnimState.WALKING);
+
+			if (hasUpgrade("meleeMagicTrails"))
+			{
+				MagicOrb orb = Instantiate<MagicOrb>(orbPrefab);
+				orb.transform.position = transform.position;
+				orb.transform.eulerAngles = new Vector3(0.0f, 0.0f, fCurrentAngle - 90.0f);
+				orb.attack = attacks[2];
+				orb.timeToDeath = orbTime * getMagicTimeMultiplier();
+				orb.decaySpeed = 1 - (1-orbDecay)/getMagicDistanceMultiplier();
+			}
         }
         else
         {
             SetAnimState(AnimState.IDLE);
         }
-
-        Vector3 mouse = Camera.main.ScreenPointToRay(Input.mousePosition).origin;
-        crosshair = mouse;
 
         crosshairObject.position = crosshair;
 
@@ -100,98 +111,4 @@ public class Player : Entity
         currentAttack = weapon;
         attacks[currentAttack].gameObject.SetActive(true);
     }
-
-	public override float getAttackArcMultiplier()
-	{
-		float multiplier = attackArcMultiplier;
-		if (hasUpgrade("meleeIncreasedArc"))
-		{
-			multiplier = multiplier * 2F;
-			if (hasUpgrade ("melee360"))
-			{
-				multiplier = multiplier * 2F;
-			}
-		}
-		return multiplier;
-	}
-
-	public override float getMagicDistanceMultiplier()
-	{
-		float multiplier = magicDistanceMultiplier;
-		if (hasUpgrade("magicIncreasedDistance"))
-		{
-			multiplier = multiplier * 1.5F;
-		}
-		return multiplier;
-	}
-
-	public override float getMagicTimeMultiplier()
-	{
-		float multiplier = magicTimeMultiplier;
-		if (hasUpgrade ("magicIncreasedDistance"))
-		{
-			multiplier = multiplier * 1.5F;
-			if (hasUpgrade ("magicResidue"))
-			{
-				multiplier = multiplier * 2F;
-			}
-		}
-		return multiplier;
-	}
-
-	public override float getMeleeDamageMultiplier()
-	{
-		float multiplier = meleeDamageMultiplier;
-		if (hasUpgrade("meleePlusDamage"))
-		{
-			multiplier = multiplier * 1.8F;
-			if (hasUpgrade ("meleeMaxDamage"))
-			{
-				multiplier = multiplier * 1.8F;
-			}
-		}
-		return multiplier;
-	}
-
-	public override float getRangedDamageMultiplier()
-	{
-		float multiplier = rangedDamageMultiplier;
-		if (hasUpgrade("rangedPlusDamage"))
-		{
-			multiplier = multiplier * 1.8F;
-			if (hasUpgrade ("rangedMaxDamage"))
-			{
-				multiplier = multiplier * 1.8F;
-			}
-		}
-		return multiplier;
-	}
-
-	public override float getMagicDamageMultiplier()
-	{
-		float multiplier = magicDamageMultiplier;
-		if (hasUpgrade("magicPlusDamage"))
-		{
-			multiplier = multiplier * 1.8F;
-			if (hasUpgrade ("magicMaxDamage"))
-			{
-				multiplier = multiplier * 1.8F;
-			}
-		}
-		return multiplier;
-	}
-
-	public bool hasUpgrade(string sub)
-	{
-		// Iterate through the upgrades, and return true if we find the one we want
-		foreach (Upgrade upgrade in upgrades)
-		{
-			if (upgrade.name.Equals(sub))
-			{
-				return true;
-			}
-		}
-		// If we've made it this far, the player doesn't have the upgrade
-		return false;
-	}
 }

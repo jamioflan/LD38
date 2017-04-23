@@ -30,13 +30,13 @@ public class DungeonPiece : MonoBehaviour {
             this.complexity = this.positionedRoom.room.getComplexity();
             if (this.positionedRoom.pos == null)
             {
-                transform.position = new Vector3(100.0f, 0.0f, 0.0f);
+                transform.localPosition = new Vector3(100.0f, 0.0f, 0.0f);
                 gameObject.SetActive(false);
             }
             else
             {
                 gameObject.SetActive(true);
-                transform.position = new Vector3(this.positionedRoom.pos.x, this.positionedRoom.pos.y, 0) * tilesToWorldUnitsConversion;
+                transform.localPosition = new Vector3(this.positionedRoom.pos.x, this.positionedRoom.pos.y, 0) * tilesToWorldUnitsConversion;
                 transform.localEulerAngles = new Vector3(0.0f, 0.0f, 90.0f * this.positionedRoom.rotation);
             }
         }

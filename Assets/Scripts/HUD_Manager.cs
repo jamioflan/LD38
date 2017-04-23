@@ -33,7 +33,7 @@ public class HUD_Manager : MonoBehaviour
 	void Update ()
     {
         // Update player XP, health and equipped weapon icon
-        amountXPText.text = Game.thePlayer.XP.ToString();
+        amountXPText.text = Game.thePlayer.XP.ToString() + " XP";
         playerHealthSlider.value = Game.thePlayer.health / Game.thePlayer.maxHealth;
         
         Sprite spriteToUse = equippedMeleeSprite; // default to melee

@@ -20,6 +20,7 @@ public class Game : MonoBehaviour
     public float shiftTime = 3.0f;
 
     public static Player thePlayer = null;
+    public static SkillTree_Manager theSkillTreeManager = null;
 
     public GameObject menuHUD;
     public GameObject menuStart;
@@ -81,6 +82,7 @@ public class Game : MonoBehaviour
     private void EnterState_InMenus()
     {
         menuStart.SetActive(true);
+        Time.timeScale = 0.0f;
     }
 
     private void EnterState_InLevel()

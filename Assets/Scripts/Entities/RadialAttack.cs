@@ -11,11 +11,18 @@ public class RadialAttack : Attack {
 
     public override void Use(int attackMode, Vector2 pos, Vector2 aim)
     {
-        switch(attackMode)
+        if (attackMode == 1 && !parent.hasUpgrade("meleePowerAttack"))
+            return;
+        if (attackMode == 2 && !parent.hasUpgrade("meleeAttackMove"))
+            return;
+
+        switch (attackMode)
         {
                 case 0: // ATTACK
+                case 2:
                 {
                     attackType = AttackType.MELEE;
+                    isPowerAttack = attackMode == 2;
 
                     foreach (Collider2D coll in Physics2D.OverlapCircleAll(pos, range))
                     {
@@ -28,9 +35,9 @@ public class RadialAttack : Attack {
                         }
                     }
 
-                    parent.SetAttackAnimState(parent.isPlayer ? Entity.AnimState.SWORD_SLASH : Entity.AnimState.LUNGE, animTime);
+                    parent.SetAttackAnimState(parent.isPlayer ? Entity.AnimState.SWORD_SLASH : Entity.AnimState.LUNGE, animTime * (isPowerAttack ? powerAttackSpeedModifier : 1.0f));
 
-                    if (parent.isPlayer && ((Player)parent).hasUpgrade("meleeRangedMultiattack"))
+                    if (parent.hasUpgrade("meleeRangedMultiattack"))
                     {
                         // Note, this is a direct copy of the Ranged Attack code, and should be edited with care
                         Projectile proj = Instantiate<Projectile>(projectile);
@@ -43,19 +50,54 @@ public class RadialAttack : Attack {
                 case 1: // ATTACK MOVE
                 {
                     parent.SetAttackMoveVector(aim, attackMoveDuration);
+                    entitiesHit.Clear();
                     break;
                 }
         }
 		
     }
 
-	public override float getDamageMultiplier()
+    public override void Update()
+    {
+        base.Update();
+    }
+
+    private List<Entity> entitiesHit = new List<Entity>();
+
+    public override void UpdateAttackMove()
+    {
+        foreach (Collider2D coll in Physics2D.OverlapCircleAll(parent.transform.position, range))
+        {
+            Entity entity = coll.GetComponent<Entity>();
+            float halfarc = basehalfarc * parent.getAttackArcMultiplier();
+            Vector3 dPos = coll.transform.position - (Vector3)parent.transform.position;
+            if (entity != null && entity != parent && Mathf.Acos(Vector3.Dot(dPos.normalized, parent.attackMoveVector.normalized)) < halfarc)
+            {
+                if(!entitiesHit.Contains(entity))
+                {
+                    entitiesHit.Add(entity);
+                    entity.Damage(this);
+                }
+            }
+        }
+    }
+
+    public override float getDamageMultiplier()
 	{
-		return parent.getMeleeDamageMultiplier();
+		return parent.getMeleeDamageMultiplier() * (isPowerAttack ? powerAttackDamageModifier : 1);
 	}
 
     public override void AttackMoveEnded()
     {
-
+        foreach (Collider2D coll in Physics2D.OverlapCircleAll(parent.transform.position, range))
+        {
+            Entity entity = coll.GetComponent<Entity>();
+            float halfarc = basehalfarc * parent.getAttackArcMultiplier();
+            Vector3 dPos = coll.transform.position - (Vector3)parent.transform.position;
+            if (entity != null && entity != parent && Mathf.Acos(Vector3.Dot(dPos.normalized, parent.attackMoveVector.normalized)) < halfarc)
+            {
+                entity.Damage(this);
+            }
+        }
     }
 }

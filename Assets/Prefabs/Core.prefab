@@ -83,6 +83,7 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 4752321284057464}
+  - component: {fileID: 114131870802320480}
   m_Layer: 0
   m_Name: Core
   m_TagString: Untagged
@@ -145,7 +146,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1846569923227466}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 19.252443, y: 5.6027384, z: -17.769152}
+  m_LocalPosition: {x: 0, y: 0, z: -20}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 4752321284057464}
@@ -171,7 +172,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1157285911225180}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: -16.79, y: -8.99, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 4752321284057464}
@@ -197,7 +198,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1772248548645638}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 7.7691517}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4527334718865480}
@@ -321,10 +322,35 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   state: 0
   timeInState: 0
+  unscaledTimeInState: 0
   shiftTime: 3
   menuHUD: {fileID: 0}
   menuStart: {fileID: 0}
   menuSkills: {fileID: 0}
+  menuEndGame: {fileID: 0}
+  menuEndSuccess: {fileID: 0}
+  menuEndFailure: {fileID: 0}
+--- !u!114 &114131870802320480
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1772248548645638}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c0859d2c035a454419f21b87345b445c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  state: 0
+  timeInState: 0
+  unscaledTimeInState: 0
+  shiftTime: 3
+  menuHUD: {fileID: 0}
+  menuStart: {fileID: 0}
+  menuSkills: {fileID: 0}
+  menuEndGame: {fileID: 0}
+  menuEndSuccess: {fileID: 0}
+  menuEndFailure: {fileID: 0}
 --- !u!114 &114178231954022246
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -336,8 +362,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 14de1cd7d8b927e4da5c0a95abe41405, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  width: 0
-  height: 0
+  width: 16
+  height: 9
 --- !u!114 &114445850432851898
 MonoBehaviour:
   m_ObjectHideFlags: 1
