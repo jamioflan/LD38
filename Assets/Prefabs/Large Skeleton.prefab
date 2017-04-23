@@ -22,8 +22,6 @@ GameObject:
   - component: {fileID: 114362276845198918}
   - component: {fileID: 50183374662468798}
   - component: {fileID: 58622134613606956}
-  m_Layer: 9
-  m_Name: Large Skeleton
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
