@@ -14,6 +14,7 @@ public class RoomController : MonoBehaviour
 
     public static readonly int START_ROOMS = 5;
     public static readonly int ADVANCE_NEW_ROOMS = 2;
+    public static readonly int EXTRA_DOOR_LINKS_P = 1; // The number of extra door links to add per room, in addition to the base connecting links. 
 
     public int roomsInUse;
 
@@ -200,8 +201,8 @@ public class RoomController : MonoBehaviour
         }
         System.Array.Sort(complexities);
         Utilities.shuffle<int>(shuffledIndicies);
-        attemptLayout[0].pos = new Grid.Position(0, 0);
-        attemptLayout[1].pos = new Grid.Position(Grid.instance.width-GoldRoomShape.WIDTH, 0);
+        attemptLayout[0].pos = new Grid.Position(0, 2);
+        attemptLayout[1].pos = new Grid.Position(Grid.instance.width-GoldRoomShape.WIDTH, 2);
         for (int j = 0; j < G_LAYOUT_IT; j++)
         {
             //for (int i = 0; i < this.roomsInUse; i++)
@@ -309,6 +310,28 @@ public class RoomController : MonoBehaviour
             Debug.Assert(loopsDone < 1000, "Infinite Loop!");
         }
 
+        // TODO Prevent the boss room from getting extra links
+        for (int i = 0; i < EXTRA_DOOR_LINKS_P * this.roomsInUse; i++)
+        {
+            int loopsDone = 0;
+            do
+            {
+                int v1 = Random.Range(2, this.roomsInUse);
+                int v2 = Random.Range(2, this.roomsInUse);
+                if (v1 == v2) continue;
+                RoomWall w1 = this.roomShapes[v1].randomUndooredWall();
+                RoomWall w2 = this.roomShapes[v2].randomUndooredWall();
+                if (w1 == null) continue;
+                if (w2 == null) continue;
+                w1.door = new RoomDoor(w1);
+                w2.door = new RoomDoor(w2);
+                w1.door.leadsTo = w2.door;
+                w2.door.leadsTo = w1.door;
+                break;
+            } while (loopsDone++ < 1000);
+            Debug.Assert(loopsDone < 1000, "Infinite Loop!");
+        }
+            
     }
 
     private int getLayoutNiceness(PositionedRoom[] layout)
