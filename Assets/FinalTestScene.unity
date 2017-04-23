@@ -7966,7 +7966,7 @@ Prefab:
       objectReference: {fileID: 558490478}
     - target: {fileID: 1534943375791546, guid: f5cbffe68532e484e89267ec662734aa, type: 2}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 114929773034621364, guid: f5cbffe68532e484e89267ec662734aa,
         type: 2}
@@ -9788,7 +9788,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 1687686763627846, guid: 6755c542730f1ab44be8dafa04a18031, type: 2}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 114452198230105894, guid: 6755c542730f1ab44be8dafa04a18031,
         type: 2}
@@ -10969,7 +10969,7 @@ MonoBehaviour:
   linksFromDependencies:
   - {fileID: 1895380748}
   - {fileID: 245703979}
-  skillOwnedImage: {fileID: 0}
+  skillOwnedImage: {fileID: 625956037}
 --- !u!114 &1898163889
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -10985,7 +10985,7 @@ MonoBehaviour:
   linksFromDependencies:
   - {fileID: 1525254834}
   - {fileID: 210099727}
-  skillOwnedImage: {fileID: 0}
+  skillOwnedImage: {fileID: 1150445692}
 --- !u!114 &1898163890
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -11001,7 +11001,7 @@ MonoBehaviour:
   linksFromDependencies:
   - {fileID: 1670489986}
   - {fileID: 2109895758}
-  skillOwnedImage: {fileID: 0}
+  skillOwnedImage: {fileID: 1077596389}
 --- !u!114 &1898163891
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -11017,7 +11017,7 @@ MonoBehaviour:
   linksFromDependencies:
   - {fileID: 1470212707}
   - {fileID: 971159420}
-  skillOwnedImage: {fileID: 0}
+  skillOwnedImage: {fileID: 1158823309}
 --- !u!114 &1898163892
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -11033,7 +11033,7 @@ MonoBehaviour:
   linksFromDependencies:
   - {fileID: 793252907}
   - {fileID: 1103521867}
-  skillOwnedImage: {fileID: 0}
+  skillOwnedImage: {fileID: 446999392}
 --- !u!114 &1898163893
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -11049,7 +11049,7 @@ MonoBehaviour:
   linksFromDependencies:
   - {fileID: 1246868773}
   - {fileID: 626459902}
-  skillOwnedImage: {fileID: 0}
+  skillOwnedImage: {fileID: 311717083}
 --- !u!114 &1898163894
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -11065,7 +11065,7 @@ MonoBehaviour:
   linksFromDependencies:
   - {fileID: 157603480}
   - {fileID: 408414937}
-  skillOwnedImage: {fileID: 0}
+  skillOwnedImage: {fileID: 1099478151}
 --- !u!114 &1898163895
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -11081,7 +11081,7 @@ MonoBehaviour:
   linksFromDependencies:
   - {fileID: 352434457}
   - {fileID: 274546049}
-  skillOwnedImage: {fileID: 0}
+  skillOwnedImage: {fileID: 68985876}
 --- !u!114 &1898163896
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -11097,7 +11097,7 @@ MonoBehaviour:
   linksFromDependencies:
   - {fileID: 492329096}
   - {fileID: 841476148}
-  skillOwnedImage: {fileID: 0}
+  skillOwnedImage: {fileID: 842866485}
 --- !u!1 &1902532003
 GameObject:
   m_ObjectHideFlags: 0
