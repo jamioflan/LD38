@@ -7896,7 +7896,7 @@ Prefab:
       objectReference: {fileID: 558490478}
     - target: {fileID: 1534943375791546, guid: f5cbffe68532e484e89267ec662734aa, type: 2}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 114929773034621364, guid: f5cbffe68532e484e89267ec662734aa,
         type: 2}
@@ -9640,7 +9640,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 1687686763627846, guid: 6755c542730f1ab44be8dafa04a18031, type: 2}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 114452198230105894, guid: 6755c542730f1ab44be8dafa04a18031,
         type: 2}

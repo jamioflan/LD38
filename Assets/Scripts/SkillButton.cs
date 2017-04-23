@@ -20,6 +20,8 @@ public class SkillButton : MonoBehaviour
         {
             link.gameObject.SetActive(false);
         }
+
+        skillOwnedImage.SetActive(false);
     }
 	
 	// Update is called once per frame
