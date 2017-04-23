@@ -697,6 +697,276 @@ Prefab:
       propertyPath: m_Name
       value: Upgrades
       objectReference: {fileID: 0}
+    - target: {fileID: 1065749967860358, guid: 2244ffad5beba7942ad066f99eb42761, type: 2}
+      propertyPath: m_Name
+      value: meleePlusDamage
+      objectReference: {fileID: 0}
+    - target: {fileID: 114209271085223200, guid: 2244ffad5beba7942ad066f99eb42761,
+        type: 2}
+      propertyPath: name
+      value: meleePlusDamage
+      objectReference: {fileID: 0}
+    - target: {fileID: 1428060364079204, guid: 2244ffad5beba7942ad066f99eb42761, type: 2}
+      propertyPath: m_Name
+      value: rangedPlusDamage
+      objectReference: {fileID: 0}
+    - target: {fileID: 114207095688287716, guid: 2244ffad5beba7942ad066f99eb42761,
+        type: 2}
+      propertyPath: name
+      value: rangedPlusDamage
+      objectReference: {fileID: 0}
+    - target: {fileID: 1328085934220830, guid: 2244ffad5beba7942ad066f99eb42761, type: 2}
+      propertyPath: m_Name
+      value: magicPlusDamage
+      objectReference: {fileID: 0}
+    - target: {fileID: 114378270006334284, guid: 2244ffad5beba7942ad066f99eb42761,
+        type: 2}
+      propertyPath: name
+      value: magicPlusDamage
+      objectReference: {fileID: 0}
+    - target: {fileID: 1811578274687108, guid: 2244ffad5beba7942ad066f99eb42761, type: 2}
+      propertyPath: m_Name
+      value: meleeIncreasedArc
+      objectReference: {fileID: 0}
+    - target: {fileID: 114297672727607072, guid: 2244ffad5beba7942ad066f99eb42761,
+        type: 2}
+      propertyPath: name
+      value: meleeIncreasedArc
+      objectReference: {fileID: 0}
+    - target: {fileID: 1041757800353530, guid: 2244ffad5beba7942ad066f99eb42761, type: 2}
+      propertyPath: m_Name
+      value: meleeIncreasedHealth
+      objectReference: {fileID: 0}
+    - target: {fileID: 114648486095769278, guid: 2244ffad5beba7942ad066f99eb42761,
+        type: 2}
+      propertyPath: name
+      value: meleeIncreasedHealth
+      objectReference: {fileID: 0}
+    - target: {fileID: 1860668728594044, guid: 2244ffad5beba7942ad066f99eb42761, type: 2}
+      propertyPath: m_Name
+      value: meleeMaxDamage
+      objectReference: {fileID: 0}
+    - target: {fileID: 114801923485635776, guid: 2244ffad5beba7942ad066f99eb42761,
+        type: 2}
+      propertyPath: name
+      value: meleeMaxDamage
+      objectReference: {fileID: 0}
+    - target: {fileID: 1477245824559266, guid: 2244ffad5beba7942ad066f99eb42761, type: 2}
+      propertyPath: m_Name
+      value: meleeAttackMove
+      objectReference: {fileID: 0}
+    - target: {fileID: 114193032591249832, guid: 2244ffad5beba7942ad066f99eb42761,
+        type: 2}
+      propertyPath: name
+      value: meleeAttackMove
+      objectReference: {fileID: 0}
+    - target: {fileID: 1653742212126332, guid: 2244ffad5beba7942ad066f99eb42761, type: 2}
+      propertyPath: m_Name
+      value: meleePowerAttack
+      objectReference: {fileID: 0}
+    - target: {fileID: 114927179996613416, guid: 2244ffad5beba7942ad066f99eb42761,
+        type: 2}
+      propertyPath: name
+      value: meleePowerAttack
+      objectReference: {fileID: 0}
+    - target: {fileID: 1600294005738338, guid: 2244ffad5beba7942ad066f99eb42761, type: 2}
+      propertyPath: m_Name
+      value: melee360
+      objectReference: {fileID: 0}
+    - target: {fileID: 114590241564176356, guid: 2244ffad5beba7942ad066f99eb42761,
+        type: 2}
+      propertyPath: name
+      value: melee360
+      objectReference: {fileID: 0}
+    - target: {fileID: 1330083688350540, guid: 2244ffad5beba7942ad066f99eb42761, type: 2}
+      propertyPath: m_Name
+      value: rangedTripleAttack
+      objectReference: {fileID: 0}
+    - target: {fileID: 114331165160021070, guid: 2244ffad5beba7942ad066f99eb42761,
+        type: 2}
+      propertyPath: name
+      value: rangedTripleAttack
+      objectReference: {fileID: 0}
+    - target: {fileID: 1600485349630692, guid: 2244ffad5beba7942ad066f99eb42761, type: 2}
+      propertyPath: m_Name
+      value: rangedIncreasedSpeed
+      objectReference: {fileID: 0}
+    - target: {fileID: 114540643633314532, guid: 2244ffad5beba7942ad066f99eb42761,
+        type: 2}
+      propertyPath: name
+      value: rangedIncreasedSpeed
+      objectReference: {fileID: 0}
+    - target: {fileID: 1560070406826694, guid: 2244ffad5beba7942ad066f99eb42761, type: 2}
+      propertyPath: m_Name
+      value: rangedMaxDamage
+      objectReference: {fileID: 0}
+    - target: {fileID: 114909496879923664, guid: 2244ffad5beba7942ad066f99eb42761,
+        type: 2}
+      propertyPath: name
+      value: rangedMaxDamage
+      objectReference: {fileID: 0}
+    - target: {fileID: 1497141791482198, guid: 2244ffad5beba7942ad066f99eb42761, type: 2}
+      propertyPath: m_Name
+      value: rangedAttackMove
+      objectReference: {fileID: 0}
+    - target: {fileID: 114356500817709920, guid: 2244ffad5beba7942ad066f99eb42761,
+        type: 2}
+      propertyPath: name
+      value: rangedAttackMove
+      objectReference: {fileID: 0}
+    - target: {fileID: 1996527871608244, guid: 2244ffad5beba7942ad066f99eb42761, type: 2}
+      propertyPath: m_Name
+      value: rangedPowerAttack
+      objectReference: {fileID: 0}
+    - target: {fileID: 114702021188258354, guid: 2244ffad5beba7942ad066f99eb42761,
+        type: 2}
+      propertyPath: name
+      value: rangedPowerAttack
+      objectReference: {fileID: 0}
+    - target: {fileID: 1921838105816040, guid: 2244ffad5beba7942ad066f99eb42761, type: 2}
+      propertyPath: m_Name
+      value: rangedArrowsBounce
+      objectReference: {fileID: 0}
+    - target: {fileID: 114276342597644752, guid: 2244ffad5beba7942ad066f99eb42761,
+        type: 2}
+      propertyPath: name
+      value: rangedArrowsBounce
+      objectReference: {fileID: 0}
+    - target: {fileID: 1443266040333362, guid: 2244ffad5beba7942ad066f99eb42761, type: 2}
+      propertyPath: m_Name
+      value: magicIncreasedRange
+      objectReference: {fileID: 0}
+    - target: {fileID: 114736874784427940, guid: 2244ffad5beba7942ad066f99eb42761,
+        type: 2}
+      propertyPath: name
+      value: magicIncreasedRange
+      objectReference: {fileID: 0}
+    - target: {fileID: 1607878165815744, guid: 2244ffad5beba7942ad066f99eb42761, type: 2}
+      propertyPath: m_Name
+      value: magicIncreasedRegeneration
+      objectReference: {fileID: 0}
+    - target: {fileID: 114923325273212286, guid: 2244ffad5beba7942ad066f99eb42761,
+        type: 2}
+      propertyPath: name
+      value: magicIncreasedRegeneration
+      objectReference: {fileID: 0}
+    - target: {fileID: 1462618443866742, guid: 2244ffad5beba7942ad066f99eb42761, type: 2}
+      propertyPath: m_Name
+      value: magicMaxDamage
+      objectReference: {fileID: 0}
+    - target: {fileID: 114859678461956176, guid: 2244ffad5beba7942ad066f99eb42761,
+        type: 2}
+      propertyPath: name
+      value: magicMaxDamage
+      objectReference: {fileID: 0}
+    - target: {fileID: 1716043996311332, guid: 2244ffad5beba7942ad066f99eb42761, type: 2}
+      propertyPath: m_Name
+      value: magicAttackMove
+      objectReference: {fileID: 0}
+    - target: {fileID: 114945097897914640, guid: 2244ffad5beba7942ad066f99eb42761,
+        type: 2}
+      propertyPath: name
+      value: magicAttackMove
+      objectReference: {fileID: 0}
+    - target: {fileID: 1494414697250678, guid: 2244ffad5beba7942ad066f99eb42761, type: 2}
+      propertyPath: m_Name
+      value: magicHeavyAttack
+      objectReference: {fileID: 0}
+    - target: {fileID: 114904988213127540, guid: 2244ffad5beba7942ad066f99eb42761,
+        type: 2}
+      propertyPath: name
+      value: magicHeavyAttack
+      objectReference: {fileID: 0}
+    - target: {fileID: 1069070968517094, guid: 2244ffad5beba7942ad066f99eb42761, type: 2}
+      propertyPath: m_Name
+      value: magicResidue
+      objectReference: {fileID: 0}
+    - target: {fileID: 114115850173771418, guid: 2244ffad5beba7942ad066f99eb42761,
+        type: 2}
+      propertyPath: name
+      value: magicResidue
+      objectReference: {fileID: 0}
+    - target: {fileID: 1781939396784044, guid: 2244ffad5beba7942ad066f99eb42761, type: 2}
+      propertyPath: m_Name
+      value: meleeRangedEnemiesBleed
+      objectReference: {fileID: 0}
+    - target: {fileID: 114799110437205430, guid: 2244ffad5beba7942ad066f99eb42761,
+        type: 2}
+      propertyPath: name
+      value: meleeRangedEnemiesBleed
+      objectReference: {fileID: 0}
+    - target: {fileID: 1210683895689790, guid: 2244ffad5beba7942ad066f99eb42761, type: 2}
+      propertyPath: m_Name
+      value: meleeRangedEnemiesSplatter
+      objectReference: {fileID: 0}
+    - target: {fileID: 114067047352126738, guid: 2244ffad5beba7942ad066f99eb42761,
+        type: 2}
+      propertyPath: name
+      value: meleeRangedEnemiesSplatter
+      objectReference: {fileID: 0}
+    - target: {fileID: 1430508578652838, guid: 2244ffad5beba7942ad066f99eb42761, type: 2}
+      propertyPath: m_Name
+      value: meleeRangedMultiattack
+      objectReference: {fileID: 0}
+    - target: {fileID: 114594789970855920, guid: 2244ffad5beba7942ad066f99eb42761,
+        type: 2}
+      propertyPath: name
+      value: meleeRangedMultiattack
+      objectReference: {fileID: 0}
+    - target: {fileID: 1252985164533246, guid: 2244ffad5beba7942ad066f99eb42761, type: 2}
+      propertyPath: m_Name
+      value: meleeMagicAttacksHealYou
+      objectReference: {fileID: 0}
+    - target: {fileID: 114345293674200646, guid: 2244ffad5beba7942ad066f99eb42761,
+        type: 2}
+      propertyPath: name
+      value: meleeMagicAttacksHealYou
+      objectReference: {fileID: 0}
+    - target: {fileID: 1896166642201928, guid: 2244ffad5beba7942ad066f99eb42761, type: 2}
+      propertyPath: m_Name
+      value: meleeMagicDeflectAttacks
+      objectReference: {fileID: 0}
+    - target: {fileID: 114832586959718916, guid: 2244ffad5beba7942ad066f99eb42761,
+        type: 2}
+      propertyPath: name
+      value: meleeMagicDeflectAttacks
+      objectReference: {fileID: 0}
+    - target: {fileID: 1130494840954240, guid: 2244ffad5beba7942ad066f99eb42761, type: 2}
+      propertyPath: m_Name
+      value: meleeMagicTrails
+      objectReference: {fileID: 0}
+    - target: {fileID: 114194052351411944, guid: 2244ffad5beba7942ad066f99eb42761,
+        type: 2}
+      propertyPath: name
+      value: meleeMagicTrails
+      objectReference: {fileID: 0}
+    - target: {fileID: 1946811840297090, guid: 2244ffad5beba7942ad066f99eb42761, type: 2}
+      propertyPath: m_Name
+      value: magicRangedFarsight
+      objectReference: {fileID: 0}
+    - target: {fileID: 114469924755534340, guid: 2244ffad5beba7942ad066f99eb42761,
+        type: 2}
+      propertyPath: name
+      value: magicRangedFarsight
+      objectReference: {fileID: 0}
+    - target: {fileID: 1467567989988388, guid: 2244ffad5beba7942ad066f99eb42761, type: 2}
+      propertyPath: m_Name
+      value: magicRangedElementalArrows
+      objectReference: {fileID: 0}
+    - target: {fileID: 114186550956430404, guid: 2244ffad5beba7942ad066f99eb42761,
+        type: 2}
+      propertyPath: name
+      value: magicRangedElementalArrows
+      objectReference: {fileID: 0}
+    - target: {fileID: 1111366065935282, guid: 2244ffad5beba7942ad066f99eb42761, type: 2}
+      propertyPath: m_Name
+      value: magicRangedInvisibility
+      objectReference: {fileID: 0}
+    - target: {fileID: 114112544898203216, guid: 2244ffad5beba7942ad066f99eb42761,
+        type: 2}
+      propertyPath: name
+      value: magicRangedInvisibility
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 2244ffad5beba7942ad066f99eb42761, type: 2}
   m_IsPrefabParent: 0

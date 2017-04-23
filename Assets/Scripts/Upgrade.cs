@@ -6,6 +6,7 @@ public class Upgrade : MonoBehaviour {
 
 	//public bool playerOwns = false;
 	public List<Upgrade> dependencies = new List<Upgrade>();
+	public string name = "";
 	public string description = "";
 	public int cost = 100;
 
@@ -22,6 +23,9 @@ public class Upgrade : MonoBehaviour {
 		
 	}
 
+	/*
+	 * Hanging on to this in case we need it again. It's been replaced by the player.hasUpgrade() method
+
     public bool alreadyOwned()
     {
         if (Game.thePlayer.upgrades.Contains(this))
@@ -31,11 +35,12 @@ public class Upgrade : MonoBehaviour {
 
         return false;
     }
+    */
 
     // isAvailableToUnlock() returns false if we already own it
 	public bool isAvailableToUnlock()
 	{
-        if (alreadyOwned())
+		if (Game.thePlayer.hasUpgrade(this.name))
         {
             return false;
         }
@@ -55,7 +60,7 @@ public class Upgrade : MonoBehaviour {
 
     public bool isOwnedOrAvailableToUnlock()
     {
-        return alreadyOwned() || isAvailableToUnlock();
+		return (Game.thePlayer.hasUpgrade(this.name)) || isAvailableToUnlock();
     }
 
 	public bool canAfford()
@@ -66,7 +71,7 @@ public class Upgrade : MonoBehaviour {
 	public void grant()
 	{
         // Safety check so we don't add the same thing twice
-        if (!alreadyOwned())
+		if (!(Game.thePlayer.hasUpgrade(this.name)))
         {
             Game.thePlayer.upgrades.Add(this);
             Game.thePlayer.XP = Game.thePlayer.XP - cost;

@@ -75,4 +75,32 @@ public class Player : Entity
         currentAttack = weapon;
         attacks[currentAttack].gameObject.SetActive(true);
     }
+
+	public override float getAttackArcMultiplier()
+	{
+		float multiplier = attackArcMultiplier;
+		if (hasUpgrade("meleeIncreasedArc"))
+		{
+			multiplier = multiplier * 2;
+			if (hasUpgrade ("melee360"))
+			{
+				multiplier = multiplier * 2;
+			}
+		}
+		return multiplier;
+	}
+
+	public bool hasUpgrade(string sub)
+	{
+		// Iterate through the upgrades, and return true if we find the one we want
+		foreach (Upgrade upgrade in upgrades)
+		{
+			if (upgrade.name == sub)
+			{
+				return true;
+			}
+		}
+		// If we've made it this far, the player doesn't have the upgrade
+		return false;
+	}
 }

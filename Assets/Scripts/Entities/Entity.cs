@@ -43,6 +43,8 @@ public class Entity : MonoBehaviour
 
     public Vector2 crosshair;
 
+	protected float attackArcMultiplier = 1.0F;
+
     public virtual void Awake()
     {
 
@@ -217,4 +219,9 @@ public class Entity : MonoBehaviour
         }
         Destroy(gameObject);
     }
+
+	public virtual float getAttackArcMultiplier()
+	{
+		return attackArcMultiplier;
+	}
 }
