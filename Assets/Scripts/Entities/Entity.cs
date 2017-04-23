@@ -78,7 +78,7 @@ public class Entity : MonoBehaviour
 		{
 			health = Mathf.Max(health - bleedRate * Time.deltaTime, 0);
 			bleedtimer -= Time.deltaTime;
-			timeSinceLastBleed + Time.deltaTime;
+			timeSinceLastBleed += Time.deltaTime;
 			if (timeSinceLastBleed > 1)
 			{
 				timeSinceLastBleed = 0;
