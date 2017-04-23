@@ -58,4 +58,11 @@ public class Player : Entity
             UseCurrentAttack(2);
         }
     }
+
+    public void SelectWeapon(int weapon)
+    {
+        attacks[currentAttack].gameObject.SetActive(false);
+        currentAttack = weapon;
+        attacks[currentAttack].gameObject.SetActive(true);
+    }
 }

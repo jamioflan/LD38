@@ -17,7 +17,6 @@ public class Attack : MonoBehaviour
     {
         timeSinceUse += Time.deltaTime;
     }
-
     public virtual void Use(int attackMode, Vector2 pos, Vector2 aim)
     {
 
