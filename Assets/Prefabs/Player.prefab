@@ -21,7 +21,7 @@ GameObject:
   - component: {fileID: 4701746666094646}
   - component: {fileID: 212025422415662398}
   - component: {fileID: 114624696844368430}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: RangedAttack
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -37,7 +37,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4021821524751220}
   - component: {fileID: 212571195041580306}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: RightHand
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -54,7 +54,7 @@ GameObject:
   - component: {fileID: 4108760429593426}
   - component: {fileID: 212823946716404610}
   - component: {fileID: 114094299990263456}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: MeleeAttack
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -70,7 +70,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4056889250181028}
   - component: {fileID: 212421588748169886}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Sprite
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -86,7 +86,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4880228922104986}
   - component: {fileID: 212257753465397858}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Crosshair
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -104,7 +104,7 @@ GameObject:
   - component: {fileID: 114001192245144328}
   - component: {fileID: 50354810160691538}
   - component: {fileID: 58341958871724418}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Player
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -120,7 +120,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4152260606327068}
   - component: {fileID: 212351759614450026}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: LeftHand
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -325,7 +325,7 @@ MonoBehaviour:
   animTime: 0.5
   timeSinceUse: 2
   range: 1
-  arc: 3.1415927
+  basehalfarc: 1.5707964
 --- !u!114 &114624696844368430
 MonoBehaviour:
   m_ObjectHideFlags: 1

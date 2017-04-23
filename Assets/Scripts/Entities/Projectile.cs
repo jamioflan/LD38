@@ -6,6 +6,8 @@ public class Projectile : MonoBehaviour {
 
     public float speed = 1.0f;
 
+    public float timeToDeath = 10.0f;
+
     private Rigidbody2D rb;
 
     public Attack attack;
@@ -19,6 +21,12 @@ public class Projectile : MonoBehaviour {
 	void FixedUpdate ()
     {
         rb.velocity = transform.up * speed;
+
+        timeToDeath -= Time.deltaTime;
+        if(timeToDeath <= 0.0f)
+        {
+            Destroy(gameObject);
+        }
     }
 
     private void OnCollisionEnter2D(Collision2D collision)
@@ -35,11 +43,8 @@ public class Projectile : MonoBehaviour {
 
         //collision.contacts[0].normal;
 
-        speed *= 0.5f;
-
-        if (speed < 0.01f)
-        {
-            Destroy(gameObject);
-        }
+        speed = 0.0f;
+        rb.constraints = RigidbodyConstraints2D.FreezeAll;
+        timeToDeath = 1.0f;
     }
 }
