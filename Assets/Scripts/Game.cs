@@ -10,6 +10,7 @@ public class Game : MonoBehaviour
         IN_MENUS,
         IN_LEVEL,
         IN_INGAME_MENUS,
+        IN_ENDGAME_MENUS,
         SHIFTING,
     }
 
@@ -40,6 +41,7 @@ public class Game : MonoBehaviour
             case GameState.IN_MENUS:              { ExecuteState_InMenus();          break; }
             case GameState.IN_LEVEL:              { ExecuteState_InLevel();          break; }
             case GameState.IN_INGAME_MENUS:       { ExecuteState_InInGameMenus();    break; }
+            case GameState.IN_ENDGAME_MENUS:      { ExecuteState_InEndGameMenus();   break; }
             case GameState.SHIFTING:              { ExecuteState_Shifting();         break; }
         }
 	}
@@ -57,6 +59,13 @@ public class Game : MonoBehaviour
 
     private void ExecuteState_InLevel()
     {
+        // Is the player dead?
+        if (thePlayer.health <= 0.0f)
+        {
+            SwitchToState(GameState.IN_ENDGAME_MENUS);
+            return;
+        }
+
         // Check if we should open the skill tree menu
         // Be careful that a Tab press to close the skills menu doesn't immediately
         // open it again
@@ -87,6 +96,11 @@ public class Game : MonoBehaviour
             menuSkills.SetActive(true);
             Time.timeScale = 0.0f;
         }
+    }
+
+    private void ExecuteState_InEndGameMenus()
+    {
+
     }
 
     private void ExecuteState_Shifting()
