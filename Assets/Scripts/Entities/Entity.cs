@@ -301,15 +301,18 @@ public class Entity : MonoBehaviour
 			}
 
 			// Knockback
-			Vector3 knock = new Vector2(attack.parent.transform.position.x - transform.position.x,attack.parent.transform.position.y - transform.position.y);
+			Vector2 knock = new Vector2(transform.position.x - attack.parent.transform.position.x, transform.position.y - attack.parent.transform.position.y);
 			knock = knock.normalized * knockback;
-			rb.MovePosition(knock);
+            Vector2 newPosition = new Vector2(transform.position.x + knock.x, transform.position.y + knock.y);
+			rb.MovePosition(newPosition);
+
             if (splatterPrefab != null)
             {
                 BloodSplatter splat = Instantiate<BloodSplatter>(splatterPrefab);
                 splat.transform.position = transform.position;
                 splat.transform.eulerAngles = new Vector3(0.0f, 0.0f, Random.Range(0F, 360F));
             }
+
 			// Set off the bleeding condition if necessary
 			if (!isBoss && attack.parent.isPlayer && (attack.attackType == Attack.AttackType.MELEE || attack.attackType == Attack.AttackType.RANGED) && attack.parent.hasUpgrade("meleeRangedMultiattack"))
 			{
