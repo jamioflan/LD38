@@ -20,7 +20,7 @@ public class RoomController : MonoBehaviour
     public DungeonPiece pieceTemplate;
 
     // Use this for initialization
-    void Start ()
+    void Awake ()
     {
         instance = this;
 	}
@@ -57,6 +57,7 @@ public class RoomController : MonoBehaviour
         PositionedRoom PosRoom = new PositionedRoom(roomShape);
         DungeonPiece newPiece = Instantiate<DungeonPiece>(pieceTemplate);
         newPiece.positionedRoom = PosRoom;
+        newPiece.transform.SetParent(transform);
         roomShape.dungeonPiece = newPiece;
         return roomShape;
     }
@@ -259,7 +260,7 @@ public class RoomController : MonoBehaviour
         for (int x = 0; x < Grid.instance.width; x++)
         {
             pos.x = x;
-            for (int y = 0; y < Grid.instance.width; y++)
+            for (int y = 0; y < Grid.instance.height; y++)
             {
                 pos.y = y;
                 foreach (PositionedRoom positionedRoom in layout)
