@@ -6,6 +6,8 @@ public class Enemy : Entity
 {
     public Entity target;
 
+    public float minAttackRange = 0.0f, maxAttackRange = 2.0f;
+
     public enum EnemyState
     {
         IDLE,
@@ -49,10 +51,20 @@ public class Enemy : Entity
 
         if(target != null)
         {
-            MoveToTarget();
-            SetAnimState(AnimState.WALKING);
-            crosshair = target.transform.position;
-            UseCurrentAttack(0);
+            float fDist = (new Vector2(transform.position.x - target.transform.position.x, transform.position.y - target.transform.position.y)).magnitude;
+
+            if(fDist > minAttackRange)
+            {
+                MoveToTarget();
+                SetAnimState(AnimState.WALKING);
+            }
+            else rb.velocity = Vector3.zero; 
+
+            if (fDist <= maxAttackRange)
+            {
+                crosshair = target.transform.position;
+                UseCurrentAttack(0);
+            }
         }
         else
         {
