@@ -114,7 +114,7 @@ public class RoomShape
 
     public RoomBlock getBlock(Position position)
     {
-        if (position.x < 0 || position.y < 0 || position.x > RoomShape.maxMatrixWidth || position.y > RoomShape.maxMatrixHeight)
+        if (position.x < 0 || position.y < 0 || position.x >= RoomShape.maxMatrixWidth || position.y >= RoomShape.maxMatrixHeight)
         {
             return null;
         }
