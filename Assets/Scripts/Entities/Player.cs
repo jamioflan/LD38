@@ -8,6 +8,8 @@ public class Player : Entity
     public float maxSpeed = 10F;
     public List<Upgrade> upgrades = new List<Upgrade>();
 
+    public bool switchWeapon = false, switchWeaponLast = false;
+
     public Transform crosshairObject;
 
     public override void Awake()
@@ -56,6 +58,14 @@ public class Player : Entity
         if (Input.GetAxis("Fire3") > 0)
         {
             UseCurrentAttack(2);
+        }
+
+        switchWeaponLast = switchWeapon;
+        switchWeapon = Input.GetAxis("Jump") > 0;
+
+        if (switchWeapon && !switchWeaponLast)
+        {
+            SelectWeapon((currentAttack + 1) % 2);
         }
     }
 
