@@ -24,7 +24,7 @@ public class SkillTree_Manager : MonoBehaviour
 	// Update is called once per frame
 	void Update ()
     {
-        amountXPText.text = Game.thePlayer.XP.ToString();
+        amountXPText.text = Game.thePlayer.XP.ToString() + " XP";
     }
 
     public void ShowTooltip(string text)
