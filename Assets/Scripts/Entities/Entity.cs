@@ -14,16 +14,16 @@ public class Entity : MonoBehaviour
         LUNGE,
     }
 
-    public AnimState animState = AnimState.IDLE;
+    protected AnimState animState = AnimState.IDLE;
     public float attackAnimTimer = 0.0f;
     public float attackAnimDuration = 0.0f;
-    public float animTimer = 0.0f;
+    protected float animTimer = 0.0f;
     public float animScale = 1.0f;
     public float animSpeed = 1.0f;
 
     public bool isPlayer = false;
 	public bool isBoss = false;
-	public float bleedtimer = 0;
+    protected float bleedtimer = 0;
     public Attack[] attacks;
     public int currentAttack;
     public float maxHealth = 10.0f;
@@ -32,12 +32,15 @@ public class Entity : MonoBehaviour
 	public float bleedRate = 2.0f;
     public float moveSpeed = 1.0f;
     public int XP = 0;
-	public float timeSinceLastBleed = 0F;
+    protected float timeSinceLastBleed = 0F;
 	public float knockback = 1F;
 
 	public List<Upgrade> upgrades = new List<Upgrade>();
 
     public int facing = 0;
+    protected float attackMoveTimer = 0.0f;
+    protected Vector2 attackMoveVector = Vector2.zero;
+	
     public SpriteRenderer body;
     public Transform leftHand, rightHand;
     public Sprite[] directionalSprites = new Sprite[4];
@@ -51,7 +54,7 @@ public class Entity : MonoBehaviour
     public float maxInvulnerabilityCooldown = 1.0f;
     public float invulnerabilityCooldown = 1.0f;
 
-    public Rigidbody2D rb;
+    protected Rigidbody2D rb;
 
     public Vector2 crosshair;
 
@@ -266,6 +269,12 @@ public class Entity : MonoBehaviour
         }
     }
 
+    public void SetAttackMoveVector(Vector2 moveDir, float duration)
+    {
+        attackMoveTimer = duration;
+        attackMoveVector = moveDir;
+    }
+
     public virtual void Damage(Attack attack)
     {
         if(attack.parent.isPlayer == isPlayer)
@@ -284,10 +293,12 @@ public class Entity : MonoBehaviour
 			Vector3 knock = new Vector2(attack.parent.transform.position.x - transform.position.x,attack.parent.transform.position.y - transform.position.y);
 			knock = knock.normalized * knockback;
 			rb.MovePosition(knock);
-			BloodSplatter splat = Instantiate<BloodSplatter> (splatterPrefab);
-			splat.transform.position = transform.position;
-			splat.transform.eulerAngles = new Vector3(0.0f, 0.0f, Random.Range(0F,360F));
-
+            if (splatterPrefab != null)
+            {
+                BloodSplatter splat = Instantiate<BloodSplatter>(splatterPrefab);
+                splat.transform.position = transform.position;
+                splat.transform.eulerAngles = new Vector3(0.0f, 0.0f, Random.Range(0F, 360F));
+            }
 			// Set off the bleeding condition if necessary
 			if (!isBoss && attack.parent.isPlayer && (attack.attackType == Attack.AttackType.MELEE || attack.attackType == Attack.AttackType.RANGED) && ((Player)attack.parent).hasUpgrade("meleeRangedMultiattack"))
 			{

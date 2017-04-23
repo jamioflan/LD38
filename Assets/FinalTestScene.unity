@@ -2487,7 +2487,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &504956674
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2667,32 +2667,12 @@ CanvasRenderer:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 535725493}
---- !u!1 &558490477 stripped
-GameObject:
-  m_PrefabParentObject: {fileID: 1772248548645638, guid: 10994d05235ddad4eba9b20da4584a6d,
+--- !u!114 &558490478 stripped
+MonoBehaviour:
+  m_PrefabParentObject: {fileID: 114131870802320480, guid: 10994d05235ddad4eba9b20da4584a6d,
     type: 2}
   m_PrefabInternal: {fileID: 1658027790}
---- !u!114 &558490478
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 558490477}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: c0859d2c035a454419f21b87345b445c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  state: 0
-  timeInState: 0
-  unscaledTimeInState: 0
-  shiftTime: 3
-  menuHUD: {fileID: 623981894}
-  menuStart: {fileID: 150866415}
-  menuSkills: {fileID: 1127029439}
-  menuEndGame: {fileID: 781015204}
-  menuEndSuccess: {fileID: 82040423}
-  menuEndFailure: {fileID: 875189780}
 --- !u!1 &562020587
 GameObject:
   m_ObjectHideFlags: 0
@@ -7568,18 +7548,36 @@ Prefab:
       propertyPath: m_RootOrder
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 4153865853697948, guid: 10994d05235ddad4eba9b20da4584a6d, type: 2}
-      propertyPath: m_LocalPosition.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4153865853697948, guid: 10994d05235ddad4eba9b20da4584a6d, type: 2}
-      propertyPath: m_LocalPosition.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4153865853697948, guid: 10994d05235ddad4eba9b20da4584a6d, type: 2}
-      propertyPath: m_LocalPosition.z
-      value: -20
-      objectReference: {fileID: 0}
+    - target: {fileID: 114131870802320480, guid: 10994d05235ddad4eba9b20da4584a6d,
+        type: 2}
+      propertyPath: menuHUD
+      value: 
+      objectReference: {fileID: 623981894}
+    - target: {fileID: 114131870802320480, guid: 10994d05235ddad4eba9b20da4584a6d,
+        type: 2}
+      propertyPath: menuStart
+      value: 
+      objectReference: {fileID: 150866415}
+    - target: {fileID: 114131870802320480, guid: 10994d05235ddad4eba9b20da4584a6d,
+        type: 2}
+      propertyPath: menuSkills
+      value: 
+      objectReference: {fileID: 1127029439}
+    - target: {fileID: 114131870802320480, guid: 10994d05235ddad4eba9b20da4584a6d,
+        type: 2}
+      propertyPath: menuEndGame
+      value: 
+      objectReference: {fileID: 781015204}
+    - target: {fileID: 114131870802320480, guid: 10994d05235ddad4eba9b20da4584a6d,
+        type: 2}
+      propertyPath: menuEndSuccess
+      value: 
+      objectReference: {fileID: 82040423}
+    - target: {fileID: 114131870802320480, guid: 10994d05235ddad4eba9b20da4584a6d,
+        type: 2}
+      propertyPath: menuEndFailure
+      value: 
+      objectReference: {fileID: 875189780}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 10994d05235ddad4eba9b20da4584a6d, type: 2}
   m_IsPrefabParent: 0
@@ -7896,7 +7894,7 @@ Prefab:
       objectReference: {fileID: 558490478}
     - target: {fileID: 1534943375791546, guid: f5cbffe68532e484e89267ec662734aa, type: 2}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 114929773034621364, guid: f5cbffe68532e484e89267ec662734aa,
         type: 2}
@@ -9640,7 +9638,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 1687686763627846, guid: 6755c542730f1ab44be8dafa04a18031, type: 2}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 114452198230105894, guid: 6755c542730f1ab44be8dafa04a18031,
         type: 2}
@@ -10273,6 +10271,11 @@ Prefab:
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
       value: UnityEngine.Object, UnityEngine
       objectReference: {fileID: 0}
+    - target: {fileID: 114189960800761900, guid: 6755c542730f1ab44be8dafa04a18031,
+        type: 2}
+      propertyPath: m_Colors.m_NormalColor.a
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 6755c542730f1ab44be8dafa04a18031, type: 2}
   m_IsPrefabParent: 0
@@ -10408,7 +10411,7 @@ MonoBehaviour:
   upgradeEntity: {fileID: 1275007248}
   linksFromDependencies:
   - {fileID: 417715004}
-  skillOwnedImage: {fileID: 468134785}
+  skillOwnedImage: {fileID: 0}
 --- !u!114 &1898163850
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -10422,7 +10425,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   upgradeEntity: {fileID: 318801177}
   linksFromDependencies: []
-  skillOwnedImage: {fileID: 1338188573}
+  skillOwnedImage: {fileID: 0}
 --- !u!1 &1898163851 stripped
 GameObject:
   m_PrefabParentObject: {fileID: 1408119485844400, guid: 6755c542730f1ab44be8dafa04a18031,

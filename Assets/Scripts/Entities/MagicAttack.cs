@@ -34,4 +34,10 @@ public class MagicAttack : Attack
 	{
 		return parent.getMagicDamageMultiplier();
 	}
+
+    public override void AttackMoveEnded()
+    {
+
+    }
+
 }
