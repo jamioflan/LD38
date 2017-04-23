@@ -301,13 +301,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 89e77458292c08744b4190ce4fa2479a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  animState: 0
   attackAnimTimer: 0
   attackAnimDuration: 0
-  animTimer: 0
   animScale: 1
   animSpeed: 1
   isPlayer: 1
+  isBoss: 0
   attacks:
   - {fileID: 114094299990263456}
   - {fileID: 114624696844368430}
@@ -316,9 +315,13 @@ MonoBehaviour:
   maxHealth: 10
   health: 10
   healthRegenRate: 0
+  bleedRate: 2
   moveSpeed: 3
   XP: 0
+  knockback: 1
+  upgrades: []
   facing: 0
+  attackMoveVector: {x: 0, y: 0}
   body: {fileID: 212421588748169886}
   leftHand: {fileID: 4152260606327068}
   rightHand: {fileID: 4021821524751220}
@@ -327,14 +330,24 @@ MonoBehaviour:
   - {fileID: 21300000, guid: ddb3e531f04daf84ca22cd9e7546a000, type: 3}
   - {fileID: 21300000, guid: 2ce172d102d4d4342b3d824687e0a176, type: 3}
   - {fileID: 21300000, guid: 5bbf10bf49737d743a4b6b4c61e82eca, type: 3}
+  splatterPrefab: {fileID: 114826285345360866, guid: 0ac4688367f3e98429150b24f3e57b83,
+    type: 2}
+  orbPrefab: {fileID: 114126140399742310, guid: d65c11562c515ed44b4ad9799d66c213,
+    type: 2}
+  orbTime: 10
+  orbDecay: 0.1
   currentRoom: {fileID: 0}
   damageNumbersPrefab: {fileID: 114657264730176768, guid: de1192e18d0f0e74e98fc998616d6471,
     type: 2}
   maxInvulnerabilityCooldown: 1
   invulnerabilityCooldown: 1
-  rb: {fileID: 0}
   crosshair: {x: 0, y: 0}
-  upgrades: []
+  attackArcMultiplier: 1
+  magicDistanceMultiplier: 1
+  magicTimeMultiplier: 1
+  meleeDamageMultiplier: 1
+  rangedDamageMultiplier: 1
+  magicDamageMultiplier: 1
   switchWeapon: 0
   switchWeaponLast: 0
   crosshairObject: {fileID: 4880228922104986}
@@ -355,8 +368,14 @@ MonoBehaviour:
   cooldown: 2
   animTime: 0.5
   timeSinceUse: 2
+  powerAttackDamageModifier: 2
+  powerAttackCooldownModifier: 2
+  powerAttackSpeedModifier: 2
+  attackType: 5
   range: 1
   basehalfarc: 1.5707964
+  projectile: {fileID: 0}
+  attackMoveDuration: 1
 --- !u!114 &114420401179380974
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -374,10 +393,16 @@ MonoBehaviour:
   cooldown: 2
   animTime: 1
   timeSinceUse: 0
+  powerAttackDamageModifier: 2
+  powerAttackCooldownModifier: 2
+  powerAttackSpeedModifier: 2
+  attackType: 5
   iNumOrbs: 12
   fArcBetweenOrbs: 5
   orbPrefab: {fileID: 114126140399742310, guid: d65c11562c515ed44b4ad9799d66c213,
     type: 2}
+  orbTime: 0.6
+  orbDecay: 0.9
 --- !u!114 &114624696844368430
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -395,8 +420,14 @@ MonoBehaviour:
   cooldown: 0.5
   animTime: 0.25
   timeSinceUse: 0
+  powerAttackDamageModifier: 2
+  powerAttackCooldownModifier: 2
+  powerAttackSpeedModifier: 2
+  attackType: 5
   projectile: {fileID: 114051791925123022, guid: c5c2f794ce114e8488ab85ee1dffa548,
     type: 2}
+  attackMoveDuration: 1
+  multiShotSpread: 15
 --- !u!212 &212025422415662398
 SpriteRenderer:
   m_ObjectHideFlags: 1
