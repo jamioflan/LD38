@@ -969,6 +969,12 @@ GameObject:
   m_PrefabParentObject: {fileID: 1860668728594044, guid: 2244ffad5beba7942ad066f99eb42761,
     type: 2}
   m_PrefabInternal: {fileID: 1811284611}
+--- !u!114 &197749728 stripped
+MonoBehaviour:
+  m_PrefabParentObject: {fileID: 114801923485635776, guid: 2244ffad5beba7942ad066f99eb42761,
+    type: 2}
+  m_PrefabInternal: {fileID: 1811284611}
+  m_Script: {fileID: 11500000, guid: d6f8cd2d86adba74e9e701c50c43a082, type: 3}
 --- !u!1 &210099725
 GameObject:
   m_ObjectHideFlags: 0
@@ -5923,7 +5929,7 @@ Prefab:
       objectReference: {fileID: 558490478}
     - target: {fileID: 1534943375791546, guid: f5cbffe68532e484e89267ec662734aa, type: 2}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 114929773034621364, guid: f5cbffe68532e484e89267ec662734aa,
         type: 2}
@@ -6715,6 +6721,16 @@ Prefab:
       propertyPath: name
       value: magicRangedInvisibility
       objectReference: {fileID: 0}
+    - target: {fileID: 114193032591249832, guid: 2244ffad5beba7942ad066f99eb42761,
+        type: 2}
+      propertyPath: dependencies.Array.data[1]
+      value: 
+      objectReference: {fileID: 1978912424}
+    - target: {fileID: 114927179996613416, guid: 2244ffad5beba7942ad066f99eb42761,
+        type: 2}
+      propertyPath: dependencies.Array.data[1]
+      value: 
+      objectReference: {fileID: 197749728}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 2244ffad5beba7942ad066f99eb42761, type: 2}
   m_IsPrefabParent: 0
@@ -7521,7 +7537,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 1687686763627846, guid: 6755c542730f1ab44be8dafa04a18031, type: 2}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 114452198230105894, guid: 6755c542730f1ab44be8dafa04a18031,
         type: 2}
@@ -9232,6 +9248,12 @@ GameObject:
   m_PrefabParentObject: {fileID: 1041757800353530, guid: 2244ffad5beba7942ad066f99eb42761,
     type: 2}
   m_PrefabInternal: {fileID: 1811284611}
+--- !u!114 &1978912424 stripped
+MonoBehaviour:
+  m_PrefabParentObject: {fileID: 114648486095769278, guid: 2244ffad5beba7942ad066f99eb42761,
+    type: 2}
+  m_PrefabInternal: {fileID: 1811284611}
+  m_Script: {fileID: 11500000, guid: d6f8cd2d86adba74e9e701c50c43a082, type: 3}
 --- !u!1 &1979062369
 GameObject:
   m_ObjectHideFlags: 0
