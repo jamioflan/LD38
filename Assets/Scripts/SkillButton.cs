@@ -7,6 +7,7 @@ public class SkillButton : MonoBehaviour
 {
     public GameObject upgradeEntity;
     public List<Image> linksFromDependencies = new List<Image>();
+    public GameObject skillOwnedImage;
 
     Upgrade upgrade;
 
@@ -19,12 +20,25 @@ public class SkillButton : MonoBehaviour
         {
             link.gameObject.SetActive(false);
         }
+
+        skillOwnedImage.SetActive(false);
     }
 	
 	// Update is called once per frame
 	void Update ()
     {
-
+        if( upgrade.isOwnedOrAvailableToUnlock() )
+        {
+            Color buttonColour = GetComponent<Image>().color;
+            buttonColour.a = 1.0f;
+            GetComponent<Image>().color = buttonColour;
+        }
+        else
+        {
+            Color buttonColour = GetComponent<Image>().color;
+            buttonColour.a = 0.2f;
+            GetComponent<Image>().color = buttonColour;
+        }
 	}
 
     public void OnClick()
@@ -38,6 +52,8 @@ public class SkillButton : MonoBehaviour
             {
                 link.gameObject.SetActive(true);
             }
+
+            skillOwnedImage.SetActive(true);
         }
     }
 }
