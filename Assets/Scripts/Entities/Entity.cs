@@ -407,6 +407,13 @@ public class Entity : MonoBehaviour
 		return multiplier;
 	}
 
+    public int getRangedAttackNumShots()
+    {
+        if (hasUpgrade("rangedTripleAttack"))
+            return 3;
+        return 1;
+    }
+
 	public bool hasUpgrade(string sub)
 	{
 		// Iterate through the upgrades, and return true if we find the one we want
