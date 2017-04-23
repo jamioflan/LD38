@@ -16,7 +16,7 @@ public class HUD_Manager : MonoBehaviour
     public Sprite equippedMagicSprite;
 
     // The GUI objects we're editing
-    GUIText amountXPText;
+    Text amountXPText;
     Slider playerHealthSlider;
     Image equippedWeaponIcon;
 
@@ -24,7 +24,7 @@ public class HUD_Manager : MonoBehaviour
 	void Start ()
     {
         // Find and store the things we'll be modifying
-		amountXPText = GameObject.Find(amountXPElementName).GetComponent<GUIText>();
+		amountXPText = GameObject.Find(amountXPElementName).GetComponent<Text>();
         playerHealthSlider = GameObject.Find(playerHealthElementName).GetComponent<Slider>();
         equippedWeaponIcon = GameObject.Find(equippedWeaponIconElementName).GetComponent<Image>();
     }
