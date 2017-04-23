@@ -7,10 +7,15 @@ public class RoomController : MonoBehaviour
 {
     public static RoomController instance;
 
-    public static readonly int MAX_ROOMS = 10;
+    public static readonly int MAX_ROOMS = 20;
 
     public static readonly int G_LAYOUT_IT = 3; // The number of attempts the algorithm makes at generating a good layout
     public static readonly int G_SHAPE_POS_IT = 100; // The number of attempts the generation algorithm makes when placing a shape
+
+    public static readonly int START_ROOMS = 5;
+    public static readonly int ADVANCE_NEW_ROOMS = 2;
+
+    public int roomsInUse;
 
     public RoomShape[] roomShapes;
     public GoldRoomShape goldRoomA;
@@ -55,6 +60,19 @@ public class RoomController : MonoBehaviour
                 Debug.Log(line);
             }
         }
+    }
+
+    public RoomController()
+    {
+        this.roomsInUse = START_ROOMS;
+    }
+
+    public void advanceLevel()
+    {
+        this.roomsInUse += ADVANCE_NEW_ROOMS;
+        if (this.roomsInUse > MAX_ROOMS) this.roomsInUse = MAX_ROOMS;
+        this.generateNextLayout();
+        this.updateToNextLayout();
     }
 
     private RoomShape createShape()
@@ -169,17 +187,15 @@ public class RoomController : MonoBehaviour
         pieceB.positionedRoom = posRoomB;
         this.goldRoomA.dungeonPiece = pieceA;
         this.goldRoomB.dungeonPiece = pieceB;
-        
-        
     }
 
     public void generateNextLayout()
     {
         this.nextLayout = new PositionedRoom[MAX_ROOMS];
         PositionedRoom[] attemptLayout = new PositionedRoom[MAX_ROOMS];
-        int[] complexities = new int[this.numRooms];
-        int[] shuffledIndicies = new int[this.numRooms];
-        for (int i = 0; i < this.numRooms; i++)
+        int[] complexities = new int[this.roomsInUse];
+        int[] shuffledIndicies = new int[this.roomsInUse];
+        for (int i = 0; i < this.roomsInUse; i++)
         {
             complexities[i] = this.roomShapes[i].getComplexity();
             shuffledIndicies[i] = i;
@@ -191,7 +207,7 @@ public class RoomController : MonoBehaviour
         attemptLayout[1].pos = new Grid.Position(Grid.instance.width-GoldRoomShape.WIDTH, 0);
         for (int j = 0; j < G_LAYOUT_IT; j++)
         {
-            //for (int i = 0; i < this.numRooms; i++)
+            //for (int i = 0; i < this.roomsInUse; i++)
             //{
             //    attemptLayout[i].pos = null;
             //}
@@ -349,7 +365,7 @@ public class RoomController : MonoBehaviour
     public void updateToNextLayout()
     {
         this.currentLayout = this.nextLayout;
-        for (int i = 0; i < this.numRooms; i++)
+        for (int i = 0; i < this.roomsInUse; i++)
         {
             DungeonPiece dungeonPiece = this.roomShapes[i].dungeonPiece;
             dungeonPiece.positionedRoom = this.currentLayout[i];
