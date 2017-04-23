@@ -289,6 +289,12 @@ public class Entity : MonoBehaviour
             invulnerabilityCooldown = maxInvulnerabilityCooldown;
             health -= fDamage;
 
+			// If the attacker has vampirism, heal them part of the damage
+			if ((attack.attackType == Attack.AttackType.MELEE || attack.attackType == Attack.AttackType.MAGIC) && attack.parent.hasUpgrade("meleeMagicAttacksHealYou"))
+			{
+				attack.parent.health = Mathf.Min(attack.parent.health + fDamage * 0.5F, attack.parent.maxHealth);
+			}
+
 			// Knockback
 			Vector3 knock = new Vector2(attack.parent.transform.position.x - transform.position.x,attack.parent.transform.position.y - transform.position.y);
 			knock = knock.normalized * knockback;
@@ -300,15 +306,9 @@ public class Entity : MonoBehaviour
                 splat.transform.eulerAngles = new Vector3(0.0f, 0.0f, Random.Range(0F, 360F));
             }
 			// Set off the bleeding condition if necessary
-			if (!isBoss && attack.parent.isPlayer && (attack.attackType == Attack.AttackType.MELEE || attack.attackType == Attack.AttackType.RANGED) && ((Player)attack.parent).hasUpgrade("meleeRangedMultiattack"))
+			if (!isBoss && attack.parent.isPlayer && (attack.attackType == Attack.AttackType.MELEE || attack.attackType == Attack.AttackType.RANGED) && attack.parent.hasUpgrade("meleeRangedMultiattack"))
 			{
 				bleedtimer = 5F;
-			}
-
-			// If the attacker has vampirism, heal them part of the damage
-			if ((attack.attackType == Attack.AttackType.MELEE || attack.attackType == Attack.AttackType.MAGIC) && ((Player)attack.parent).hasUpgrade("meleeMagicAttacksHealYou"))
-			{
-				attack.parent
 			}
 
             // Add some numbers
@@ -334,27 +334,77 @@ public class Entity : MonoBehaviour
 
 	public virtual float getAttackArcMultiplier()
 	{
-		return attackArcMultiplier;
+		float multiplier = attackArcMultiplier;
+		if (hasUpgrade("meleeIncreasedArc"))
+		{
+			multiplier = multiplier * 2F;
+			if (hasUpgrade ("melee360"))
+			{
+				multiplier = multiplier * 2F;
+			}
+		}
+		return multiplier;
 	}
 	public virtual float getMagicDistanceMultiplier()
 	{
-		return magicDistanceMultiplier;
+		float multiplier = magicDistanceMultiplier;
+		if (hasUpgrade("magicIncreasedDistance"))
+		{
+			multiplier = multiplier * 1.5F;
+		}
+		return multiplier;
 	}
 	public virtual float getMagicTimeMultiplier()
 	{
-		return magicTimeMultiplier;
+		float multiplier = magicTimeMultiplier;
+		if (hasUpgrade ("magicIncreasedDistance"))
+		{
+			multiplier = multiplier * 1.5F;
+			if (hasUpgrade ("magicResidue"))
+			{
+				multiplier = multiplier * 2F;
+			}
+		}
+		return multiplier;
 	}
 	public virtual float getMeleeDamageMultiplier()
 	{
-		return meleeDamageMultiplier;
+		float multiplier = meleeDamageMultiplier;
+		if (hasUpgrade("meleePlusDamage"))
+		{
+			multiplier = multiplier * 1.8F;
+			if (hasUpgrade ("meleeMaxDamage"))
+			{
+				multiplier = multiplier * 1.8F;
+			}
+		}
+		return multiplier;
 	}
 	public virtual float getRangedDamageMultiplier()
 	{
-		return rangedDamageMultiplier;
+		float multiplier = rangedDamageMultiplier;
+		if (hasUpgrade("rangedPlusDamage"))
+		{
+			multiplier = multiplier * 1.8F;
+			if (hasUpgrade ("rangedMaxDamage"))
+			{
+				multiplier = multiplier * 1.8F;
+			}
+		}
+		return multiplier;
 	}
 	public virtual float getMagicDamageMultiplier()
 	{
-		return magicDamageMultiplier;
+		float multiplier = magicDamageMultiplier;
+		if (hasUpgrade("magicPlusDamage"))
+		{
+			multiplier = multiplier * 1.8F;
+			if (hasUpgrade ("magicMaxDamage"))
+			{
+				multiplier = multiplier * 1.8F;
+			}
+		}
+		return multiplier;
 	}
 
 	public bool hasUpgrade(string sub)

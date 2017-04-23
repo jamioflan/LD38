@@ -30,7 +30,7 @@ public class RadialAttack : Attack {
 
                     parent.SetAttackAnimState(parent.isPlayer ? Entity.AnimState.SWORD_SLASH : Entity.AnimState.LUNGE, animTime);
 
-                    if (parent.isPlayer && ((Player)parent).hasUpgrade("meleeRangedMultiattack"))
+                    if (parent.hasUpgrade("meleeRangedMultiattack"))
                     {
                         // Note, this is a direct copy of the Ranged Attack code, and should be edited with care
                         Projectile proj = Instantiate<Projectile>(projectile);
