@@ -53,21 +53,23 @@ public class Player : Entity
 		Vector3 mouse = Camera.main.ScreenPointToRay(Input.mousePosition).origin;
 		crosshair = mouse;
 
-		timeSinceLastFlamingStep += Time.fixedDeltaTime;
-
         if(move.sqrMagnitude > 0.1f)
         {
             SetAnimState(AnimState.WALKING);
 
 			if (hasUpgrade("meleeMagicTrails") && timeSinceLastFlamingStep > 0.4F)
 			{
-				timeSinceLastFlamingStep = 0F;
-				MagicOrb orb = Instantiate<MagicOrb>(orbPrefab);
-				orb.transform.position = transform.position + new Vector3(0F, -0.3F, 0F);
-				orb.transform.eulerAngles = new Vector3(0F, 0F, Mathf.Rad2Deg * Mathf.Atan2(move.y, move.x) + 90.0f);
-				orb.attack = attacks[2];
-				orb.timeToDeath = orbTime * getMagicTimeMultiplier();
-				orb.decaySpeed = orbDecay;
+				timeSinceLastFlamingStep += Time.fixedDeltaTime;
+				if (timeSinceLastFlamingStep > 0.4F)
+				{
+					timeSinceLastFlamingStep = 0F;
+					MagicOrb orb = Instantiate<MagicOrb> (orbPrefab);
+					orb.transform.position = transform.position + new Vector3 (0F, -0.3F, 0F);
+					orb.transform.eulerAngles = new Vector3 (0F, 0F, Mathf.Rad2Deg * Mathf.Atan2 (move.y, move.x) + 90.0f);
+					orb.attack = attacks [2];
+					orb.timeToDeath = orbTime * getMagicTimeMultiplier ();
+					orb.decaySpeed = orbDecay;
+				}
 			}
         }
         else

@@ -375,7 +375,7 @@ MonoBehaviour:
   range: 1
   basehalfarc: 1.5707964
   projectile: {fileID: 0}
-  attackMoveDuration: 1
+  attackMoveDuration: 0.3
 --- !u!114 &114420401179380974
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -426,7 +426,7 @@ MonoBehaviour:
   attackType: 5
   projectile: {fileID: 114051791925123022, guid: c5c2f794ce114e8488ab85ee1dffa548,
     type: 2}
-  attackMoveDuration: 1
+  attackMoveDuration: 0.3
   multiShotSpread: 15
 --- !u!212 &212025422415662398
 SpriteRenderer:

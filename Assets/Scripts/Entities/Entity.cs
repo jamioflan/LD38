@@ -277,7 +277,7 @@ public class Entity : MonoBehaviour
     public void SetAttackMoveVector(Vector2 moveDir, float duration)
     {
         attackMoveTimer = duration;
-        attackMoveVector = moveDir;
+        attackMoveVector = moveDir.normalized * 3F;
     }
 
     public virtual void Damage(Attack attack)
