@@ -65,7 +65,7 @@ public class Player : Entity
 
         if (switchWeapon && !switchWeaponLast)
         {
-            SelectWeapon((currentAttack + 1) % 2);
+            SelectWeapon((currentAttack + 1) % 3);
         }
     }
 
