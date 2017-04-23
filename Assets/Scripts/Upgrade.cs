@@ -76,7 +76,7 @@ public class Upgrade : MonoBehaviour {
             Game.thePlayer.upgrades.Add(this);
             Game.thePlayer.XP = Game.thePlayer.XP - cost;
 
-			if (this.name == "meleeIncreasedHealth")
+			if (this.name.Equals("meleeIncreasedHealth"))
 			{
 				Game.thePlayer.maxHealth = 1.5F * Game.thePlayer.maxHealth;
 			}
