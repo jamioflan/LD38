@@ -25,7 +25,7 @@ public class Entity : MonoBehaviour
 	public bool isBoss = false;
     protected float bleedtimer = 0;
     public Attack[] attacks;
-    protected int currentAttack;
+    public int currentAttack;
     public float maxHealth = 10.0f;
     public float health = 10.0f;
     public float healthRegenRate = 0.0f;
@@ -46,7 +46,7 @@ public class Entity : MonoBehaviour
 
 	public BloodSplatter splatterPrefab;
 
-    protected DungeonPiece currentRoom;
+    public DungeonPiece currentRoom;
 
     public DamageNumbers damageNumbersPrefab;
 
@@ -292,10 +292,12 @@ public class Entity : MonoBehaviour
 			Vector3 knock = new Vector2(attack.parent.transform.position.x - transform.position.x,attack.parent.transform.position.y - transform.position.y);
 			knock = knock.normalized * knockback;
 			rb.MovePosition(knock);
-			BloodSplatter splat = Instantiate<BloodSplatter> (splatterPrefab);
-			splat.transform.position = transform.position;
-			splat.transform.eulerAngles = new Vector3(0.0f, 0.0f, Random.Range(0F,360F));
-
+            if (splatterPrefab != null)
+            {
+                BloodSplatter splat = Instantiate<BloodSplatter>(splatterPrefab);
+                splat.transform.position = transform.position;
+                splat.transform.eulerAngles = new Vector3(0.0f, 0.0f, Random.Range(0F, 360F));
+            }
 			// Set off the bleeding condition if necessary
 			if (!isBoss && attack.parent.isPlayer && (attack.attackType == Attack.AttackType.MELEE || attack.attackType == Attack.AttackType.RANGED) && ((Player)attack.parent).hasUpgrade("meleeRangedMultiattack"))
 			{
