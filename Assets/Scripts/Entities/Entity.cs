@@ -10,7 +10,8 @@ public class Entity : MonoBehaviour
         WALKING,
         SWORD_SLASH,
         BOW_FIRE,
-        MAGIC_ATTACK
+        MAGIC_ATTACK,
+        LUNGE,
     }
 
     public AnimState animState = AnimState.IDLE;
@@ -32,6 +33,7 @@ public class Entity : MonoBehaviour
     public float moveSpeed = 1.0f;
     public int XP = 0;
 	public float timeSinceLastBleed = 0F;
+	public float knockback = 1F;
 
     public int facing = 0;
     public SpriteRenderer body;
@@ -83,8 +85,10 @@ public class Entity : MonoBehaviour
 			timeSinceLastBleed += Time.deltaTime;
 			if (timeSinceLastBleed > 1)
 			{
-				BloodSplatter splat = Instantiate<BloodSplatter> (splatterPrefab);
 				timeSinceLastBleed = 0;
+				BloodSplatter splat = Instantiate<BloodSplatter> (splatterPrefab);
+				splat.transform.position = transform.position;
+				splat.transform.eulerAngles = new Vector3(0.0f, 0.0f, Random.Range(0F,360F));
 			}
 		}
 
@@ -131,6 +135,10 @@ public class Entity : MonoBehaviour
 
         float fParametric = attackAnimTimer / attackAnimDuration;
 
+        if(rightHand == null || leftHand == null)
+        {
+            return;
+        }
         rightHand.localEulerAngles = new Vector3(0.0f, 0.0f, 0.0f);
         leftHand.localEulerAngles = new Vector3(0.0f, 0.0f, 0.0f);
 
@@ -199,6 +207,7 @@ public class Entity : MonoBehaviour
 
                     break;
                 }
+            case AnimState.MAGIC_ATTACK:
               case AnimState.BOW_FIRE:
                 {
                     Vector3 dPos = (Vector3)crosshair - transform.position;
@@ -208,7 +217,30 @@ public class Entity : MonoBehaviour
                     rightHand.localPosition = new Vector3(Mathf.Sin(Mathf.Deg2Rad * fCurrentAngle) * 0.4f, -0.1f + 0.75f * Mathf.Cos(Mathf.Deg2Rad * fCurrentAngle) * 0.4f, bBehind ? 0.1f : -0.1f) * animScale;
                     rightHand.localEulerAngles = new Vector3(0.0f, 0.0f, -fCurrentAngle + 90.0f);
                     leftHand.localPosition = new Vector3(Mathf.Sin(Mathf.Deg2Rad * fCurrentAngle) * 0.2f, -0.1f + 0.75f * Mathf.Cos(Mathf.Deg2Rad * fCurrentAngle) * 0.2f, bBehind ? 0.1f : -0.1f) * animScale;
-                    rightHand.localEulerAngles = new Vector3(0.0f, 0.0f, -fCurrentAngle + 90.0f);
+                    leftHand.localEulerAngles = new Vector3(0.0f, 0.0f, -fCurrentAngle + 90.0f);
+                    break;
+                }
+            case AnimState.LUNGE:
+                {
+
+                    Vector3 dPos = (Vector3)crosshair - transform.position;
+                    float fTargetAngle = -Mathf.Rad2Deg * Mathf.Atan2(dPos.y, dPos.x) + 90.0f;
+                    float fInitialAngle = fTargetAngle - 30.0f;
+                    float fFinalAngle = fTargetAngle + 30.0f;
+                    float fCurrentAngle = fInitialAngle + (fFinalAngle - fInitialAngle) * fParametric;
+
+                    bool bBehind = Mathf.Abs(Mathf.DeltaAngle(fCurrentAngle, 0.0f)) <= 90.0f;
+
+                    rightHand.localPosition = new Vector3(0.1f, 0.0f, 0.0f);
+                    rightHand.Rotate(0.0f, 0.0f, -fCurrentAngle + 90.0f);
+                    //rightHand.localEulerAngles = new Vector3(0.0f, 0.0f, -fCurrentAngle + 90.0f);
+                    rightHand.localPosition += new Vector3(Mathf.Sin(Mathf.Deg2Rad * fCurrentAngle) * 0.4f, -0.1f + 0.75f * Mathf.Cos(Mathf.Deg2Rad * fCurrentAngle) * 0.4f, bBehind ? 0.1f : -0.1f) * animScale;
+
+                    leftHand.localPosition = new Vector3(-0.1f, 0.0f, 0.0f);
+                    leftHand.Rotate(0.0f, 0.0f, -fCurrentAngle + 90.0f);
+                    //leftHand.localEulerAngles = new Vector3(0.0f, 0.0f, -fCurrentAngle + 90.0f);
+                    leftHand.localPosition += new Vector3(Mathf.Sin(Mathf.Deg2Rad * fCurrentAngle) * 0.4f, -0.1f + 0.75f * Mathf.Cos(Mathf.Deg2Rad * fCurrentAngle) * 0.4f, bBehind ? 0.1f : -0.1f) * animScale;
+
                     break;
                 }
         }
@@ -245,15 +277,25 @@ public class Entity : MonoBehaviour
 
             invulnerabilityCooldown = maxInvulnerabilityCooldown;
             health -= fDamage;
-            // Add some numbers
-            DamageNumbers numbers = Instantiate<DamageNumbers>(damageNumbersPrefab);
-            numbers.transform.position = transform.position + new Vector3(0.0f, 0.5f * animScale, 0.0f);
-            numbers.SetNumber(Mathf.RoundToInt(fDamage));
 
+			// Knockback
+			Vector3 knock = new Vector2(attack.parent.transform.position.x - transform.position.x,attack.parent.transform.position.y - transform.position.y);
+			knock = knock.normalized * knockback;
+			rb.MovePosition(knock);
+			BloodSplatter splat = Instantiate<BloodSplatter> (splatterPrefab);
+			splat.transform.position = transform.position;
+			splat.transform.eulerAngles = new Vector3(0.0f, 0.0f, Random.Range(0F,360F));
+
+			// Set off the bleeding condition if necessary
 			if (!isBoss && attack.parent.isPlayer && (attack.attackType == Attack.AttackType.MELEE || attack.attackType == Attack.AttackType.RANGED) && ((Player)attack.parent).hasUpgrade("meleeRangedMultiattack"))
 			{
 				bleedtimer = 5F;
 			}
+
+            // Add some numbers
+            DamageNumbers numbers = Instantiate<DamageNumbers>(damageNumbersPrefab);
+            numbers.transform.position = transform.position + new Vector3(0.0f, 0.5f * animScale, 0.0f);
+            numbers.SetNumber(Mathf.RoundToInt(fDamage));
 
             if (health < 0)
             {

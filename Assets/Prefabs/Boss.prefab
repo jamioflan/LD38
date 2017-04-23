@@ -351,7 +351,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1027381331934122}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 13.41, y: 0.62, z: -3.5}
+  m_LocalPosition: {x: 13.13, y: 5.89, z: -3.5}
   m_LocalScale: {x: 0.6666666, y: 0.6666666, z: 0.6666666}
   m_Children:
   - {fileID: 4593635917154158}
@@ -545,13 +545,17 @@ MonoBehaviour:
   animScale: 1
   animSpeed: 1
   isPlayer: 0
+  isBoss: 0
+  bleedtimer: 0
   attacks: []
   currentAttack: 0
   maxHealth: 250
   health: 250
   healthRegenRate: 0
+  bleedRate: 2
   moveSpeed: 1
   XP: 0
+  timeSinceLastBleed: 0
   facing: 0
   body: {fileID: 0}
   leftHand: {fileID: 0}
@@ -568,6 +572,12 @@ MonoBehaviour:
   invulnerabilityCooldown: -80.72439
   rb: {fileID: 0}
   crosshair: {x: 0, y: 0}
+  attackArcMultiplier: 1
+  magicDistanceMultiplier: 1
+  magicTimeMultiplier: 1
+  meleeDamageMultiplier: 1
+  rangedDamageMultiplier: 1
+  magicDamageMultiplier: 1
   target: {fileID: 0}
   minAttackRange: 0
   maxAttackRange: 2
@@ -597,13 +607,17 @@ MonoBehaviour:
   animScale: 1
   animSpeed: 1
   isPlayer: 0
+  isBoss: 0
+  bleedtimer: 0
   attacks: []
   currentAttack: 0
   maxHealth: 250
   health: 250
   healthRegenRate: 0
+  bleedRate: 2
   moveSpeed: 1
   XP: 0
+  timeSinceLastBleed: 0
   facing: 0
   body: {fileID: 0}
   leftHand: {fileID: 0}
@@ -620,6 +634,12 @@ MonoBehaviour:
   invulnerabilityCooldown: -80.72439
   rb: {fileID: 0}
   crosshair: {x: 0, y: 0}
+  attackArcMultiplier: 1
+  magicDistanceMultiplier: 1
+  magicTimeMultiplier: 1
+  meleeDamageMultiplier: 1
+  rangedDamageMultiplier: 1
+  magicDamageMultiplier: 1
   target: {fileID: 0}
   minAttackRange: 0
   maxAttackRange: 2
@@ -646,6 +666,11 @@ MonoBehaviour:
   - {fileID: 114688099125683396}
   - {fileID: 114361851530772556}
   currentEye: 0
+  spawnable: {fileID: 114362276845198918, guid: c1271e2fb227c0e43a5d358589349491,
+    type: 2}
+  active: 0
+  timeBetweenSpawns: 5
+  timeSinceLastSpawn: 0
 --- !u!212 &212054993658392578
 SpriteRenderer:
   m_ObjectHideFlags: 1

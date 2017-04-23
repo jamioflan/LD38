@@ -23,11 +23,11 @@ public class RadialAttack : Attack {
             }
         }
 
-        parent.SetAttackAnimState(Entity.AnimState.SWORD_SLASH, animTime);
+        parent.SetAttackAnimState(parent.isPlayer ? Entity.AnimState.SWORD_SLASH : Entity.AnimState.LUNGE, animTime);
 
 		if (parent.isPlayer && ((Player)parent).hasUpgrade("meleeRangedMultiattack"))
 			{
-			// Note, this is a direct copy of the Rnaged Attack code, and should be edited with care
+			// Note, this is a direct copy of the Ranged Attack code, and should be edited with care
 				Projectile proj = Instantiate<Projectile>(projectile);
 				proj.transform.position = pos;
 				proj.transform.eulerAngles = new Vector3(0.0f, 0.0f, Mathf.Rad2Deg * Mathf.Atan2(aim.y, aim.x) - 90.0f);
