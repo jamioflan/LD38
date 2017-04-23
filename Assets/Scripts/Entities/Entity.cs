@@ -10,7 +10,7 @@ public class Entity : MonoBehaviour
         WALKING,
         SWORD_SLASH,
         BOW_FIRE,
-        MAGIC_ATTACK,
+        MAGIC_ATTACK
     }
 
     public AnimState animState = AnimState.IDLE;
@@ -21,13 +21,17 @@ public class Entity : MonoBehaviour
     public float animSpeed = 1.0f;
 
     public bool isPlayer = false;
+	public bool isBoss = false;
+	public float bleedtimer = 0;
     public Attack[] attacks;
     public int currentAttack;
     public float maxHealth = 10.0f;
     public float health = 10.0f;
     public float healthRegenRate = 0.0f;
+	public float bleedRate = 2.0f;
     public float moveSpeed = 1.0f;
     public int XP = 0;
+	public float timeSinceLastBleed = 0F;
 
     public int facing = 0;
     public SpriteRenderer body;
@@ -69,6 +73,17 @@ public class Entity : MonoBehaviour
     {
         invulnerabilityCooldown -= Time.deltaTime;
         UpdateAnimations();
+
+		if (bleedtimer > 0)
+		{
+			health = Mathf.Max(health - bleedRate * Time.deltaTime, 0);
+			bleedtimer -= Time.deltaTime;
+			timeSinceLastBleed + Time.deltaTime;
+			if (timeSinceLastBleed > 1)
+			{
+				timeSinceLastBleed = 0;
+			}
+		}
 
         health = Mathf.Min(health + healthRegenRate * Time.deltaTime, maxHealth);
     }
@@ -221,7 +236,7 @@ public class Entity : MonoBehaviour
         if(invulnerabilityCooldown <= 0.0f)
         {
             // Do damage;
-			float fDamage = Random.Range(attack.minDamage, attack.maxDamage) * attack.parent.getMeleeDamageMultiplier();
+			float fDamage = Random.Range(attack.minDamage, attack.maxDamage) * attack.getDamageMultiplier();
 
             invulnerabilityCooldown = maxInvulnerabilityCooldown;
             health -= fDamage;
@@ -229,6 +244,11 @@ public class Entity : MonoBehaviour
             DamageNumbers numbers = Instantiate<DamageNumbers>(damageNumbersPrefab);
             numbers.transform.position = transform.position + new Vector3(0.0f, 0.5f * animScale, 0.0f);
             numbers.SetNumber(Mathf.RoundToInt(fDamage));
+
+			if (!isBoss && attack.parent.isPlayer && (attack.attackType == Attack.AttackType.MELEE || attack.attackType == Attack.AttackType.RANGED) && ((Player)attack.parent).hasUpgrade("meleeRangedMultiattack"))
+			{
+				bleedtimer = 5F;
+			}
 
             if (health < 0)
             {

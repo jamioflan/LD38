@@ -8,6 +8,9 @@ public class RangedAttack : Attack
 
     public override void Use(int attackMode, Vector2 pos, Vector2 aim)
     {
+		attackType = AttackType.RANGED;
+
+		// Note, this code is duplicated inside the RadialAttack script for the purposes of the Multiattack
         Projectile proj = Instantiate<Projectile>(projectile);
         proj.transform.position = pos;
         proj.transform.eulerAngles = new Vector3(0.0f, 0.0f, Mathf.Rad2Deg * Mathf.Atan2(aim.y, aim.x) - 90.0f);
@@ -16,4 +19,9 @@ public class RangedAttack : Attack
         parent.SetAttackAnimState(Entity.AnimState.BOW_FIRE, animTime);
 
     }
+
+	public override float getDamageMultiplier()
+	{
+		return parent.getRangedDamageMultiplier();
+	}
 }
