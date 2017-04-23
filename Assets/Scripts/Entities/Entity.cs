@@ -292,7 +292,7 @@ public class Entity : MonoBehaviour
 			// If the attacker has vampirism, heal them part of the damage
 			if ((attack.attackType == Attack.AttackType.MELEE || attack.attackType == Attack.AttackType.MAGIC) && attack.parent.hasUpgrade("meleeMagicAttacksHealYou"))
 			{
-				attack.parent.health = Mathf.Min(attack.parent.health + fDamage * 0.5F, attack.parent.maxHealth);
+				attack.parent.health = Mathf.Min(attack.parent.health + fDamage * 0.2F, attack.parent.maxHealth);
 			}
 
 			// Knockback
