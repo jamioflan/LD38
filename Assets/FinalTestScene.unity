@@ -5479,7 +5479,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   upgradeEntity: {fileID: 653784274}
-  linksFromDependencies: []
+  linksFromDependencies:
+  - {fileID: 2093415429}
+  - {fileID: 1679243417}
 --- !u!114 &1898163873
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5492,7 +5494,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   upgradeEntity: {fileID: 1558118441}
-  linksFromDependencies: []
+  linksFromDependencies:
+  - {fileID: 778966796}
+  - {fileID: 1907224019}
 --- !u!114 &1898163874
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5505,7 +5509,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   upgradeEntity: {fileID: 1598339300}
-  linksFromDependencies: []
+  linksFromDependencies:
+  - {fileID: 940416349}
+  - {fileID: 1935688146}
 --- !u!114 &1898163875
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5518,7 +5524,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   upgradeEntity: {fileID: 23978867}
-  linksFromDependencies: []
+  linksFromDependencies:
+  - {fileID: 2019076475}
 --- !u!114 &1898163876
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5531,7 +5538,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   upgradeEntity: {fileID: 2112476894}
-  linksFromDependencies: []
+  linksFromDependencies:
+  - {fileID: 731205645}
 --- !u!114 &1898163877
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5544,7 +5552,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   upgradeEntity: {fileID: 1737322202}
-  linksFromDependencies: []
+  linksFromDependencies:
+  - {fileID: 651177200}
 --- !u!114 &1898163878
 MonoBehaviour:
   m_ObjectHideFlags: 0
