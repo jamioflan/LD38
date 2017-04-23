@@ -7,7 +7,6 @@ public class SkillTree_Manager : MonoBehaviour
 {
     public GameObject amountXPObject;
     public GameObject tooltipObject;
-    public Vector3 tooltipOffset;
 
     Text amountXPText;
     Text tooltipText;
@@ -27,10 +26,10 @@ public class SkillTree_Manager : MonoBehaviour
         amountXPText.text = Game.thePlayer.XP.ToString() + " XP";
     }
 
-    public void ShowTooltip(string text)
+    public void ShowTooltip(string text, Vector3 topLeftPosition)
     {
         tooltipText.text = text;
-        tooltipObject.transform.position = Input.mousePosition + tooltipOffset;
+        tooltipObject.transform.position = topLeftPosition;
         tooltipObject.SetActive(true);
     }
 

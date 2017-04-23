@@ -61,7 +61,15 @@ public class SkillButton : MonoBehaviour, IPointerEnterHandler, IPointerExitHand
     public void OnPointerEnter( PointerEventData data )
     {
         string tooltip = upgrade.cost.ToString() + " XP\n" + upgrade.description;
-        Game.theSkillTreeManager.ShowTooltip(tooltip);
+
+        // Calculate the position
+        RectTransform rectTransform = (RectTransform)transform;
+        Vector3 topLeftPosition;
+        topLeftPosition.x = transform.position.x + rectTransform.rect.width / 2.0f;
+        topLeftPosition.y = transform.position.y;
+        topLeftPosition.z = 0.0f;
+
+        Game.theSkillTreeManager.ShowTooltip(tooltip, topLeftPosition);
     }
 
     public void OnPointerExit( PointerEventData data )
