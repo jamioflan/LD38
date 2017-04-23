@@ -60,7 +60,7 @@ public class Game : MonoBehaviour
         // Check if we should open the skill tree menu
         // Be careful that a Tab press to close the skills menu doesn't immediately
         // open it again
-        if (unscaledTimeInState > 0.1 && Input.GetAxisRaw("Tab") > 0)
+        if (unscaledTimeInState > 0.2 && Input.GetAxisRaw("Tab") > 0)
         {
             SwitchToState(GameState.IN_INGAME_MENUS);
             menuHUD.SetActive(false);
@@ -76,7 +76,7 @@ public class Game : MonoBehaviour
         // Check if we should return to game
         // Allow Esc or Tab to close the menu, but be careful that the Tab press that opens
         // the menu doesn't close it again instantly.
-        if (Input.GetAxisRaw("Cancel") > 0 || (unscaledTimeInState > 0.1 && Input.GetAxisRaw("Tab") > 0))
+        if (Input.GetAxisRaw("Cancel") > 0 || (unscaledTimeInState > 0.2 && Input.GetAxisRaw("Tab") > 0))
         {
             SwitchToState(GameState.IN_LEVEL);
             menuSkills.SetActive(false);
