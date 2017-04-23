@@ -38,6 +38,8 @@ public class Entity : MonoBehaviour
     public Transform leftHand, rightHand;
     public Sprite[] directionalSprites = new Sprite[4];
 
+	public BloodSplatter splatterPrefab;
+
     public DungeonPiece currentRoom;
 
     public DamageNumbers damageNumbersPrefab;
@@ -81,6 +83,7 @@ public class Entity : MonoBehaviour
 			timeSinceLastBleed += Time.deltaTime;
 			if (timeSinceLastBleed > 1)
 			{
+				BloodSplatter splat = Instantiate<BloodSplatter> (splatterPrefab);
 				timeSinceLastBleed = 0;
 			}
 		}
