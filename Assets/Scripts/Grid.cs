@@ -2,13 +2,15 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+[System.Serializable]
 public class Grid : MonoBehaviour
 {
     public static Grid instance;
 
-    public int width = 100;
-    public int height = 100;
+    public int width = 20;
+    public int height = 20;
 
+    [System.Serializable]
     public class Position
     {
         public int x;

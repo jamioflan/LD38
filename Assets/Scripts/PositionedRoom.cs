@@ -2,6 +2,21 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+
+public struct PositionedRoomSkel
+{
+
+    public Grid.Position pos;
+    public int rotation; // Rotation: anticlockwise in steps of 90deg
+
+    public PositionedRoomSkel(Grid.Position pos, int rotation)
+    {
+        this.pos = pos;
+        this.rotation = rotation;
+    }
+
+}
+
 [System.Serializable]
 public class PositionedRoom
 {
@@ -31,11 +46,17 @@ public class PositionedRoom
         public int maxX;
         public int maxY;
     }
-    public Bounds bounds;
+    public Bounds bounds = new Bounds();
 
     public PositionedRoom(RoomShape room)
     {
         this.room = room;
+    }
+
+    public void createFromSkel(PositionedRoomSkel skel)
+    {
+        this.pos = skel.pos;
+        this.rotation = skel.rotation;
     }
 
     // Rotate an internal position
@@ -43,9 +64,9 @@ public class PositionedRoom
     {
         Position rrpos = new Position(0, 0);
         if (this.rotation % 4 == 0) { rrpos.x = rspos.x; rrpos.y = rspos.y; }
-        if (this.rotation % 4 == 1) { rrpos.x = rspos.y; rrpos.y = 0 - rspos.x; }
+        if (this.rotation % 4 == 1) { rrpos.x = 0 - rspos.y; rrpos.y = rspos.x; }
         if (this.rotation % 4 == 2) { rrpos.x = 0 - rspos.x; rrpos.y = 0 - rspos.y; }
-        if (this.rotation % 4 == 3) { rrpos.x = 0 - rspos.y; rrpos.y = rspos.x; }
+        if (this.rotation % 4 == 3) { rrpos.x = rspos.y; rrpos.y = 0 - rspos.x; }
         return rrpos;
     }
 
@@ -59,9 +80,9 @@ public class PositionedRoom
     {
         RoomShape.Position rspos = new RoomShape.Position(0, 0);
         if (this.rotation % 4 == 0) { rspos.x = rpos.x; rspos.y = rpos.y; }
-        if (this.rotation % 4 == 1) { rspos.x = 0 - rpos.y; rspos.y = rpos.x; }
+        if (this.rotation % 4 == 1) { rspos.x = rpos.y; rspos.y = 0 - rpos.x; }
         if (this.rotation % 4 == 2) { rspos.x = 0 - rpos.x; rspos.y = 0 - rpos.y; }
-        if (this.rotation % 4 == 3) { rspos.x = rpos.y; rspos.y = 0 - rpos.x; }
+        if (this.rotation % 4 == 3) { rspos.x = 0 - rpos.y; rspos.y = rpos.x; }
         return rspos;
     }
 
@@ -102,14 +123,8 @@ public class PositionedRoom
     }
 
 
-
     public void calculateBounds()
     {
-        if (this.bounds != null)
-        {
-            return;
-        }
-        this.bounds = new Bounds();
         if (this.rotation % 4 == 0)
         {
             this.bounds.minX = this.room.bounds.minX;
@@ -140,19 +155,29 @@ public class PositionedRoom
         }
     }
 
-        public bool collides(PositionedRoom otherPosRoom)
+    public bool collides(PositionedRoom otherPosRoom)
     {
+        if (otherPosRoom == null || this.pos == null || otherPosRoom.pos == null) return false;
         for (int x = 0; x < RoomShape.maxMatrixWidth; x++)
         {
             for (int y = 0; y < RoomShape.maxMatrixHeight; y++)
             {
                 RoomShape.Position internalPosition = new RoomShape.Position(x, y);
                 Grid.Position gridPosition = toGridPosition(internalPosition);
-                if (this.getRoomBlock(gridPosition) != null && otherPosRoom.getRoomBlock(gridPosition) != null)
+                if (this.getRoomBlock(internalPosition) != null && otherPosRoom.getRoomBlock(gridPosition) != null)
                 {
                     return true;
                 }
             }
+        }
+        return false;
+    }
+
+    public bool collides(PositionedRoom[] otherPosRooms)
+    {
+        foreach (PositionedRoom otherPosRoom in otherPosRooms)
+        {
+            if (otherPosRoom != this && this.collides(otherPosRoom)) return true;
         }
         return false;
     }

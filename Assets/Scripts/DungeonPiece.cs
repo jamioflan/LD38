@@ -20,7 +20,7 @@ public class DungeonPiece : MonoBehaviour {
 	// Update is called once per frame
 	void Update ()
     {
-
+        updatePiece();
     }
 
     public void updatePiece()
