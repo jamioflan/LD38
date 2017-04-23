@@ -2,7 +2,8 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Door : MonoBehaviour {
+public class DoorTrigger : MonoBehaviour
+{
 
 	// Use this for initialization
 	void Start ()
@@ -30,5 +31,11 @@ public class Door : MonoBehaviour {
         {
             collision.gameObject.GetComponent<Entity>().isInDoorway = false;
         }
+    }
+
+    public static void MoveThroughDoorway(Entity entity)
+    {
+        // Iterate through the doors, find out which doorway we're in, then move entity
+
     }
 }

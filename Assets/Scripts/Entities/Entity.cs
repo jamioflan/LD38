@@ -106,7 +106,13 @@ public class Entity : MonoBehaviour
         health = Mathf.Min(health + healthRegenRate * Time.deltaTime, maxHealth);
     }
 
-    public virtual void FixedUpdate() { }
+    public virtual void FixedUpdate()
+    {
+        if (isBoss && isInDoorway)
+        {
+            DoorTrigger.MoveThroughDoorway(this);
+        }
+    }
 
     public void SetAttackAnimState(AnimState s, float f) { animState = s; attackAnimDuration = f; attackAnimTimer = 0.0f; }
     public void SetAnimState(AnimState s) { if (attackAnimTimer > attackAnimDuration) animState = s; }
