@@ -13,11 +13,18 @@ public class RangedAttack : Attack
     {
 		attackType = AttackType.RANGED;
 
-        switch(attackMode)
+        if (attackMode == 1 && !parent.hasUpgrade("rangedPowerAttack"))
+            return;
+        if (attackMode == 2 && !parent.hasUpgrade("rangedAttackMove"))
+            return;
+
+        switch (attackMode)
         {
                 case 0:
+                case 2:
                 {
                     ShootArrows(pos, aim);
+                    isPowerAttack = attackMode == 2;
                     break;
                 }
                 case 1:
@@ -51,7 +58,7 @@ public class RangedAttack : Attack
 
 	public override float getDamageMultiplier()
 	{
-		return parent.getRangedDamageMultiplier();
+		return parent.getRangedDamageMultiplier() * (isPowerAttack ? powerAttackDamageModifier : 1);
 	}
 
     public override void AttackMoveEnded()

@@ -10,7 +10,11 @@ public class Attack : MonoBehaviour
     public float cooldown = 0.5f;
     public float animTime = 0.25f;
     public float timeSinceUse = 0.0f;
-	public AttackType attackType = AttackType.NOTSET;
+    public float powerAttackDamageModifier = 2.0f;
+    public float powerAttackCooldownModifier = 2.0f;
+    public float powerAttackSpeedModifier = 2.0f;
+    protected bool isPowerAttack = false;
+    public AttackType attackType = AttackType.NOTSET;
     // Damage type
     // Debuffs
     // Etc.

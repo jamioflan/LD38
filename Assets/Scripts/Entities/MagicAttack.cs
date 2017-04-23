@@ -12,10 +12,16 @@ public class MagicAttack : Attack
 
     public override void Use(int attackMode, Vector2 pos, Vector2 aim)
     {
+        if (attackMode == 1 && !parent.hasUpgrade("magicHeavyAttack"))
+            return;
+        if (attackMode == 2 && !parent.hasUpgrade("magicAttackMove"))
+            return;
+
         attackType = AttackType.MAGIC;
         switch (attackMode)
         {
             case 0:
+            case 2:
                 {
                     float fAimAngle = Mathf.Rad2Deg * Mathf.Atan2(aim.y, aim.x);
                     for (int i = 0; i < iNumOrbs; i++)
@@ -31,6 +37,8 @@ public class MagicAttack : Attack
 
                         
                     }
+
+                    isPowerAttack = attackMode == 2;
 
                     parent.SetAttackAnimState(Entity.AnimState.BOW_FIRE, animTime);
                     break;
@@ -65,7 +73,7 @@ public class MagicAttack : Attack
 
 	public override float getDamageMultiplier()
 	{
-		return parent.getMagicDamageMultiplier();
+		return parent.getMagicDamageMultiplier() * (isPowerAttack ? powerAttackDamageModifier : 1);
 	}
 
     public override void AttackMoveEnded()
