@@ -40,7 +40,7 @@ public class Attack : MonoBehaviour
 
     public void TryToUse(int attackMode, Vector2 pos, Vector2 aim)
     {
-        if (timeSinceUse >= cooldown)
+        if (timeSinceUse >= (isPowerAttack ? cooldown * powerAttackCooldownModifier : cooldown))
         {
             timeSinceUse = 0.0f;
             Use(attackMode, pos, aim);

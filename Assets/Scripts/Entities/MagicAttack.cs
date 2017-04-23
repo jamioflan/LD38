@@ -40,7 +40,7 @@ public class MagicAttack : Attack
 
                     isPowerAttack = attackMode == 2;
 
-                    parent.SetAttackAnimState(Entity.AnimState.BOW_FIRE, animTime);
+                    parent.SetAttackAnimState(Entity.AnimState.BOW_FIRE, animTime * (isPowerAttack ? powerAttackSpeedModifier : 1.0f));
                     break;
                 }
             case 1:

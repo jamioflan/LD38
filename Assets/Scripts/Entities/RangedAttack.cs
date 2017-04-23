@@ -23,8 +23,9 @@ public class RangedAttack : Attack
                 case 0:
                 case 2:
                 {
-                    ShootArrows(pos, aim);
                     isPowerAttack = attackMode == 2;
+                    ShootArrows(pos, aim);
+                    
                     break;
                 }
                 case 1:
@@ -52,7 +53,7 @@ public class RangedAttack : Attack
             proj.attack = this;
         }
 
-        parent.SetAttackAnimState(Entity.AnimState.BOW_FIRE, animTime);
+        parent.SetAttackAnimState(Entity.AnimState.BOW_FIRE, animTime * (isPowerAttack ? powerAttackSpeedModifier : 1.0f));
        
     }
 
