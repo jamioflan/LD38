@@ -33,6 +33,7 @@ public class Entity : MonoBehaviour
     public float moveSpeed = 1.0f;
     public int XP = 0;
 	public float timeSinceLastBleed = 0F;
+	public float knockback = 1F;
 
     public int facing = 0;
     public SpriteRenderer body;
@@ -84,8 +85,10 @@ public class Entity : MonoBehaviour
 			timeSinceLastBleed += Time.deltaTime;
 			if (timeSinceLastBleed > 1)
 			{
-				BloodSplatter splat = Instantiate<BloodSplatter> (splatterPrefab);
 				timeSinceLastBleed = 0;
+				BloodSplatter splat = Instantiate<BloodSplatter> (splatterPrefab);
+				splat.transform.position = transform.position;
+				splat.transform.eulerAngles = new Vector3(0.0f, 0.0f, Random.Range(0F,360F));
 			}
 		}
 
@@ -274,15 +277,25 @@ public class Entity : MonoBehaviour
 
             invulnerabilityCooldown = maxInvulnerabilityCooldown;
             health -= fDamage;
-            // Add some numbers
-            DamageNumbers numbers = Instantiate<DamageNumbers>(damageNumbersPrefab);
-            numbers.transform.position = transform.position + new Vector3(0.0f, 0.5f * animScale, 0.0f);
-            numbers.SetNumber(Mathf.RoundToInt(fDamage));
 
+			// Knockback
+			Vector3 knock = new Vector2(attack.parent.transform.position.x - transform.position.x,attack.parent.transform.position.y - transform.position.y);
+			knock = knock.normalized * knockback;
+			rb.MovePosition(knock);
+			BloodSplatter splat = Instantiate<BloodSplatter> (splatterPrefab);
+			splat.transform.position = transform.position;
+			splat.transform.eulerAngles = new Vector3(0.0f, 0.0f, Random.Range(0F,360F));
+
+			// Set off the bleeding condition if necessary
 			if (!isBoss && attack.parent.isPlayer && (attack.attackType == Attack.AttackType.MELEE || attack.attackType == Attack.AttackType.RANGED) && ((Player)attack.parent).hasUpgrade("meleeRangedMultiattack"))
 			{
 				bleedtimer = 5F;
 			}
+
+            // Add some numbers
+            DamageNumbers numbers = Instantiate<DamageNumbers>(damageNumbersPrefab);
+            numbers.transform.position = transform.position + new Vector3(0.0f, 0.5f * animScale, 0.0f);
+            numbers.SetNumber(Mathf.RoundToInt(fDamage));
 
             if (health < 0)
             {
