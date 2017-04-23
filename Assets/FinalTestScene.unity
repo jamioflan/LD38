@@ -10478,7 +10478,7 @@ MonoBehaviour:
   linksFromDependencies:
   - {fileID: 1878150003}
   - {fileID: 625698894}
-  skillOwnedImage: {fileID: 0}
+  skillOwnedImage: {fileID: 1216198006}
 --- !u!114 &1898163859
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -10494,7 +10494,7 @@ MonoBehaviour:
   linksFromDependencies:
   - {fileID: 2046785384}
   - {fileID: 1775225451}
-  skillOwnedImage: {fileID: 0}
+  skillOwnedImage: {fileID: 742964877}
 --- !u!114 &1898163860
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -10510,7 +10510,7 @@ MonoBehaviour:
   linksFromDependencies:
   - {fileID: 2052854624}
   - {fileID: 126380319}
-  skillOwnedImage: {fileID: 0}
+  skillOwnedImage: {fileID: 27375340}
 --- !u!114 &1898163861
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -10525,7 +10525,7 @@ MonoBehaviour:
   upgradeEntity: {fileID: 773932169}
   linksFromDependencies:
   - {fileID: 826896582}
-  skillOwnedImage: {fileID: 0}
+  skillOwnedImage: {fileID: 305200268}
 --- !u!114 &1898163862
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -10540,7 +10540,7 @@ MonoBehaviour:
   upgradeEntity: {fileID: 434070132}
   linksFromDependencies:
   - {fileID: 1871776871}
-  skillOwnedImage: {fileID: 0}
+  skillOwnedImage: {fileID: 1578520842}
 --- !u!114 &1898163863
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -10555,7 +10555,7 @@ MonoBehaviour:
   upgradeEntity: {fileID: 864611900}
   linksFromDependencies:
   - {fileID: 1842811648}
-  skillOwnedImage: {fileID: 0}
+  skillOwnedImage: {fileID: 927149497}
 --- !u!114 &1898163864
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -10569,7 +10569,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   upgradeEntity: {fileID: 1085882774}
   linksFromDependencies: []
-  skillOwnedImage: {fileID: 0}
+  skillOwnedImage: {fileID: 1376557810}
 --- !u!1 &1898163865 stripped
 GameObject:
   m_PrefabParentObject: {fileID: 1970254372259958, guid: 6755c542730f1ab44be8dafa04a18031,
