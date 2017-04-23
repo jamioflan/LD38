@@ -24,6 +24,7 @@ public class Entity : MonoBehaviour
     public bool isPlayer = false;
 	public bool isBoss = false;
     public bool isInDoorway = false;
+    public DoorTrigger doorTrigger = null;
     protected float bleedtimer = 0;
     public Attack[] attacks;
     public int currentAttack;
@@ -110,7 +111,7 @@ public class Entity : MonoBehaviour
     {
         if (isBoss && isInDoorway)
         {
-            DoorTrigger.MoveThroughDoorway(this);
+            doorTrigger.MoveThroughDoorway(this);
         }
     }
 

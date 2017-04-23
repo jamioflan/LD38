@@ -4,11 +4,12 @@ using UnityEngine;
 
 public class DoorTrigger : MonoBehaviour
 {
+    public RoomDoor roomDoor;
 
 	// Use this for initialization
 	void Start ()
     {
-		
+        roomDoor = gameObject.GetComponentInParent<RoomDoor>();
 	}
 	
 	// Update is called once per frame
@@ -22,6 +23,7 @@ public class DoorTrigger : MonoBehaviour
         if (collision.gameObject.GetComponent<Entity>())
         {
             collision.gameObject.GetComponent<Entity>().isInDoorway = true;
+            collision.gameObject.GetComponent<Entity>().doorTrigger = this;
         }
     }
 
@@ -30,12 +32,16 @@ public class DoorTrigger : MonoBehaviour
         if (collision.gameObject.GetComponent<Entity>())
         {
             collision.gameObject.GetComponent<Entity>().isInDoorway = false;
+            collision.gameObject.GetComponent<Entity>().doorTrigger = null;
         }
     }
 
-    public static void MoveThroughDoorway(Entity entity)
+    public void MoveThroughDoorway(Entity entity)
     {
-        // Iterate through the doors, find out which doorway we're in, then move entity
-
+        if (roomDoor != null)
+        {
+            RoomDoor targetDoor = roomDoor.leadsTo;
+ //           entity.transform.position = targetDoor.
+        }
     }
 }

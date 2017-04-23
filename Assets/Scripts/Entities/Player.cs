@@ -110,7 +110,7 @@ public class Player : Entity
         // Check if we want to go through a doorway
         if (isInDoorway && Input.GetAxis("Open Door") > 0.0f)
         {
-            DoorTrigger.MoveThroughDoorway(this);
+            doorTrigger.MoveThroughDoorway(this);
         }
     }
 
