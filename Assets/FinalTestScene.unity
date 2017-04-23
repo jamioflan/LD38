@@ -288,23 +288,6 @@ Prefab:
       propertyPath: m_RootOrder
       value: 10
       objectReference: {fileID: 0}
-    - target: {fileID: 114001192245144328, guid: 78a9250377f43ad4ea6eb308591dfa45,
-        type: 2}
-      propertyPath: moveSpeed
-      value: 3
-      objectReference: {fileID: 0}
-    - target: {fileID: 114001192245144328, guid: 78a9250377f43ad4ea6eb308591dfa45,
-        type: 2}
-      propertyPath: orbPrefab
-      value: 
-      objectReference: {fileID: 114126140399742310, guid: d65c11562c515ed44b4ad9799d66c213,
-        type: 2}
-    - target: {fileID: 114001192245144328, guid: 78a9250377f43ad4ea6eb308591dfa45,
-        type: 2}
-      propertyPath: splatterPrefab
-      value: 
-      objectReference: {fileID: 114826285345360866, guid: 0ac4688367f3e98429150b24f3e57b83,
-        type: 2}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 78a9250377f43ad4ea6eb308591dfa45, type: 2}
   m_IsPrefabParent: 0

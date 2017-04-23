@@ -49,8 +49,8 @@ public class Entity : MonoBehaviour
 	public BloodSplatter splatterPrefab;
 
 	public MagicOrb orbPrefab;
-	public float orbTime = 0.6F;
-	public float orbDecay = 0.9F;
+	public float orbTime = 10F;
+	public float orbDecay = 0.1F;
 
     public DungeonPiece currentRoom;
 
