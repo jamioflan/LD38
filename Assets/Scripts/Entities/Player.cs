@@ -33,6 +33,8 @@ public class Player : Entity
             attackMoveTimer -= Time.fixedDeltaTime;
             move = attackMoveVector;
 
+            attacks[currentAttack].UpdateAttackMove();
+
             if (attackMoveTimer <= 0.0f)
             {
                 // Move ended

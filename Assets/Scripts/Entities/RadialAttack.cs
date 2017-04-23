@@ -43,19 +43,54 @@ public class RadialAttack : Attack {
                 case 1: // ATTACK MOVE
                 {
                     parent.SetAttackMoveVector(aim, attackMoveDuration);
+                    entitiesHit.Clear();
                     break;
                 }
         }
 		
     }
 
-	public override float getDamageMultiplier()
+    public override void Update()
+    {
+        base.Update();
+    }
+
+    private List<Entity> entitiesHit = new List<Entity>();
+
+    public override void UpdateAttackMove()
+    {
+        foreach (Collider2D coll in Physics2D.OverlapCircleAll(parent.transform.position, range))
+        {
+            Entity entity = coll.GetComponent<Entity>();
+            float halfarc = basehalfarc * parent.getAttackArcMultiplier();
+            Vector3 dPos = coll.transform.position - (Vector3)parent.transform.position;
+            if (entity != null && entity != parent && Mathf.Acos(Vector3.Dot(dPos.normalized, parent.attackMoveVector.normalized)) < halfarc)
+            {
+                if(!entitiesHit.Contains(entity))
+                {
+                    entitiesHit.Add(entity);
+                    entity.Damage(this);
+                }
+            }
+        }
+    }
+
+    public override float getDamageMultiplier()
 	{
 		return parent.getMeleeDamageMultiplier();
 	}
 
     public override void AttackMoveEnded()
     {
-
+        foreach (Collider2D coll in Physics2D.OverlapCircleAll(parent.transform.position, range))
+        {
+            Entity entity = coll.GetComponent<Entity>();
+            float halfarc = basehalfarc * parent.getAttackArcMultiplier();
+            Vector3 dPos = coll.transform.position - (Vector3)parent.transform.position;
+            if (entity != null && entity != parent && Mathf.Acos(Vector3.Dot(dPos.normalized, parent.attackMoveVector.normalized)) < halfarc)
+            {
+                entity.Damage(this);
+            }
+        }
     }
 }

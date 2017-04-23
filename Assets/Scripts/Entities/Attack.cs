@@ -25,7 +25,7 @@ public class Attack : MonoBehaviour
 		NOTSET
 	}
 
-    public void Update()
+    public virtual void Update()
     {
         timeSinceUse += Time.deltaTime;
     }
@@ -43,7 +43,12 @@ public class Attack : MonoBehaviour
         }
     }
 
-	public virtual float getDamageMultiplier()
+    public virtual void UpdateAttackMove()
+    {
+        
+    }
+
+    public virtual float getDamageMultiplier()
 	{
 		return 1F;
 	}

@@ -36,7 +36,7 @@ public class Entity : MonoBehaviour
 	public float knockback = 1F;
 
     protected float attackMoveTimer = 0.0f;
-    protected Vector2 attackMoveVector = Vector2.zero;
+    public Vector2 attackMoveVector = Vector2.zero;
 
 
     protected int facing = 0;
