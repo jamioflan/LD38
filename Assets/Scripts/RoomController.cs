@@ -81,16 +81,15 @@ public class RoomController : MonoBehaviour
     public void generateNextLayout()
     {
         this.nextLayout = new PositionedRoom[MAX_ROOMS];
-        for (int i=0; i<this.numRooms; i++)
+        int[] complexities = new int[this.numRooms];
+        for (int i = 0; i < this.numRooms; i++)
         {
-            Grid.Position pos = new Grid.Position(i * 5, 0);
-            nextLayout[i] = new PositionedRoom(this.roomShapes[i]);
-            nextLayout[i].pos = pos;
-            nextLayout[i].rotation = 0;
+            complexities[i] = this.roomShapes[i].getComplexity();
         }
+        System.Array.Sort(complexities);
     }
 
-    private float getLayoutNiceness(PositionedRoom[] layout)
+    private int getLayoutNiceness(PositionedRoom[] layout)
     {
         int minX = Grid.instance.width;
         int minY = Grid.instance.height;
@@ -109,8 +108,8 @@ public class RoomController : MonoBehaviour
                 numBlocks += positionedRoom.room.getNumBlocks();
             }
         }
-        float niceness = (float)numBlocks / (float)((maxX - minX) * (maxY - minY));
-        return niceness;
+        float nf = (float)numBlocks / (float)((maxX - minX) * (maxY - minY));
+        return Mathf.FloorToInt(nf);
 
     }
 

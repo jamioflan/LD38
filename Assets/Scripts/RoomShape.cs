@@ -21,6 +21,7 @@ public class RoomShape
     public Bounds bounds;
 
     private int numBlocks = -1;
+    private int complexity = -1;
 
     public DungeonPiece dungeonPiece;
 
@@ -98,12 +99,17 @@ public class RoomShape
         return this.bounds.maxY - this.bounds.minY + 1;
     }
 
-    public float getComplexity()
+    public int getComplexity()
     {
-        float width = this.getWidth();
-        float height = this.getHeight();
-        float numBlocks = this.getNumBlocks();
-        return Mathf.Max(width, height) * width * height / numBlocks;
+        if (this.complexity <= -1)
+        {
+            float width = this.getWidth();
+            float height = this.getHeight();
+            float numBlocks = this.getNumBlocks();
+            float cf = (Mathf.Max(width, height) - 1) * width * height / numBlocks * 100;
+            this.complexity = Mathf.FloorToInt(cf);
+        }
+        return complexity;
     }
 
     public RoomBlock getBlock(Position position)
