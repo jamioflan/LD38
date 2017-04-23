@@ -99,11 +99,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5b985abeef5c60d4388c11543f92d659, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 10
-  timeToDeath: 3.5
+  speed: 16
+  timeToDeath: 0.6
   aoeRange: 0.1
-  aoeInterval: 1
+  aoeInterval: 0.25
   timeSinceLastAOE: 0
+  decaySpeed: 0.9
   attack: {fileID: 0}
 --- !u!212 &212643545454572968
 SpriteRenderer:

@@ -7,6 +7,8 @@ public class MagicAttack : Attack
     public int iNumOrbs = 12;
     public float fArcBetweenOrbs = 5.0f;
     public MagicOrb orbPrefab;
+	public float orbTime = 0.6F;
+	public float orbDecay = 0.9F;
 
     public override void Use(int attackMode, Vector2 pos, Vector2 aim)
     {
@@ -19,6 +21,8 @@ public class MagicAttack : Attack
             orb.transform.position = pos;
             orb.transform.eulerAngles = new Vector3(0.0f, 0.0f, fAngle - 90.0f);
             orb.attack = this;
+			orb.timeToDeath = orbTime * parent.getMagicTimeMultiplier();
+			orb.decaySpeed = 1 - (1-orbDecay)/parent.getMagicDistanceMultiplier();
 
             parent.SetAttackAnimState(Entity.AnimState.BOW_FIRE, animTime);
         }
