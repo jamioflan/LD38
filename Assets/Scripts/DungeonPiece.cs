@@ -60,7 +60,7 @@ public class DungeonPiece : MonoBehaviour {
                 {
                     Transform floor = Instantiate<Transform>(floorTemplate);
                     floor.SetParent(transform);
-                    floor.localPosition = new Vector3(i + 0.5f, j + 0.5f, 0) * tilesToWorldUnitsConversion;
+                    floor.localPosition = new Vector3(i + 0f, j + 0f, 0) * tilesToWorldUnitsConversion;
                 }
             }
         }
@@ -85,7 +85,7 @@ public class DungeonPiece : MonoBehaviour {
                 {
                     Transform corner = Instantiate<Transform>(cornerTemplate);
                     corner.SetParent(transform);
-                    corner.localPosition = new Vector3(i, j, 0) * tilesToWorldUnitsConversion;
+                    corner.localPosition = new Vector3(i - 0.5f, j - 0.5f, 0) * tilesToWorldUnitsConversion;
                 }
             }
         }
@@ -101,7 +101,7 @@ public class DungeonPiece : MonoBehaviour {
                 {
                     Transform wall = Instantiate<Transform>(doorTemplate);
                     wall.SetParent(transform);
-                    wall.localPosition = new Vector3(i, j + 0.5f, 0) * tilesToWorldUnitsConversion;
+                    wall.localPosition = new Vector3(i - 0.5f, j + 0.0f, 0) * tilesToWorldUnitsConversion;
                     if(leftAdjacent) wall.localEulerAngles = new Vector3(0.0f, 0.0f, 180.0f);
 
                 }
@@ -120,7 +120,7 @@ public class DungeonPiece : MonoBehaviour {
                     // TODO - Doors!
                     Transform wall = Instantiate<Transform>(wallTemplate);
                     wall.SetParent(transform);
-                    wall.localPosition = new Vector3(i + 0.5f, j, 0) * tilesToWorldUnitsConversion;
+                    wall.localPosition = new Vector3(i + 0f, j - 0.5f, 0) * tilesToWorldUnitsConversion;
                     if (leftAdjacent) wall.localEulerAngles = new Vector3(0.0f, 0.0f, 90.0f);
                     else wall.localEulerAngles = new Vector3(0.0f, 0.0f, -90.0f);
                 }
