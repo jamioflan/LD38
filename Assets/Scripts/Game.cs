@@ -191,6 +191,10 @@ public class Game : MonoBehaviour
     private void StartNextLevel()
     {
         SwitchToState(GameState.IN_LEVEL);
+
+        // Give the player max health again
+        thePlayer.health = thePlayer.maxHealth;
+
         // Set new start and end nodes
 
         // Tell generator to work on the next setup
