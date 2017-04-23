@@ -33,6 +33,7 @@ public class Entity : MonoBehaviour
     public float moveSpeed = 1.0f;
     public int XP = 0;
     protected float timeSinceLastBleed = 0F;
+	protected float timeSinceLastFlamingStep = 0F;
 	public float knockback = 1F;
 
 	public List<Upgrade> upgrades = new List<Upgrade>();
@@ -46,6 +47,10 @@ public class Entity : MonoBehaviour
     public Sprite[] directionalSprites = new Sprite[4];
 
 	public BloodSplatter splatterPrefab;
+
+	public MagicOrb orbPrefab;
+	public float orbTime = 0.6F;
+	public float orbDecay = 0.9F;
 
     public DungeonPiece currentRoom;
 

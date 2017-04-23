@@ -50,19 +50,29 @@ public class Player : Entity
 			rigidBody.velocity = move * moveSpeed;
 		}
 
-        
+		Vector3 mouse = Camera.main.ScreenPointToRay(Input.mousePosition).origin;
+		crosshair = mouse;
+		Vector3 dPos = (Vector3)crosshair - transform.position;
+		float fCurrentAngle = -Mathf.Rad2Deg * Mathf.Atan2(dPos.y, dPos.x) + 90.0f;
 
         if(move.sqrMagnitude > 0.1f)
         {
             SetAnimState(AnimState.WALKING);
+
+			if (hasUpgrade("meleeMagicTrails"))
+			{
+				MagicOrb orb = Instantiate<MagicOrb>(orbPrefab);
+				orb.transform.position = transform.position;
+				orb.transform.eulerAngles = new Vector3(0.0f, 0.0f, fCurrentAngle - 90.0f);
+				orb.attack = attacks[2];
+				orb.timeToDeath = orbTime * getMagicTimeMultiplier();
+				orb.decaySpeed = 1 - (1-orbDecay)/getMagicDistanceMultiplier();
+			}
         }
         else
         {
             SetAnimState(AnimState.IDLE);
         }
-
-        Vector3 mouse = Camera.main.ScreenPointToRay(Input.mousePosition).origin;
-        crosshair = mouse;
 
         crosshairObject.position = crosshair;
 
