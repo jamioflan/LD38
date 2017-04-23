@@ -24,7 +24,7 @@ GameObject:
   - component: {fileID: 50960909801621606}
   - component: {fileID: 114126140399742310}
   m_Layer: 10
-  m_Name: MagicOrb
+  m_Name: RedBlood
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
