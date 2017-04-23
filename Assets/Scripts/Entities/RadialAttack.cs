@@ -5,7 +5,7 @@ using UnityEngine;
 public class RadialAttack : Attack {
 
     public float range = 1.0f;
-    public float basehalfarc = Mathf.PI;
+    public float basehalfarc = Mathf.PI / 2;
 
     public override void Use(int attackMode, Vector2 pos, Vector2 aim)
     {
