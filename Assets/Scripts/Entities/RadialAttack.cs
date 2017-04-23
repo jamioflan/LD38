@@ -12,7 +12,7 @@ public class RadialAttack : Attack {
         foreach (Collider2D coll in Physics2D.OverlapCircleAll(pos, range))
         {
             Entity entity = coll.GetComponent<Entity>();
-			float halfarc = basehalfarc * entity.getAttackArcMultiplier();
+			float halfarc = basehalfarc * parent.getAttackArcMultiplier();
             Vector3 dPos = coll.transform.position - (Vector3)pos;
             if(entity != null && entity != parent && Mathf.Acos(Vector3.Dot(dPos.normalized, aim.normalized)) < halfarc)
             {

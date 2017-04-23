@@ -46,6 +46,7 @@ public class Entity : MonoBehaviour
     public Vector2 crosshair;
 
 	protected float attackArcMultiplier = 1.0F;
+	protected float meleeDamageMultiplier = 1.0F;
 
     public virtual void Awake()
     {
@@ -204,7 +205,7 @@ public class Entity : MonoBehaviour
         if(invulnerabilityCooldown <= 0.0f)
         {
             // Do damage;
-            float fDamage = Random.Range(attack.minDamage, attack.maxDamage);
+			float fDamage = Random.Range(attack.minDamage, attack.maxDamage) * attack.parent.getMeleeDamageMultiplier();
 
             invulnerabilityCooldown = maxInvulnerabilityCooldown;
             health -= fDamage;
@@ -232,5 +233,9 @@ public class Entity : MonoBehaviour
 	public virtual float getAttackArcMultiplier()
 	{
 		return attackArcMultiplier;
+	}
+	public virtual float getMeleeDamageMultiplier()
+	{
+		return meleeDamageMultiplier;
 	}
 }
