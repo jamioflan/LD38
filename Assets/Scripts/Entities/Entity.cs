@@ -80,6 +80,8 @@ public class Entity : MonoBehaviour
 
     protected void UpdateAnimations()
     {
+        if (rb == null) return;
+
         Vector3 move = rb.velocity;
         if (move.x < move.y) // UL
         {
@@ -212,7 +214,7 @@ public class Entity : MonoBehaviour
         }
     }
 
-    public void Damage(Attack attack)
+    public virtual void Damage(Attack attack)
     {
         if(attack.parent.isPlayer == isPlayer)
         {
@@ -237,7 +239,7 @@ public class Entity : MonoBehaviour
         }
     }
 
-    public void Die()
+    public virtual void Die()
     {
         if(this != Game.thePlayer)
         {
