@@ -35,7 +35,28 @@ public class HUD_Manager : MonoBehaviour
         // Update player XP, health and equipped weapon icon
         amountXPText.text = Game.thePlayer.XP.ToString();
         playerHealthSlider.value = Game.thePlayer.health / Game.thePlayer.maxHealth;
-        // TODO: equipped weapon
+        
+        Sprite spriteToUse = equippedMeleeSprite; // default to melee
 
+        switch (Game.thePlayer.currentAttack)
+        {
+            case 1: // ranged
+            {
+                spriteToUse = equippedRangedSprite;
+                break;
+            }
+            case 2: // magic
+            {
+                spriteToUse = equippedMagicSprite;
+                break;
+            }
+            case 0: // melee
+            default:
+            {
+                break;
+            }
+        }
+
+        equippedWeaponIcon.sprite = spriteToUse;
     }
 }
