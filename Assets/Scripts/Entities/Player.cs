@@ -106,6 +106,12 @@ public class Player : Entity
 		{
 			SelectWeapon((currentAttack + 2) % 3);
 		}
+
+        // Check if we want to go through a doorway
+ //       if (isInDoorway &&)
+ //       {
+
+ //       }
     }
 
     public void SelectWeapon(int weapon)

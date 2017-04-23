@@ -23,6 +23,7 @@ public class Entity : MonoBehaviour
 
     public bool isPlayer = false;
 	public bool isBoss = false;
+    public bool isInDoorway = false;
     protected float bleedtimer = 0;
     public Attack[] attacks;
     public int currentAttack;
