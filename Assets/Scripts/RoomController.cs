@@ -43,10 +43,6 @@ public class RoomController : MonoBehaviour
         }
         if (Input.GetKeyDown(KeyCode.T))
         {
-            foreach (PositionedRoom r in this.currentLayout)
-            {
-                r.calculateBounds();
-            }
             Debug.Log(""+this.getLayoutIslands(this.currentLayout));
             RoomBlock[,] matrix = this.getLayoutBlockMatrix(this.currentLayout);
             for (int y = Grid.instance.height-1; y >= 0 ; y--)
@@ -120,53 +116,53 @@ public class RoomController : MonoBehaviour
             }
             Debug.Assert(loopsDone < 1000, "Infinite shape generation loop detected");
             roomShape.generateWalls();
-            foreach (RoomBlock block in roomShape.matrix)
-            {
-                if (block != null)
-                {
-                    for (int w = 0; w < 4; w++)
-                    {
-                        if (block.walls[w] != null)
-                        {
-                            if (Random.Range(0, 1) < 0.5) block.walls[w].door = new RoomDoor(block.walls[w]);
-                        }
-                    }
-                }
-            }
+            //foreach (RoomBlock block in roomShape.matrix)
+            //{
+            //    if (block != null)
+            //    {
+            //        for (int w = 0; w < 4; w++)
+            //        {
+            //            if (block.walls[w] != null)
+            //            {
+            //                if (Random.Range(0, 1) < 0.5) block.walls[w].door = new RoomDoor(block.walls[w]);
+            //            }
+            //        }
+            //    }
+            //}
             this.roomShapes[i] = roomShape;
         }
 
-        for (int i = 0; i < num; i++)
-        {
-            foreach (RoomBlock block in this.roomShapes[i].matrix)
-            {
-                if (block != null)
-                {
-                    for (int w = 0; w < 4; w++)
-                    {
-                        if (block.walls[w] != null && block.walls[w].door != null)
-                        {
-                            int loopsDone = 0;
-                            RoomWall wall = null;
-                            do
-                            {
-                                int index = Random.Range(0, num);
-                                RoomShape otherShape = this.roomShapes[index];
-                                RoomWall[] walls = otherShape.getWalls();
-                                int numWalls = Utilities.nonNullLen<RoomWall>(walls);
-                                if (numWalls == 0) continue;
-                                int wallIndex = Random.Range(0, numWalls);
-                                wall = walls[wallIndex];
-                                if (wall.door != null) break;
-                            } while (loopsDone++ < 1000);
-                            Debug.Assert(loopsDone < 1000, "Infinite loop detected in wall connection generation.");
-                            if (loopsDone >= 1000) continue;
-                            block.walls[w].door.leadsTo = wall.door;
-                        }
-                    }
-                }
-            }
-        }
+        // for (int i = 0; i < num; i++)
+        // {
+        //     foreach (RoomBlock block in this.roomShapes[i].matrix)
+        //     {
+        //         if (block != null)
+        //         {
+        //             for (int w = 0; w < 4; w++)
+        //             {
+        //                 if (block.walls[w] != null && block.walls[w].door != null)
+        //                 {
+        //                     int loopsDone = 0;
+        //                     RoomWall wall = null;
+        //                     do
+        //                     {
+        //                         int index = Random.Range(0, num);
+        //                         RoomShape otherShape = this.roomShapes[index];
+        //                         RoomWall[] walls = otherShape.getWalls();
+        //                         int numWalls = Utilities.nonNullLen<RoomWall>(walls);
+        //                         if (numWalls == 0) continue;
+        //                         int wallIndex = Random.Range(0, numWalls);
+        //                         wall = walls[wallIndex];
+        //                         if (wall.door != null) break;
+        //                     } while (loopsDone++ < 1000);
+        //                     Debug.Assert(loopsDone < 1000, "Infinite loop detected in wall connection generation.");
+        //                     if (loopsDone >= 1000) continue;
+        //                     block.walls[w].door.leadsTo = wall.door;
+        //                 }
+        //             }
+        //         }
+        //     }
+        // }
         this.numRooms = num;
     }
 
