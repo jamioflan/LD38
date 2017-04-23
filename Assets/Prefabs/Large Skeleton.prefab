@@ -22,8 +22,8 @@ GameObject:
   - component: {fileID: 114362276845198918}
   - component: {fileID: 50183374662468798}
   - component: {fileID: 58622134613606956}
-  m_Layer: 0
-  m_Name: Skeleton
+  m_Layer: 9
+  m_Name: Large Skeleton
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -38,7 +38,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4228641983705144}
   - component: {fileID: 114733718162316610}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: MeleeAttack
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -54,7 +54,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4760701872636478}
   - component: {fileID: 212302910546505522}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: LeftHand
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -70,7 +70,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4828953695646320}
   - component: {fileID: 212516273168286022}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Sprite
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -86,7 +86,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4051714063132362}
   - component: {fileID: 212719273292365250}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: RightHand
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -100,7 +100,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1079751474151602}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 9.221636, y: 11.32264, z: -7.7691517}
+  m_LocalPosition: {x: -9.575649, y: -1.5032789, z: -7.7691517}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4828953695646320}
@@ -117,8 +117,8 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1727102206792794}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0.294, y: -0.136, z: 7.669152}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalPosition: {x: 0.437, y: -0.328, z: 0}
+  m_LocalScale: {x: 2, y: 2, z: 2}
   m_Children: []
   m_Father: {fileID: 4015444053682740}
   m_RootOrder: 1
@@ -143,8 +143,8 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1507944482293178}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0.246, y: -0.151, z: 7.669152}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalPosition: {x: -0.434, y: -0.285, z: 0}
+  m_LocalScale: {x: 2, y: 2, z: 2}
   m_Children: []
   m_Father: {fileID: 4015444053682740}
   m_RootOrder: 2
@@ -157,7 +157,7 @@ Transform:
   m_GameObject: {fileID: 1712505789137864}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 2, y: 2, z: 2}
   m_Children: []
   m_Father: {fileID: 4015444053682740}
   m_RootOrder: 0
@@ -194,9 +194,9 @@ CircleCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: -0.26}
+  m_Offset: {x: 0, y: -0.44}
   serializedVersion: 2
-  m_Radius: 0.24
+  m_Radius: 0.5
 --- !u!114 &114362276845198918
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -212,17 +212,21 @@ MonoBehaviour:
   attackAnimTimer: 0
   attackAnimDuration: 0
   animTimer: 0
-  animScale: 1
-  animSpeed: 1
-  isPlayer: 1
+  animScale: 2
+  animSpeed: 0.75
+  isPlayer: 0
+  isBoss: 0
+  bleedtimer: 0
   attacks:
   - {fileID: 114733718162316610}
   currentAttack: 0
-  maxHealth: 10
-  health: 10
+  maxHealth: 60
+  health: 60
   healthRegenRate: 0
-  moveSpeed: 1
-  XP: 0
+  bleedRate: 2
+  moveSpeed: 0.75
+  XP: 50
+  timeSinceLastBleed: 0
   facing: 0
   body: {fileID: 212516273168286022}
   leftHand: {fileID: 4760701872636478}
@@ -233,11 +237,21 @@ MonoBehaviour:
   - {fileID: 21300000, guid: 72e042ce799b47c47861bc45de58416e, type: 3}
   - {fileID: 21300000, guid: 429b7952ffcf01e48b993dd22a786656, type: 3}
   currentRoom: {fileID: 0}
+  damageNumbersPrefab: {fileID: 114657264730176768, guid: de1192e18d0f0e74e98fc998616d6471,
+    type: 2}
   maxInvulnerabilityCooldown: 1
   invulnerabilityCooldown: 1
   rb: {fileID: 0}
   crosshair: {x: 0, y: 0}
+  attackArcMultiplier: 1
+  magicDistanceMultiplier: 1
+  magicTimeMultiplier: 1
+  meleeDamageMultiplier: 1
+  rangedDamageMultiplier: 1
+  magicDamageMultiplier: 1
   target: {fileID: 0}
+  minAttackRange: 0
+  maxAttackRange: 2
   state: 0
 --- !u!114 &114733718162316610
 MonoBehaviour:
@@ -251,13 +265,15 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   parent: {fileID: 114362276845198918}
-  minDamage: 4
+  minDamage: 8
   maxDamage: 12
-  cooldown: 2
-  animTime: 0.5
+  cooldown: 3
+  animTime: 1.25
   timeSinceUse: 2
-  range: 1
-  arc: 3.1415927
+  attackType: 5
+  range: 2
+  basehalfarc: 1.5707964
+  projectile: {fileID: 0}
 --- !u!212 &212302910546505522
 SpriteRenderer:
   m_ObjectHideFlags: 1
@@ -291,7 +307,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: 92430768a76bd9c4687129e206283565, type: 3}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 0.47231835, g: 0.6691177, b: 0.48181903, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -331,7 +347,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: 72e042ce799b47c47861bc45de58416e, type: 3}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 0.47231835, g: 0.6691177, b: 0.48181903, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -371,7 +387,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: 92430768a76bd9c4687129e206283565, type: 3}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 0.47231835, g: 0.6691177, b: 0.48181903, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0

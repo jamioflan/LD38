@@ -129,6 +129,10 @@ public class Entity : MonoBehaviour
 
         float fParametric = attackAnimTimer / attackAnimDuration;
 
+        if(rightHand == null || leftHand == null)
+        {
+            return;
+        }
         rightHand.localEulerAngles = new Vector3(0.0f, 0.0f, 0.0f);
         leftHand.localEulerAngles = new Vector3(0.0f, 0.0f, 0.0f);
 

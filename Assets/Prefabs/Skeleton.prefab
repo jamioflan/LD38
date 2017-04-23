@@ -214,15 +214,19 @@ MonoBehaviour:
   animTimer: 0
   animScale: 1
   animSpeed: 1
-  isPlayer: 1
+  isPlayer: 0
+  isBoss: 0
+  bleedtimer: 0
   attacks:
   - {fileID: 114733718162316610}
   currentAttack: 0
   maxHealth: 5
   health: 5
   healthRegenRate: 0
+  bleedRate: 2
   moveSpeed: 1
   XP: 10
+  timeSinceLastBleed: 0
   facing: 0
   body: {fileID: 212516273168286022}
   leftHand: {fileID: 4760701872636478}
@@ -239,6 +243,12 @@ MonoBehaviour:
   invulnerabilityCooldown: 1
   rb: {fileID: 0}
   crosshair: {x: 0, y: 0}
+  attackArcMultiplier: 1
+  magicDistanceMultiplier: 1
+  magicTimeMultiplier: 1
+  meleeDamageMultiplier: 1
+  rangedDamageMultiplier: 1
+  magicDamageMultiplier: 1
   target: {fileID: 0}
   minAttackRange: 0
   maxAttackRange: 2
@@ -260,8 +270,10 @@ MonoBehaviour:
   cooldown: 2
   animTime: 0.5
   timeSinceUse: 2
+  attackType: 5
   range: 1
   basehalfarc: 1.5707964
+  projectile: {fileID: 0}
 --- !u!212 &212302910546505522
 SpriteRenderer:
   m_ObjectHideFlags: 1
