@@ -10,7 +10,8 @@ public class Entity : MonoBehaviour
         WALKING,
         SWORD_SLASH,
         BOW_FIRE,
-        MAGIC_ATTACK
+        MAGIC_ATTACK,
+        LUNGE,
     }
 
     public AnimState animState = AnimState.IDLE;
@@ -196,6 +197,7 @@ public class Entity : MonoBehaviour
 
                     break;
                 }
+            case AnimState.MAGIC_ATTACK:
               case AnimState.BOW_FIRE:
                 {
                     Vector3 dPos = (Vector3)crosshair - transform.position;
@@ -205,7 +207,30 @@ public class Entity : MonoBehaviour
                     rightHand.localPosition = new Vector3(Mathf.Sin(Mathf.Deg2Rad * fCurrentAngle) * 0.4f, -0.1f + 0.75f * Mathf.Cos(Mathf.Deg2Rad * fCurrentAngle) * 0.4f, bBehind ? 0.1f : -0.1f) * animScale;
                     rightHand.localEulerAngles = new Vector3(0.0f, 0.0f, -fCurrentAngle + 90.0f);
                     leftHand.localPosition = new Vector3(Mathf.Sin(Mathf.Deg2Rad * fCurrentAngle) * 0.2f, -0.1f + 0.75f * Mathf.Cos(Mathf.Deg2Rad * fCurrentAngle) * 0.2f, bBehind ? 0.1f : -0.1f) * animScale;
-                    rightHand.localEulerAngles = new Vector3(0.0f, 0.0f, -fCurrentAngle + 90.0f);
+                    leftHand.localEulerAngles = new Vector3(0.0f, 0.0f, -fCurrentAngle + 90.0f);
+                    break;
+                }
+            case AnimState.LUNGE:
+                {
+
+                    Vector3 dPos = (Vector3)crosshair - transform.position;
+                    float fTargetAngle = -Mathf.Rad2Deg * Mathf.Atan2(dPos.y, dPos.x) + 90.0f;
+                    float fInitialAngle = fTargetAngle - 30.0f;
+                    float fFinalAngle = fTargetAngle + 30.0f;
+                    float fCurrentAngle = fInitialAngle + (fFinalAngle - fInitialAngle) * fParametric;
+
+                    bool bBehind = Mathf.Abs(Mathf.DeltaAngle(fCurrentAngle, 0.0f)) <= 90.0f;
+
+                    rightHand.localPosition = new Vector3(0.1f, 0.0f, 0.0f);
+                    rightHand.Rotate(0.0f, 0.0f, -fCurrentAngle + 90.0f);
+                    //rightHand.localEulerAngles = new Vector3(0.0f, 0.0f, -fCurrentAngle + 90.0f);
+                    rightHand.localPosition += new Vector3(Mathf.Sin(Mathf.Deg2Rad * fCurrentAngle) * 0.4f, -0.1f + 0.75f * Mathf.Cos(Mathf.Deg2Rad * fCurrentAngle) * 0.4f, bBehind ? 0.1f : -0.1f) * animScale;
+
+                    leftHand.localPosition = new Vector3(-0.1f, 0.0f, 0.0f);
+                    leftHand.Rotate(0.0f, 0.0f, -fCurrentAngle + 90.0f);
+                    //leftHand.localEulerAngles = new Vector3(0.0f, 0.0f, -fCurrentAngle + 90.0f);
+                    leftHand.localPosition += new Vector3(Mathf.Sin(Mathf.Deg2Rad * fCurrentAngle) * 0.4f, -0.1f + 0.75f * Mathf.Cos(Mathf.Deg2Rad * fCurrentAngle) * 0.4f, bBehind ? 0.1f : -0.1f) * animScale;
+
                     break;
                 }
         }

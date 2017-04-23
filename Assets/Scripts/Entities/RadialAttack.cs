@@ -23,7 +23,7 @@ public class RadialAttack : Attack {
             }
         }
 
-        parent.SetAttackAnimState(Entity.AnimState.SWORD_SLASH, animTime);
+        parent.SetAttackAnimState(parent.isPlayer ? Entity.AnimState.SWORD_SLASH : Entity.AnimState.LUNGE, animTime);
 
 		if (parent.isPlayer && ((Player)parent).hasUpgrade("meleeRangedMultiattack"))
 			{
