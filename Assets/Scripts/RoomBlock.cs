@@ -7,15 +7,8 @@ public class RoomBlock
 {
 
     public RoomShape parentRoomShape;
-
-    public struct Walls
-    {
-        public RoomWall north;
-        public RoomWall west;
-        public RoomWall south;
-        public RoomWall east;
-    }
-    public Walls walls;
+    
+    public RoomWall[] walls;
 
     RoomShape.Position pos;
 
@@ -23,6 +16,7 @@ public class RoomBlock
     {
         this.parentRoomShape = parent;
         this.pos = new RoomShape.Position(x,y);
+        this.walls = new RoomWall[4];
     }
 
     public RoomBlock[] getAdjacentBlocks()
@@ -84,6 +78,11 @@ public class RoomWall
 
     public RoomDoor door;
 
+    public RoomWall(RoomBlock parent)
+    {
+        this.parentRoomBlock = parent;
+    }
+
 }
 
 public class RoomDoor
@@ -100,5 +99,10 @@ public class RoomDoor
     }
 
     public RoomDoor leadsTo;
+
+    public RoomDoor(RoomWall parent)
+    {
+        this.parentRoomWall = parent;
+    }
 
 }

@@ -16,4 +16,13 @@ public class Utilities {
         }
     }
 
+    public static int nonNullLen<T>(T[] array)
+    {
+        for (int i = array.Length - 1; i>=0; i--)
+        {
+            if (array[i] != null) return i+1;
+        }
+        return 0;
+    }
+
 }

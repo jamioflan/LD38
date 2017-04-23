@@ -124,6 +124,40 @@ public class RoomShape
         }
     }
 
+    public void generateWalls()
+    {
+        for (int x = 0; x < RoomShape.maxMatrixWidth; x++)
+        {
+            for (int y = 0; y < RoomShape.maxMatrixHeight; y++)
+            {
+                if (this.matrix[x, y] != null)
+                {
+                    if (x == 0 || this.matrix[x - 1, y] == null) this.matrix[x, y].walls[1] = new RoomWall(this.matrix[x, y]);
+                    if (y == 0 || this.matrix[x, y - 1] == null) this.matrix[x, y].walls[2] = new RoomWall(this.matrix[x, y]);
+                    if (x == RoomShape.maxMatrixWidth - 1 || this.matrix[x + 1, y] == null) this.matrix[x, y].walls[3] = new RoomWall(this.matrix[x, y]);
+                    if (y == RoomShape.maxMatrixHeight - 1 || this.matrix[x, y + 1] == null) this.matrix[x, y].walls[0] = new RoomWall(this.matrix[x, y]);
+                }
+            }
+        }
+    }
+
+    public RoomWall[] getWalls()
+    {
+        RoomWall[] walls = new RoomWall[RoomShape.maxMatrixWidth* RoomShape.maxMatrixHeight*4];
+        int indexAt = 0;
+        foreach (RoomBlock block in this.matrix)
+        {
+            if (block != null)
+            {
+                for (int w = 0; w < 4; w++)
+                {
+                    if (block.walls[w] != null) walls[indexAt++] = block.walls[w];
+                }
+            }
+        }
+        return walls;
+    }
+
         //public RoomDoor[] getDoors()
         //{
         //    RoomDoor[] doorList = new RoomDoor[];
