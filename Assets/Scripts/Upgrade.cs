@@ -6,7 +6,7 @@ public class Upgrade : MonoBehaviour {
 
 	//public bool playerOwns = false;
 	public List<Upgrade> dependencies = new List<Upgrade>();
-	public string name = "";
+	//public string name = "";
 	public string description = "";
 	public int cost = 100;
 

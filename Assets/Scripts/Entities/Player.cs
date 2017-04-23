@@ -95,7 +95,7 @@ public class Player : Entity
 		// Iterate through the upgrades, and return true if we find the one we want
 		foreach (Upgrade upgrade in upgrades)
 		{
-			if (upgrade.name == sub)
+			if (upgrade.name.Equals(sub))
 			{
 				return true;
 			}

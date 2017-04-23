@@ -6,7 +6,7 @@ public class Bunny : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-		int Bunny;
+		//int Bunny;
 	}
 	
 	// Update is called once per frame
