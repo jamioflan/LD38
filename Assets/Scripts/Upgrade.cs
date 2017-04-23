@@ -76,9 +76,17 @@ public class Upgrade : MonoBehaviour {
             Game.thePlayer.upgrades.Add(this);
             Game.thePlayer.XP = Game.thePlayer.XP - cost;
 
-			if (this.name.Equals("meleeIncreasedHealth"))
+			switch (this.name)
 			{
-				Game.thePlayer.maxHealth = 1.5F * Game.thePlayer.maxHealth;
+				case "meleeIncreasedHealth":
+					Game.thePlayer.maxHealth = 1.5F * Game.thePlayer.maxHealth;
+					break;
+				case "magicIncreasedRegeneration":
+					Game.thePlayer.healthRegenRate = 2F * Game.thePlayer.healthRegenRate;
+					break;
+				case "rangedIncreasedSpeed":
+					Game.thePlayer.moveSpeed = 1.5F * Game.thePlayer.moveSpeed;
+					break;
 			}
         }
 	}

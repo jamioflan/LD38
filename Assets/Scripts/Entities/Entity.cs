@@ -46,7 +46,11 @@ public class Entity : MonoBehaviour
     public Vector2 crosshair;
 
 	protected float attackArcMultiplier = 1.0F;
+	protected float magicDistanceMultiplier = 1.0F;
+	protected float magicTimeMultiplier = 1.0F;
 	protected float meleeDamageMultiplier = 1.0F;
+	protected float rangedDamageMultiplier = 1.0F;
+	protected float magicDamageMultiplier = 1.0F;
 
     public virtual void Awake()
     {
@@ -246,8 +250,24 @@ public class Entity : MonoBehaviour
 	{
 		return attackArcMultiplier;
 	}
+	public virtual float getMagicDistanceMultiplier()
+	{
+		return magicDistanceMultiplier;
+	}
+	public virtual float getMagicTimeMultiplier()
+	{
+		return magicTimeMultiplier;
+	}
 	public virtual float getMeleeDamageMultiplier()
 	{
 		return meleeDamageMultiplier;
+	}
+	public virtual float getRangedDamageMultiplier()
+	{
+		return rangedDamageMultiplier;
+	}
+	public virtual float getMagicDamageMultiplier()
+	{
+		return magicDamageMultiplier;
 	}
 }
