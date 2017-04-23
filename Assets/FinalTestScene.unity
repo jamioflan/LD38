@@ -1343,6 +1343,24 @@ Prefab:
       value: 
       objectReference: {fileID: 21300000, guid: 726d3014e663c3a47bc17b398cf61d73,
         type: 3}
+    - target: {fileID: 114826339777527304, guid: 93f2203792cfd884ea42c64c2525ddd4,
+        type: 2}
+      propertyPath: equippedMeleeSprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 726d3014e663c3a47bc17b398cf61d73,
+        type: 3}
+    - target: {fileID: 114826339777527304, guid: 93f2203792cfd884ea42c64c2525ddd4,
+        type: 2}
+      propertyPath: equippedRangedSprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 6139cfbeee57cbd4aacd8c84cf0f2858,
+        type: 3}
+    - target: {fileID: 114826339777527304, guid: 93f2203792cfd884ea42c64c2525ddd4,
+        type: 2}
+      propertyPath: equippedMagicSprite
+      value: 
+      objectReference: {fileID: 21300000, guid: fcc6f89647b63aa47b781e1697a90ce2,
+        type: 3}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 93f2203792cfd884ea42c64c2525ddd4, type: 2}
   m_IsPrefabParent: 0
