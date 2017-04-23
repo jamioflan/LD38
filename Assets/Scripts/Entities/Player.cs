@@ -4,8 +4,6 @@ using UnityEngine;
 
 public class Player : Entity
 {
-
-    public float maxSpeed = 10F;
     public List<Upgrade> upgrades = new List<Upgrade>();
 
     public bool switchWeapon = false, switchWeaponLast = false;
@@ -29,7 +27,7 @@ public class Player : Entity
 
         Vector2 move = new Vector2(Input.GetAxis("Horizontal"), Input.GetAxis("Vertical"));
 
-        rigidBody.velocity = move * maxSpeed;
+        rigidBody.velocity = move * moveSpeed;
 
         
 
@@ -81,10 +79,33 @@ public class Player : Entity
 		float multiplier = attackArcMultiplier;
 		if (hasUpgrade("meleeIncreasedArc"))
 		{
-			multiplier = multiplier * 2;
+			multiplier = multiplier * 2F;
 			if (hasUpgrade ("melee360"))
 			{
-				multiplier = multiplier * 2;
+				multiplier = multiplier * 2F;
+			}
+		}
+		return multiplier;
+	}
+
+	public override float getMagicDistanceMultiplier()
+	{
+		float multiplier = magicDistanceMultiplier;
+		if (hasUpgrade("magicIncreasedDistance"))
+		{
+			multiplier = multiplier * 1.5F;
+		}
+		return multiplier;
+	}
+
+	public override float getMagicTimeMultiplier()
+	{
+		float multiplier = magicTimeMultiplier;
+		if (hasUpgrade ("magicIncreasedDistance"))
+		{
+			multiplier = multiplier * 1.5F;
+			if (hasUpgrade ("magicResidue")) {
+				multiplier = multiplier * 2F;
 			}
 		}
 		return multiplier;
@@ -97,6 +118,34 @@ public class Player : Entity
 		{
 			multiplier = multiplier * 1.8F;
 			if (hasUpgrade ("meleeMaxDamage"))
+			{
+				multiplier = multiplier * 1.8F;
+			}
+		}
+		return multiplier;
+	}
+
+	public override float getRangedDamageMultiplier()
+	{
+		float multiplier = rangedDamageMultiplier;
+		if (hasUpgrade("rangedPlusDamage"))
+		{
+			multiplier = multiplier * 1.8F;
+			if (hasUpgrade ("rangedMaxDamage"))
+			{
+				multiplier = multiplier * 1.8F;
+			}
+		}
+		return multiplier;
+	}
+
+	public override float getMagicDamageMultiplier()
+	{
+		float multiplier = magicDamageMultiplier;
+		if (hasUpgrade("magicPlusDamage"))
+		{
+			multiplier = multiplier * 1.8F;
+			if (hasUpgrade ("magicMaxDamage"))
 			{
 				multiplier = multiplier * 1.8F;
 			}
