@@ -105,7 +105,7 @@ public class DungeonPiece : MonoBehaviour {
                             wall = Instantiate<Transform>(doorTemplate);
                         wall.SetParent(transform);
                         wall.localPosition = new Vector3(i + 0f, j + 0.5f, 0) * tilesToWorldUnitsConversion;
-                        wall.localEulerAngles = new Vector3(0.0f, 0.0f, -90.0f);
+                        wall.localEulerAngles = new Vector3(0.0f, 0.0f, 90.0f);
                     }
                     if (positionedRoom.room.matrix[i, j].walls[1] != null)
                     {
@@ -116,7 +116,7 @@ public class DungeonPiece : MonoBehaviour {
                             wall = Instantiate<Transform>(doorTemplate);
                         wall.SetParent(transform);
                         wall.localPosition = new Vector3(i - 0.5f, j, 0) * tilesToWorldUnitsConversion;
-                        wall.localEulerAngles = new Vector3(0.0f, 0.0f, -180.0f);
+                        wall.localEulerAngles = new Vector3(0.0f, 0.0f, 0.0f);
                     }
                     if (positionedRoom.room.matrix[i, j].walls[2] != null)
                     {
@@ -127,7 +127,7 @@ public class DungeonPiece : MonoBehaviour {
                             wall = Instantiate<Transform>(doorTemplate);
                         wall.SetParent(transform);
                         wall.localPosition = new Vector3(i, j - 0.5f, 0) * tilesToWorldUnitsConversion;
-                        wall.localEulerAngles = new Vector3(0.0f, 0.0f, 90.0f);
+                        wall.localEulerAngles = new Vector3(0.0f, 0.0f, -90.0f);
                     }
                     if (positionedRoom.room.matrix[i, j].walls[3] != null)
                     {
@@ -138,7 +138,7 @@ public class DungeonPiece : MonoBehaviour {
                             wall = Instantiate<Transform>(doorTemplate);
                         wall.SetParent(transform);
                         wall.localPosition = new Vector3(i + 0.5f, j, 0) * tilesToWorldUnitsConversion;
-                        wall.localEulerAngles = new Vector3(0.0f, 0.0f, 0.0f);
+                        wall.localEulerAngles = new Vector3(0.0f, 0.0f, 180.0f);
                     }
                 }
             }
