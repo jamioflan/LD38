@@ -158,10 +158,45 @@ public class RoomShape
         return walls;
     }
 
-        //public RoomDoor[] getDoors()
-        //{
-        //    RoomDoor[] doorList = new RoomDoor[];
-        //}
+    public RoomWall randomWall()
+    {
+        RoomWall[] walls = this.getWalls();
+        int numWalls = Utilities.nonNullLen<RoomWall>(walls);
+        Debug.Assert(numWalls > 0, "Rooms should have walls!");
+        int wallIndex = Random.Range(0, numWalls);
+        return walls[wallIndex];
+    }
+
+    public RoomWall randomUndooredWall()
+    {
+        RoomWall[] walls = this.getWalls();
+        int numWalls = Utilities.nonNullLen<RoomWall>(walls);
+        Debug.Assert(numWalls > 0, "Rooms should have walls!");
+        bool allDoored = true;
+        for (int i = 0; i<numWalls; i++)
+        {
+            if (walls[i].door == null)
+            {
+                allDoored = false;
+                break;
+            }
+        }
+        if (allDoored) return null;
+        int loopsDone = 0;
+        int wallIndex = 0;
+        do
+        {
+            wallIndex = Random.Range(0, numWalls);
+            if (walls[wallIndex].door == null) break;
+        } while (loopsDone++ < 1000);
+        Debug.Assert(loopsDone < 1000, "Infinite loop detected");
+        return walls[wallIndex];
+    }
+
+    //public RoomDoor[] getDoors()
+    //{
+    //    RoomDoor[] doorList = new RoomDoor[];
+    //}
 
 
 }

@@ -135,6 +135,7 @@ public class RoomController : MonoBehaviour
             }
             this.roomShapes[i] = roomShape;
         }
+
         for (int i = 0; i < num; i++)
         {
             foreach (RoomBlock block in this.roomShapes[i].matrix)
@@ -271,6 +272,47 @@ public class RoomController : MonoBehaviour
             // }
         }
         this.nextLayout = attemptLayout;
+
+        for (int i =0; i<this.roomsInUse; i++)
+        {
+            RoomWall[] walls = this.roomShapes[i].getWalls();
+            foreach (RoomWall w in walls)
+            {
+                if (w != null)
+                {
+                    w.door = null;
+                }
+            }
+        }
+        
+        bool[] inTree = new bool[this.roomsInUse];
+        for (int i = 0; i < this.roomsInUse - 1; i++)
+        {
+            int loopsDone = 0;
+            do
+            {
+                int v1;
+                int v2;
+                do
+                {
+                    v1 = Random.Range(0, this.roomsInUse);
+                    v2 = Random.Range(0, this.roomsInUse);
+                } while (i > 0 && (inTree[v1] || !inTree[v2]));
+                RoomWall w1 = this.roomShapes[v1].randomUndooredWall();
+                RoomWall w2 = this.roomShapes[v2].randomUndooredWall();
+                if (w1 == null) continue;
+                if (w2 == null) continue;
+                w1.door = new RoomDoor(w1);
+                w2.door = new RoomDoor(w2);
+                w1.door.leadsTo = w2.door;
+                w2.door.leadsTo = w1.door;
+                inTree[v1] = true;
+                inTree[v2] = true;
+                break;
+            } while (loopsDone++ < 1000);
+            Debug.Assert(loopsDone < 1000, "Infinite Loop!");
+        }
+
     }
 
     private int getLayoutNiceness(PositionedRoom[] layout)
