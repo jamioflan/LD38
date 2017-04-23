@@ -14,42 +14,46 @@ public class Entity : MonoBehaviour
         LUNGE,
     }
 
-    public AnimState animState = AnimState.IDLE;
+    protected AnimState animState = AnimState.IDLE;
     public float attackAnimTimer = 0.0f;
     public float attackAnimDuration = 0.0f;
-    public float animTimer = 0.0f;
+    protected float animTimer = 0.0f;
     public float animScale = 1.0f;
     public float animSpeed = 1.0f;
 
     public bool isPlayer = false;
 	public bool isBoss = false;
-	public float bleedtimer = 0;
+    protected float bleedtimer = 0;
     public Attack[] attacks;
-    public int currentAttack;
+    protected int currentAttack;
     public float maxHealth = 10.0f;
     public float health = 10.0f;
     public float healthRegenRate = 0.0f;
 	public float bleedRate = 2.0f;
     public float moveSpeed = 1.0f;
     public int XP = 0;
-	public float timeSinceLastBleed = 0F;
+    protected float timeSinceLastBleed = 0F;
 	public float knockback = 1F;
 
-    public int facing = 0;
+    protected float attackMoveTimer = 0.0f;
+    protected Vector2 attackMoveVector = Vector2.zero;
+
+
+    protected int facing = 0;
     public SpriteRenderer body;
     public Transform leftHand, rightHand;
     public Sprite[] directionalSprites = new Sprite[4];
 
 	public BloodSplatter splatterPrefab;
 
-    public DungeonPiece currentRoom;
+    protected DungeonPiece currentRoom;
 
     public DamageNumbers damageNumbersPrefab;
 
     public float maxInvulnerabilityCooldown = 1.0f;
     public float invulnerabilityCooldown = 1.0f;
 
-    public Rigidbody2D rb;
+    protected Rigidbody2D rb;
 
     public Vector2 crosshair;
 
@@ -262,6 +266,12 @@ public class Entity : MonoBehaviour
         {
             attacks[currentAttack].TryToUse(attackMode, transform.position, (Vector3)crosshair - transform.position);
         }
+    }
+
+    public void SetAttackMoveVector(Vector2 moveDir, float duration)
+    {
+        attackMoveTimer = duration;
+        attackMoveVector = moveDir;
     }
 
     public virtual void Damage(Attack attack)

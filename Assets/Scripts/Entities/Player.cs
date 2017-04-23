@@ -8,6 +8,7 @@ public class Player : Entity
 
     public bool switchWeapon = false, switchWeaponLast = false;
 
+
     public Transform crosshairObject;
 
     public override void Awake()
@@ -26,6 +27,18 @@ public class Player : Entity
         Rigidbody2D rigidBody = GetComponent<Rigidbody2D>();
 
         Vector2 move = new Vector2(Input.GetAxis("Horizontal"), Input.GetAxis("Vertical"));
+
+        if (attackMoveTimer > 0.0f)
+        {
+            attackMoveTimer -= Time.fixedDeltaTime;
+            move = attackMoveVector;
+
+            if (attackMoveTimer <= 0.0f)
+            {
+                // Move ended
+                attacks[currentAttack].AttackMoveEnded();
+            }
+        }
 
 		if (bleedtimer > 0)
 		{

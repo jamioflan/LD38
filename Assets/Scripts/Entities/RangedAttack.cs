@@ -24,4 +24,9 @@ public class RangedAttack : Attack
 	{
 		return parent.getRangedDamageMultiplier();
 	}
+
+    public override void AttackMoveEnded()
+    {
+
+    }
 }
