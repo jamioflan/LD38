@@ -5,7 +5,7 @@ using UnityEngine;
 public class RangedAttack : Attack
 {
     public Projectile projectile;
-    public float attackMoveDuration = 1.0f;
+    public float attackMoveDuration = 0.3f;
     public float multiShotSpread = 15.0f;
 
 

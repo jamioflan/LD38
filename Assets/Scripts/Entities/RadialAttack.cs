@@ -7,7 +7,7 @@ public class RadialAttack : Attack {
     public float range = 1.0f;
     public float basehalfarc = Mathf.PI / 2;
 	public Projectile projectile;
-    public float attackMoveDuration = 1.0f;
+    public float attackMoveDuration = 0.3f;
 
     public override void Use(int attackMode, Vector2 pos, Vector2 aim)
     {
