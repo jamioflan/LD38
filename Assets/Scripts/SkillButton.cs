@@ -45,16 +45,23 @@ public class SkillButton : MonoBehaviour, IPointerEnterHandler, IPointerExitHand
     public void OnClick()
     {
         // Check if it's available and we can afford it
-        if (upgrade.isAvailableToUnlock() && upgrade.canAfford())
+        if (upgrade.isAvailableToUnlock())
         {
-			upgrade.grant(Game.thePlayer);
-
-            foreach (Image link in linksFromDependencies)
+            if( upgrade.canAfford())
             {
-                link.gameObject.SetActive(true);
-            }
+                upgrade.grant(Game.thePlayer);
 
-            skillOwnedImage.SetActive(true);
+                foreach (Image link in linksFromDependencies)
+                {
+                    link.gameObject.SetActive(true);
+                }
+
+                skillOwnedImage.SetActive(true);
+            }
+			else
+            {
+                Game.theSkillTreeManager.FlashXPRed();
+            }
         }
     }
 
