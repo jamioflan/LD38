@@ -16,10 +16,8 @@ public class SkillTree_Manager : MonoBehaviour
 		
 	}
 
-    public void OnClick(GameObject upgradeObject)
+    public static void OnClick(Upgrade upgrade)
     {
-        Upgrade upgrade = upgradeObject.GetComponent<Upgrade>();
-
         // Check if it's available and we can afford it
         if (upgrade.isAvailableToUnlock() && upgrade.canAfford())
         {
