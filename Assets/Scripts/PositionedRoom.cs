@@ -125,28 +125,28 @@ public class PositionedRoom
 
     public void calculateBounds()
     {
-        if (this.rotation % 4 == 0)
+        if (this.rotation == 0)
         {
             this.bounds.minX = this.room.bounds.minX;
             this.bounds.minY = this.room.bounds.minY;
             this.bounds.maxX = this.room.bounds.maxX;
             this.bounds.maxY = this.room.bounds.maxY;
         }
-        if (this.rotation % 4 == 1)
+        if (this.rotation == 1)
         {
             this.bounds.minX = 0-this.room.bounds.maxY;
             this.bounds.minY = this.room.bounds.minX;
-            this.bounds.maxX = 0-this.room.bounds.maxY;
-            this.bounds.maxY = this.room.bounds.minY;
+            this.bounds.maxX = 0-this.room.bounds.minY;
+            this.bounds.maxY = this.room.bounds.maxY;
         }
-        if (this.rotation % 4 == 2)
+        if (this.rotation == 2)
         {
             this.bounds.minX = 0-this.room.bounds.maxX;
             this.bounds.minY = 0-this.room.bounds.maxY;
             this.bounds.maxX = 0-this.room.bounds.minX;
             this.bounds.maxY = 0-this.room.bounds.minY;
         }
-        if (this.rotation % 4 == 3)
+        if (this.rotation == 3)
         {
             this.bounds.minX = this.room.bounds.minY;
             this.bounds.minY = 0-this.room.bounds.maxX;

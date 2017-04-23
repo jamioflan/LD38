@@ -7,7 +7,7 @@ public class RoomController : MonoBehaviour
 {
     public static RoomController instance;
 
-    public static readonly int MAX_ROOMS = 3;
+    public static readonly int MAX_ROOMS = 10;
 
     public static readonly int G_LAYOUT_IT = 3; // The number of attempts the algorithm makes at generating a good layout
     public static readonly int G_SHAPE_POS_IT = 100; // The number of attempts the generation algorithm makes when placing a shape
@@ -38,6 +38,10 @@ public class RoomController : MonoBehaviour
         }
         if (Input.GetKeyDown(KeyCode.T))
         {
+            foreach (PositionedRoom r in this.currentLayout)
+            {
+                r.calculateBounds();
+            }
             Debug.Log(""+this.getLayoutIslands(this.currentLayout));
             RoomBlock[,] matrix = this.getLayoutBlockMatrix(this.currentLayout);
             for (int y = Grid.instance.height-1; y >= 0 ; y--)
@@ -159,10 +163,14 @@ public class RoomController : MonoBehaviour
         PositionedRoom posRoomB = new PositionedRoom(this.goldRoomB);
         DungeonPiece pieceA = Instantiate<DungeonPiece>(pieceTemplate);
         DungeonPiece pieceB = Instantiate<DungeonPiece>(pieceTemplate);
+        pieceA.transform.SetParent(transform);
+        pieceB.transform.SetParent(transform);
         pieceA.positionedRoom = posRoomA;
         pieceB.positionedRoom = posRoomB;
         this.goldRoomA.dungeonPiece = pieceA;
         this.goldRoomB.dungeonPiece = pieceB;
+        
+        
     }
 
     public void generateNextLayout()
@@ -183,10 +191,10 @@ public class RoomController : MonoBehaviour
         attemptLayout[1].pos = new Grid.Position(Grid.instance.width-GoldRoomShape.WIDTH, 0);
         for (int j = 0; j < G_LAYOUT_IT; j++)
         {
-            for (int i = 0; i < this.numRooms; i++)
-            {
-                attemptLayout[i].pos = null;
-            }
+            //for (int i = 0; i < this.numRooms; i++)
+            //{
+            //    attemptLayout[i].pos = null;
+            //}
             foreach (int complexity in complexities)
             {
                 foreach (int index in shuffledIndicies)
@@ -195,26 +203,27 @@ public class RoomController : MonoBehaviour
                     {
                         PositionedRoom positionedRoom = attemptLayout[index];
                         int bestNiceness;
+                        PositionedRoomSkel bestshapePos;
                         if (positionedRoom.pos == null)
                         {
                             bestNiceness = -1;
+                            bestshapePos = new PositionedRoomSkel(positionedRoom.pos, 0);
                         }
                         else
                         {
                             bestNiceness = this.getLayoutNiceness(attemptLayout);
+                            bestshapePos = new PositionedRoomSkel(positionedRoom.pos, positionedRoom.rotation);
                         }
                         int x;
                         int y;
                         int rotation;
                         Grid.Position pos;
-                        PositionedRoomSkel bestshapePos = new PositionedRoomSkel(positionedRoom.pos, 0);
                         for (int i = 0; i < G_SHAPE_POS_IT; i++)
                         {
                             int loopsDone = 0;
                             do
                             {
                                 rotation = Random.Range(0, 4);
-                                rotation = 0; // TODO
                                 positionedRoom.rotation = rotation;
                                 positionedRoom.calculateBounds();
                                 x = Random.Range(0 - positionedRoom.bounds.minX, Grid.instance.width - positionedRoom.bounds.maxX);
@@ -231,6 +240,7 @@ public class RoomController : MonoBehaviour
                                 bestshapePos.pos = pos;
                                 bestshapePos.rotation = rotation;
                                 bestNiceness = niceness;
+                                positionedRoom.createFromSkel(bestshapePos);
                             }
                         }
                         positionedRoom.createFromSkel(bestshapePos);
