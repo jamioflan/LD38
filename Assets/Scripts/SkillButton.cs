@@ -14,16 +14,30 @@ public class SkillButton : MonoBehaviour
 	void Start ()
     {
         upgrade = upgradeEntity.GetComponent<Upgrade>();
-	}
+
+        foreach (Image link in linksFromDependencies)
+        {
+            link.gameObject.SetActive(false);
+        }
+    }
 	
 	// Update is called once per frame
 	void Update ()
     {
-		
+
 	}
 
     public void OnClick()
     {
-        SkillTree_Manager.OnClick(upgrade);
+        // Check if it's available and we can afford it
+        if (upgrade.isAvailableToUnlock() && upgrade.canAfford())
+        {
+            upgrade.grant();
+
+            foreach (Image link in linksFromDependencies)
+            {
+                link.gameObject.SetActive(true);
+            }
+        }
     }
 }
