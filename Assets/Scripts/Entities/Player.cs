@@ -66,12 +66,19 @@ public class Player : Entity
         }
 
         switchWeaponLast = switchWeapon;
-        switchWeapon = Input.GetAxis("Jump") > 0;
+        switchWeapon = Input.GetAxis("Mouse ScrollWheel") > 0;
 
         if (switchWeapon && !switchWeaponLast)
         {
             SelectWeapon((currentAttack + 1) % 3);
         }
+			
+		switchWeapon = Input.GetAxis("Mouse ScrollWheel") < 0;
+
+		if (switchWeapon && !switchWeaponLast)
+		{
+			SelectWeapon((currentAttack + 2) % 3);
+		}
     }
 
     public void SelectWeapon(int weapon)
