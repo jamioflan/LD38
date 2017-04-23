@@ -195,6 +195,9 @@ public class RoomController : MonoBehaviour
                                 positionedRoom.pos = pos;
                                 positionedRoom.rotation = rotation;
                                 if (!positionedRoom.collides(attemptLayout)) break;
+                                positionedRoom.calculateBounds();
+                                if (positionedRoom.pos.x + positionedRoom.bounds.maxX >= Grid.instance.width) break;
+                                if (positionedRoom.pos.y + positionedRoom.bounds.maxY >= Grid.instance.height) break;
                             } while (loopsDone++ < 1000);
                             Debug.Assert(loopsDone < 1000, "Tried a lot of ways to position a shape; none of which worked. Hmmm.");
                             if (loopsDone >= 1000) continue;
