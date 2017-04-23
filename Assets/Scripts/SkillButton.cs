@@ -27,7 +27,18 @@ public class SkillButton : MonoBehaviour
 	// Update is called once per frame
 	void Update ()
     {
-
+        if( upgrade.isOwnedOrAvailableToUnlock() )
+        {
+            Color buttonColour = GetComponent<Image>().color;
+            buttonColour.a = 1.0f;
+            GetComponent<Image>().color = buttonColour;
+        }
+        else
+        {
+            Color buttonColour = GetComponent<Image>().color;
+            buttonColour.a = 0.2f;
+            GetComponent<Image>().color = buttonColour;
+        }
 	}
 
     public void OnClick()
