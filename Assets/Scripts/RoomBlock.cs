@@ -78,6 +78,8 @@ public class RoomWall
 
     public RoomDoor door;
 
+    public WallDoor wallDoor;
+
     public RoomWall(RoomBlock parent)
     {
         this.parentRoomBlock = parent;
