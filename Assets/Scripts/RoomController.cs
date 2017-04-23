@@ -293,7 +293,7 @@ public class RoomController : MonoBehaviour
                 {
                     v1 = Random.Range(0, this.roomsInUse);
                     v2 = Random.Range(0, this.roomsInUse);
-                } while (i > 0 && (inTree[v1] || !inTree[v2]));
+                } while (v1 == v2 || (i > 0 && (inTree[v1] || !inTree[v2])));
                 RoomWall w1 = this.roomShapes[v1].randomUndooredWall();
                 RoomWall w2 = this.roomShapes[v2].randomUndooredWall();
                 if (w1 == null) continue;
