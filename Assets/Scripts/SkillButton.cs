@@ -2,8 +2,9 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.EventSystems;
 
-public class SkillButton : MonoBehaviour
+public class SkillButton : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
 {
     public GameObject upgradeEntity;
     public List<Image> linksFromDependencies = new List<Image>();
@@ -55,5 +56,15 @@ public class SkillButton : MonoBehaviour
 
             skillOwnedImage.SetActive(true);
         }
+    }
+
+    public void OnPointerEnter( PointerEventData data )
+    {
+        Debug.Log("Entered");
+    }
+
+    public void OnPointerExit( PointerEventData data )
+    {
+        Debug.Log("Exited");
     }
 }
