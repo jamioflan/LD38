@@ -7,6 +7,7 @@ public class SkillButton : MonoBehaviour
 {
     public GameObject upgradeEntity;
     public List<Image> linksFromDependencies = new List<Image>();
+    public GameObject skillOwnedImage;
 
     Upgrade upgrade;
 
@@ -38,6 +39,8 @@ public class SkillButton : MonoBehaviour
             {
                 link.gameObject.SetActive(true);
             }
+
+            skillOwnedImage.SetActive(true);
         }
     }
 }
