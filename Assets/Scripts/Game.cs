@@ -15,6 +15,7 @@ public class Game : MonoBehaviour
 
     public GameState state = GameState.IN_MENUS;
     public float timeInState = 0.0f;
+    public float unscaledTimeInState = 0.0f;
     public float shiftTime = 3.0f;
 
     public static Player thePlayer = null;
@@ -33,6 +34,7 @@ public class Game : MonoBehaviour
 	void Update ()
     {
         timeInState += Time.deltaTime;
+        unscaledTimeInState += Time.unscaledDeltaTime;
         switch (state)
         {
             case GameState.IN_MENUS:              { ExecuteState_InMenus();          break; }
@@ -58,7 +60,7 @@ public class Game : MonoBehaviour
         // Check if we should open the skill tree menu
         // Be careful that a Tab press to close the skills menu doesn't immediately
         // open it again
-        if (timeInState > 0.1 && Input.GetAxis("Tab") > 0)
+        if (unscaledTimeInState > 0.1 && Input.GetAxisRaw("Tab") > 0)
         {
             SwitchToState(GameState.IN_INGAME_MENUS);
             menuHUD.SetActive(false);
@@ -74,14 +76,16 @@ public class Game : MonoBehaviour
         // Check if we should return to game
         // Allow Esc or Tab to close the menu, but be careful that the Tab press that opens
         // the menu doesn't close it again instantly.
-        if (Input.GetAxis("Cancel") > 0 || (timeInState > 0.1 && Input.GetAxis("Tab") > 0))
+        if (Input.GetAxisRaw("Cancel") > 0 || (unscaledTimeInState > 0.1 && Input.GetAxisRaw("Tab") > 0))
         {
             SwitchToState(GameState.IN_LEVEL);
             menuSkills.SetActive(false);
+            Time.timeScale = 1.0f;
         }
         else
         {
             menuSkills.SetActive(true);
+            Time.timeScale = 0.0f;
         }
     }
 
@@ -105,5 +109,6 @@ public class Game : MonoBehaviour
     {
         state = newState;
         timeInState = 0.0f;
+        unscaledTimeInState = 0.0f;
     }
 }
