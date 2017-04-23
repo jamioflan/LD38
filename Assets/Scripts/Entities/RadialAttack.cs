@@ -11,11 +11,18 @@ public class RadialAttack : Attack {
 
     public override void Use(int attackMode, Vector2 pos, Vector2 aim)
     {
-        switch(attackMode)
+        if (attackMode == 1 && !parent.hasUpgrade("meleePowerAttack"))
+            return;
+        if (attackMode == 2 && !parent.hasUpgrade("meleeAttackMove"))
+            return;
+
+        switch (attackMode)
         {
                 case 0: // ATTACK
+                case 2:
                 {
                     attackType = AttackType.MELEE;
+                    isPowerAttack = attackMode == 2;
 
                     foreach (Collider2D coll in Physics2D.OverlapCircleAll(pos, range))
                     {
@@ -28,7 +35,7 @@ public class RadialAttack : Attack {
                         }
                     }
 
-                    parent.SetAttackAnimState(parent.isPlayer ? Entity.AnimState.SWORD_SLASH : Entity.AnimState.LUNGE, animTime);
+                    parent.SetAttackAnimState(parent.isPlayer ? Entity.AnimState.SWORD_SLASH : Entity.AnimState.LUNGE, animTime * (isPowerAttack ? powerAttackSpeedModifier : 1.0f));
 
                     if (parent.hasUpgrade("meleeRangedMultiattack"))
                     {
@@ -77,7 +84,7 @@ public class RadialAttack : Attack {
 
     public override float getDamageMultiplier()
 	{
-		return parent.getMeleeDamageMultiplier();
+		return parent.getMeleeDamageMultiplier() * (isPowerAttack ? powerAttackDamageModifier : 1);
 	}
 
     public override void AttackMoveEnded()
