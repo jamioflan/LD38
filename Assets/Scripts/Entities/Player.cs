@@ -104,7 +104,8 @@ public class Player : Entity
 		if (hasUpgrade ("magicIncreasedDistance"))
 		{
 			multiplier = multiplier * 1.5F;
-			if (hasUpgrade ("magicResidue")) {
+			if (hasUpgrade ("magicResidue"))
+			{
 				multiplier = multiplier * 2F;
 			}
 		}

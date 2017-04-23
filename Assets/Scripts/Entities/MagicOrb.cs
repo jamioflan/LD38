@@ -6,7 +6,7 @@ public class MagicOrb : MonoBehaviour
 {
     public float speed = 1.0f;
 
-    public float timeToDeath = 5.5f;
+    public float timeToDeath = 0.6f;
 
     private Rigidbody2D rb;
     private SpriteRenderer sr;
@@ -14,6 +14,7 @@ public class MagicOrb : MonoBehaviour
     public float aoeRange = 0.1f;
     public float aoeInterval = 1.0f;
     public float timeSinceLastAOE = 0.0f;
+	public float decaySpeed = 0.9F;
 
     public Attack attack;
 
@@ -27,7 +28,7 @@ public class MagicOrb : MonoBehaviour
     // Update is called once per frame
     void FixedUpdate()
     {
-        speed *= 0.90f;
+		speed *= decaySpeed;
         rb.velocity = transform.up * speed;
 
         if (Random.Range(0, 30) == 0)
@@ -54,24 +55,5 @@ public class MagicOrb : MonoBehaviour
                 }
             }
         }
-    }
-
-    private void OnCollisionEnter2D(Collision2D collision)
-    {
-        Entity entity = collision.gameObject.GetComponent<Entity>();
-        if (entity == attack.parent)
-        {
-            return;
-        }
-        if (entity != null)
-        {
-            entity.Damage(attack);
-        }
-
-        //collision.contacts[0].normal;
-
-        speed = 0.0f;
-        rb.constraints = RigidbodyConstraints2D.FreezeAll;
-        timeToDeath = 1.0f;
     }
 }
