@@ -340,6 +340,8 @@ public class RoomController : MonoBehaviour
         int minY = Grid.instance.height;
         int maxX = 0;
         int maxY = 0;
+        int totalX = 0;
+        //int totalY = 0;
         int numBlocks = 0;
         foreach (PositionedRoom positionedRoom in layout)
         {
@@ -354,10 +356,14 @@ public class RoomController : MonoBehaviour
                 if (absMinY < minY) minY = absMinY;
                 if (absMaxX > maxX) maxX = absMaxX;
                 if (absMaxY > maxY) maxY = absMaxY;
+                totalX += positionedRoom.pos.x;
+                //totalY += positionedRoom.pos.y;
                 numBlocks += positionedRoom.room.getNumBlocks();
             }
         }
         float numIslands = getLayoutIslands(layout);
+        float avgX =  (float)totalX / (float)(numBlocks * Grid.instance.width);
+        //float avgY = (float)totalY / (float)(numBlocks * Grid.instance.height);
         float nf = 100f * (float)numBlocks / (float)((maxX - minX + 1) * (maxX - minX + 1) + (maxY - minY + 1) * (maxY - minY + 1)) / numIslands;
         return Mathf.FloorToInt(nf);
 
