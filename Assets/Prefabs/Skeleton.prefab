@@ -21,8 +21,8 @@ GameObject:
   - component: {fileID: 4015444053682740}
   - component: {fileID: 114362276845198918}
   - component: {fileID: 50183374662468798}
-  - component: {fileID: 58622134613606956}
   - component: {fileID: 82294719056193600}
+  - component: {fileID: 70621653562626532}
   m_Layer: 9
   m_Name: Skeleton
   m_TagString: Untagged
@@ -102,7 +102,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1079751474151602}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 85.86407, y: -5.8555923, z: 0}
+  m_LocalPosition: {x: -62.32262, y: -9.879082, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4828953695646320}
@@ -184,8 +184,8 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 4
---- !u!58 &58622134613606956
-CircleCollider2D:
+--- !u!70 &70621653562626532
+CapsuleCollider2D:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
@@ -196,9 +196,9 @@ CircleCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: -0.26}
-  serializedVersion: 2
-  m_Radius: 0.24
+  m_Offset: {x: 0, y: 0}
+  m_Size: {x: 0.5, y: 1}
+  m_Direction: 0
 --- !u!82 &82060976092540230
 AudioSource:
   m_ObjectHideFlags: 1
