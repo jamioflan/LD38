@@ -236,19 +236,23 @@ public class Game : MonoBehaviour
         
         foreach (RoomShape shape in RoomController.instance.roomShapes)
         {
-            int XPForRoom = (level + 1) * 20 * shape.getWidth() * shape.getHeight();
-            while(XPForRoom > 0)
+            int XPForRoom = (level + 1) * 10 * shape.getWidth() * shape.getHeight();
+            int attempts = 3;
+            while(XPForRoom > 0 && attempts > 0)
             {
                 int iRet = Random.Range(0, enemies.Length);
                 Enemy enemy = enemies[iRet];
                 if (enemy.XP > XPForRoom)
-                    break;
+                {
+                    attempts--;
+                    continue;
+                }
 
                 XPForRoom -= enemy.XP;
 
                 Enemy spawn = Instantiate<Enemy>(enemy);
-                enemy.gameObject.SetActive(false);
-                shape.dungeonPiece.pendingEnemies.Add(enemy);
+                spawn.gameObject.SetActive(false);
+                shape.dungeonPiece.pendingEnemies.Add(spawn);
 
             }
         }
