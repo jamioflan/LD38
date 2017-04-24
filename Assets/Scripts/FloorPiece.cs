@@ -13,8 +13,12 @@ public class FloorPiece : MonoBehaviour {
 	}
 	
 	// Update is called once per frame
-	void Update () {
-		
+	void Update ()
+	{
+		if (Game.thePlayer.hasUpgrade("magicRangedFarsight"))
+		{
+			SetHidden(0);
+		}
 	}
 
     private void OnTriggerEnter2D(Collider2D collision)
@@ -57,8 +61,6 @@ public class FloorPiece : MonoBehaviour {
                     partialBlocker.SetActive(false);
                     break;
                 }
-
-
         }
     }
 }

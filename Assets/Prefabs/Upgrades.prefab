@@ -1169,7 +1169,7 @@ MonoBehaviour:
   dependencies:
   - {fileID: 114909496879923664}
   - {fileID: 114736874784427940}
-  description: See the Next Room
+  description: See the Whole Dungeon
   cost: 300
 --- !u!114 &114540643633314532
 MonoBehaviour:

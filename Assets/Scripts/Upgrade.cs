@@ -88,13 +88,13 @@ public class Upgrade : MonoBehaviour {
 			switch (this.name)
 			{
 				case "meleeIncreasedHealth":
-					Game.thePlayer.maxHealth = 1.5F * Game.thePlayer.maxHealth;
+					entity.maxHealth = 1.5F * entity.maxHealth;
 					break;
 				case "magicIncreasedRegeneration":
-					Game.thePlayer.healthRegenRate = 2F * Game.thePlayer.healthRegenRate;
+					entity.healthRegenRate = 2F * entity.healthRegenRate;
 					break;
 				case "rangedIncreasedSpeed":
-					Game.thePlayer.moveSpeed = 1.5F * Game.thePlayer.moveSpeed;
+					entity.moveSpeed = 1.5F * entity.moveSpeed;
 					break;
 			}
         }
