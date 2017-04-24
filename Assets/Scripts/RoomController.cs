@@ -66,6 +66,13 @@ public class RoomController : MonoBehaviour
         this.levelPolarity = false;
     }
 
+    public void beginLevel()
+    {
+        generateShapes(MAX_ROOMS);
+        this.generateNextLayout();
+        this.updateToNextLayout();
+    }
+
     public void advanceLevel()
     {
         this.roomsInUse += ADVANCE_NEW_ROOMS;
@@ -84,7 +91,7 @@ public class RoomController : MonoBehaviour
     public PositionedRoom getEndRoom()
     {
         if (this.levelPolarity) return this.currentLayout[1];
-        else return this.currentLayout[2];
+        else return this.currentLayout[0];
     }
 
     private RoomShape createShape()

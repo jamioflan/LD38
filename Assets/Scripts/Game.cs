@@ -195,12 +195,20 @@ public class Game : MonoBehaviour
 
     public void OnPressStart()
     {
-        RoomController.instance.generateShapes(RoomController.MAX_ROOMS);
-        StartNextLevel();
+        SwitchToState(GameState.IN_LEVEL);
+
+        // Give the player max health again
+        thePlayer.health = thePlayer.maxHealth;
+
+        RoomController.instance.beginLevel();
+        generateMonsters(thePlayer.upgrades.Count);
     }
 
     private void StartNextLevel()
     {
+
+        flipBoss = !flipBoss;
+
         SwitchToState(GameState.IN_LEVEL);
 
         // Give the player max health again
@@ -212,7 +220,6 @@ public class Game : MonoBehaviour
         RoomController.instance.advanceLevel();
         generateMonsters(thePlayer.upgrades.Count);
 
-        flipBoss = !flipBoss;
     }
 
 

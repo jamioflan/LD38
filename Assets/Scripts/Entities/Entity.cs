@@ -292,8 +292,6 @@ public class Entity : MonoBehaviour
         }
         if(invulnerabilityCooldown <= 0.0f && health > 0)
         {
-            // Play Sound
-            GetComponent<AudioSource>().Play();
 
             // Do damage;
 			float fDamage = Random.Range(attack.minDamage, attack.maxDamage) * attack.getDamageMultiplier();
