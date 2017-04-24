@@ -112,7 +112,16 @@ public class RoomController : MonoBehaviour
         {
             if (posRoom != null && posRoom.room.dungeonPiece != null)
             {
+                
+
+                Transform[] forms = posRoom.room.dungeonPiece.GetComponentsInChildren<Transform>();
+                foreach (Transform transform in forms)
+                {
+                    Destroy(transform.gameObject);
+                }
+
                 Destroy(posRoom.room.dungeonPiece);
+
                 DungeonPiece newPiece = Instantiate<DungeonPiece>(pieceTemplate);
                 newPiece.positionedRoom = posRoom;
                 newPiece.transform.SetParent(transform);
