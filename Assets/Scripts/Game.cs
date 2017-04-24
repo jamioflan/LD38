@@ -93,6 +93,7 @@ public class Game : MonoBehaviour
     private void EnterState_InMenus()
     {
         menuStart.SetActive(true);
+        menuHUD.SetActive(false);
         Time.timeScale = 0.0f;
     }
 
