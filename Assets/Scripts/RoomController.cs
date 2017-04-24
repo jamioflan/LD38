@@ -1,5 +1,4 @@
-﻿using System;
-using System.Collections;
+﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -15,9 +14,10 @@ public class RoomController : MonoBehaviour
 
     public static readonly int START_ROOMS = 7;
     public static readonly int ADVANCE_NEW_ROOMS = 2;
-    public static readonly int EXTRA_DOOR_LINKS_P = 1; // The number of extra door links to add per room, in addition to the base connecting links. 
+    public static readonly float EXTRA_DOOR_LINKS_P = 1.0f; // The number of extra door links to add per room, in addition to the base connecting links. 
 
     public int roomsInUse;
+    public bool levelPolarity;
 
     public RoomShape[] roomShapes;
     public GoldRoomShape goldRoomA;
@@ -63,14 +63,28 @@ public class RoomController : MonoBehaviour
     public RoomController()
     {
         this.roomsInUse = START_ROOMS;
+        this.levelPolarity = false;
     }
 
     public void advanceLevel()
     {
         this.roomsInUse += ADVANCE_NEW_ROOMS;
         if (this.roomsInUse > MAX_ROOMS) this.roomsInUse = MAX_ROOMS;
+        this.levelPolarity = !this.levelPolarity;
         this.generateNextLayout();
         this.updateToNextLayout();
+    }
+
+    public PositionedRoom getStartRoom()
+    {
+        if (this.levelPolarity) return this.currentLayout[0];
+        else return this.currentLayout[1];
+    }
+
+    public PositionedRoom getEndRoom()
+    {
+        if (this.levelPolarity) return this.currentLayout[1];
+        else return this.currentLayout[2];
     }
 
     private RoomShape createShape()
@@ -282,52 +296,103 @@ public class RoomController : MonoBehaviour
                 }
             }
         }
-        
-        bool[] inTree = new bool[this.roomsInUse];
-        for (int i = 0; i < this.roomsInUse - 1; i++)
+
+        if (this.roomsInUse > 3)
+        {
+            bool[] inTree = new bool[this.roomsInUse];
+            for (int i = 0; i < this.roomsInUse - 3; i++)
+            {
+                int loopsDone = 0;
+                do
+                {
+                    int v1;
+                    int v2;
+                    do
+                    {
+                        v1 = Random.Range(2, this.roomsInUse);
+                        v2 = Random.Range(2, this.roomsInUse);
+                    } while (v1 == v2 || (i > 0 && (inTree[v1] || !inTree[v2])));
+                    RoomWall w1 = this.roomShapes[v1].randomUndooredWall();
+                    RoomWall w2 = this.roomShapes[v2].randomUndooredWall();
+                    if (w1 == null) continue;
+                    if (w2 == null) continue;
+                    w1.door = new RoomDoor(w1);
+                    w2.door = new RoomDoor(w2);
+                    w1.door.leadsTo = w2.door;
+                    w2.door.leadsTo = w1.door;
+                    inTree[v1] = true;
+                    inTree[v2] = true;
+                    break;
+                } while (loopsDone++ < 1000);
+                Debug.Assert(loopsDone < 1000, "Infinite Loop!");
+            }
+        }
+
+        // TODO Prevent the boss room from getting extra links
+        int newLinks = Mathf.FloorToInt(EXTRA_DOOR_LINKS_P * (this.roomsInUse - 2));
+        for (int i = 0; i < newLinks; i++)
         {
             int loopsDone = 0;
             do
             {
-                int v1;
-                int v2;
-                do
-                {
-                    v1 = UnityEngine.Random.Range(0, this.roomsInUse);
-                    v2 = UnityEngine.Random.Range(0, this.roomsInUse);
-                } while (v1 == v2 || (i > 0 && (inTree[v1] || !inTree[v2])));
+                int v1 = Random.Range(2, this.roomsInUse);
+                int v2 = Random.Range(2, this.roomsInUse);
                 RoomWall w1 = this.roomShapes[v1].randomUndooredWall();
                 RoomWall w2 = this.roomShapes[v2].randomUndooredWall();
                 if (w1 == null) continue;
                 if (w2 == null) continue;
+                if (w1 == w2) continue;
                 w1.door = new RoomDoor(w1);
                 w2.door = new RoomDoor(w2);
                 w1.door.leadsTo = w2.door;
                 w2.door.leadsTo = w1.door;
-                inTree[v1] = true;
-                inTree[v2] = true;
                 break;
             } while (loopsDone++ < 1000);
             Debug.Assert(loopsDone < 1000, "Infinite Loop!");
         }
 
-        // TODO Prevent the boss room from getting extra links
-        for (int i = 0; i < EXTRA_DOOR_LINKS_P * this.roomsInUse; i++)
+        for (int i=0; i<4; i++)
         {
+            RoomWall roomAWall = null;
+            RoomWall roomBWall = null;
+            if (i == 0)
+            {
+                roomAWall = this.goldRoomA.matrix[1, 2].walls[0];
+                roomBWall = this.goldRoomB.matrix[1, 2].walls[0];
+            }
+            else if (i == 1)
+            {
+                roomAWall = this.goldRoomA.matrix[0, 1].walls[1];
+                roomBWall = this.goldRoomB.matrix[0, 1].walls[1];
+            }
+            else if (i == 2)
+            {
+                roomAWall = this.goldRoomA.matrix[1, 0].walls[2];
+                roomBWall = this.goldRoomB.matrix[1, 0].walls[2];
+            }
+            else if (i == 3)
+            {
+                roomAWall = this.goldRoomA.matrix[2, 1].walls[3];
+                roomBWall = this.goldRoomB.matrix[2, 1].walls[3];
+            }
+            roomAWall.door = new RoomDoor(roomAWall);
+            roomBWall.door = new RoomDoor(roomBWall);
             int loopsDone = 0;
             do
             {
-                int v1 = UnityEngine.Random.Range(2, this.roomsInUse);
-                int v2 = UnityEngine.Random.Range(2, this.roomsInUse);
-                if (v1 == v2) continue;
+                int v1 = Random.Range(2, this.roomsInUse);
+                int v2 = Random.Range(2, this.roomsInUse);
                 RoomWall w1 = this.roomShapes[v1].randomUndooredWall();
                 RoomWall w2 = this.roomShapes[v2].randomUndooredWall();
                 if (w1 == null) continue;
                 if (w2 == null) continue;
+                if (w1 == w2) continue;
                 w1.door = new RoomDoor(w1);
                 w2.door = new RoomDoor(w2);
-                w1.door.leadsTo = w2.door;
-                w2.door.leadsTo = w1.door;
+                w1.door.leadsTo = roomAWall.door;
+                w2.door.leadsTo = roomBWall.door;
+                roomAWall.door.leadsTo = w1.door;
+                roomBWall.door.leadsTo = w2.door;
                 break;
             } while (loopsDone++ < 1000);
             Debug.Assert(loopsDone < 1000, "Infinite Loop!");

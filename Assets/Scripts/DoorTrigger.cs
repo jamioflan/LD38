@@ -24,6 +24,8 @@ public class DoorTrigger : MonoBehaviour
         {
             collision.gameObject.GetComponent<Entity>().isInDoorway = true;
             collision.gameObject.GetComponent<Entity>().doorTrigger = this;
+
+            HUD_Manager.instance.ShowDoorPrompt(roomWall.door.myTrigger.exitPoint.position);
         }
     }
 
@@ -33,6 +35,8 @@ public class DoorTrigger : MonoBehaviour
         {
             collision.gameObject.GetComponent<Entity>().isInDoorway = false;
             collision.gameObject.GetComponent<Entity>().doorTrigger = null;
+
+            HUD_Manager.instance.HideDoorPrompt();
         }
     }
 

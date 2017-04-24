@@ -11,7 +11,7 @@ public class DungeonPiece : MonoBehaviour {
     public Transform cornerTemplate, wallTemplate, doorTemplate;
     public FloorPiece floorTemplate;
 
-    private List<FloorPiece> floorPieces = new List<FloorPiece>();
+    public List<FloorPiece> floorPieces = new List<FloorPiece>();
 
     public WallDoor wallDoorTemplate;
 
