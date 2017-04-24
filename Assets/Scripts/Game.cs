@@ -6,6 +6,9 @@ using UnityEngine.SceneManagement;
 
 public class Game : MonoBehaviour
 {
+
+    public static Game instance;
+
     public enum GameState
     {
         IN_MENUS,
@@ -29,8 +32,8 @@ public class Game : MonoBehaviour
     public GameObject menuEndGame;
     public GameObject menuEndSuccess;
     public GameObject menuEndFailure;
-    public GameObject mainMusic;
-    public GameObject bossMusic;
+    public AudioSource mainMusic;
+    public AudioSource bossMusic;
 
 
     public Enemy[] enemies;
@@ -42,7 +45,7 @@ public class Game : MonoBehaviour
 	// Use this for initialization
 	void Start ()
     {
-
+        instance = this;
     }
 	
 	// Update is called once per frame
@@ -200,6 +203,8 @@ public class Game : MonoBehaviour
         // Give the player max health again
         thePlayer.health = thePlayer.maxHealth;
 
+        this.mainMusic.Play();
+
         RoomController.instance.beginLevel();
         generateMonsters(thePlayer.upgrades.Count);
     }
@@ -213,6 +218,9 @@ public class Game : MonoBehaviour
 
         // Give the player max health again
         thePlayer.health = thePlayer.maxHealth;
+
+        this.bossMusic.Stop();
+        this.mainMusic.Play();
 
         // Set new start and end nodes
 

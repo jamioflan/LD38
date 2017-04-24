@@ -144,7 +144,7 @@ public class Entity : MonoBehaviour
 
         animTimer += Time.deltaTime * animSpeed;
 
-        body.transform.localPosition = new Vector3(0.0f, Mathf.Sin(-2.0f * animTimer), 0.0f) * 0.01f * animScale;
+        if (body != null) body.transform.localPosition = new Vector3(0.0f, Mathf.Sin(-2.0f * animTimer), 0.0f) * 0.01f * animScale;
         attackAnimTimer += Time.deltaTime;
 
         float fParametric = attackAnimTimer / attackAnimDuration;
@@ -263,7 +263,7 @@ public class Entity : MonoBehaviour
 
     protected void SetFacing(int dir)
     {
-        if (attackAnimTimer > attackAnimDuration && health > 0)
+        if (attackAnimTimer > attackAnimDuration && health > 0 && body != null)
         {
             facing = dir;
             body.sprite = directionalSprites[dir];

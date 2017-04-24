@@ -44,6 +44,8 @@ public class Boss : MonoBehaviour
     public void ActivateBoss()
     {
         active = true;
+        Game.instance.mainMusic.Stop();
+        Game.instance.bossMusic.Play();
         SwapEyes();
     }
 
