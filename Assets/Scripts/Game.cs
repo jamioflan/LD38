@@ -207,6 +207,7 @@ public class Game : MonoBehaviour
     }
 
     public Enemy[] enemies;
+    public Boss boss;
 
     public void generateMonsters(int level)
     {
@@ -227,6 +228,9 @@ public class Game : MonoBehaviour
                 spawn.transform.position = location.transform.position + (Vector3)Random.insideUnitCircle;
             }
         }
+
+        Boss bspawn = Instantiate<Boss>(boss);
+        bspawn.transform.position = RoomController.instance.goldRoomB.dungeonPiece.transform.position + new Vector3(1.5f, 1.5f, 0.0f);
 
     }
 }
