@@ -55,12 +55,16 @@ MonoBehaviour:
     room:
       dungeonPiece: {fileID: 0}
     rotation: 0
-  floorTemplate: {fileID: 4738101890171636, guid: 515d50f16b0019044b1af30552753cc5,
-    type: 2}
+    pos:
+      x: 0
+      y: 0
   cornerTemplate: {fileID: 4738101890171636, guid: 21f7dd8e5b95e4d4f89786110909cb72,
     type: 2}
   wallTemplate: {fileID: 4738101890171636, guid: 130ce18b7e4a4c74c81a4beedea8e7c8,
     type: 2}
   doorTemplate: {fileID: 4738101890171636, guid: 01b55a4d0d098924b9465ff14993fc94,
     type: 2}
+  floorTemplate: {fileID: 114952734519035824, guid: 515d50f16b0019044b1af30552753cc5,
+    type: 2}
+  wallDoorTemplate: {fileID: 0}
   complexity: 0

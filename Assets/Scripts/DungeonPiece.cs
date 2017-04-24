@@ -8,7 +8,10 @@ public class DungeonPiece : MonoBehaviour {
     public static readonly float wallOffsetTiles = 0.0f;//0.05f;
 
     public PositionedRoom positionedRoom;
-    public Transform floorTemplate, cornerTemplate, wallTemplate, doorTemplate;
+    public Transform cornerTemplate, wallTemplate, doorTemplate;
+    public FloorPiece floorTemplate;
+
+    private List<FloorPiece> floorPieces = new List<FloorPiece>();
 
     public WallDoor wallDoorTemplate;
 
@@ -24,6 +27,30 @@ public class DungeonPiece : MonoBehaviour {
 	void Update ()
     {
         updatePiece();
+    }
+
+    public int inRoomCount = 0;
+    public void EnteredRoom()
+    {
+        if (inRoomCount == 0)
+        {
+            foreach(FloorPiece floor in floorPieces)
+            {
+                floor.SetHidden(0);
+            }
+        }
+        inRoomCount++;
+    }
+    public void ExitedRoom()
+    {
+        inRoomCount--;
+        if (inRoomCount == 0)
+        {
+            foreach (FloorPiece floor in floorPieces)
+            {
+                floor.SetHidden(2);
+            }
+        }
     }
 
     public void updatePiece()
@@ -61,9 +88,11 @@ public class DungeonPiece : MonoBehaviour {
             {
                 if(positionedRoom.room.matrix[i,j] != null)
                 {
-                    Transform floor = Instantiate<Transform>(floorTemplate);
-                    floor.SetParent(transform);
-                    floor.localPosition = new Vector3(i + 0f, j + 0f, 0) * tilesToWorldUnitsConversion;
+                    FloorPiece floor = Instantiate<FloorPiece>(floorTemplate);
+                    floor.transform.SetParent(transform);
+                    floor.transform.localPosition = new Vector3(i + 0f, j + 0f, 0) * tilesToWorldUnitsConversion;
+                    floor.piece = this;
+                    floorPieces.Add(floor);
                 }
             }
         }
