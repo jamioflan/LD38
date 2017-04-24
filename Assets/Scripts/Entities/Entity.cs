@@ -306,7 +306,7 @@ public class Entity : MonoBehaviour
 			}
 
             // Knockback
-            if (rb != null)
+            if (rb != null && !isPlayer)
             {
                 Vector2 knock = new Vector2(transform.position.x - attack.parent.transform.position.x, transform.position.y - attack.parent.transform.position.y);
                 knock = knock.normalized * knockback;

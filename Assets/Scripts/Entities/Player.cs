@@ -96,20 +96,14 @@ public class Player : Entity
         if (Input.GetAxis("Fire3") > 0)
         {
             UseCurrentAttack(2);
-        }
+        }       
 
-        switchWeaponLast = switchWeapon;
-        switchWeapon = Input.GetAxis("Mouse ScrollWheel") > 0;
-        
-
-        if (switchWeapon && !switchWeaponLast)
+        if (Input.GetAxis("Mouse ScrollWheel") > 0)
         {
             SelectWeapon((currentAttack + 1) % 3);
         }
-			
-		switchWeapon = Input.GetAxis("Mouse ScrollWheel") < 0;
 
-		if (switchWeapon && !switchWeaponLast)
+		if (Input.GetAxis("Mouse ScrollWheel") < 0)
 		{
 			SelectWeapon((currentAttack + 2) % 3);
 		}

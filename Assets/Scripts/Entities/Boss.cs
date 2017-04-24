@@ -37,6 +37,7 @@ public class Boss : MonoBehaviour
                 case 3:
                     enemy.transform.position = transform.position + new Vector3(-2.0f, 0.0f, 0.0f); break;
             }
+            enemy.currentRoom = eyes[0].currentRoom;
 
         }
     }

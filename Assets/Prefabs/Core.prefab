@@ -520,8 +520,8 @@ MonoBehaviour:
   menuEndGame: {fileID: 0}
   menuEndSuccess: {fileID: 0}
   menuEndFailure: {fileID: 0}
-  mainMusic: {fileID: 0}
-  bossMusic: {fileID: 0}
+  mainMusic: {fileID: 82557157465883590}
+  bossMusic: {fileID: 82969782772274866}
   enemies:
   - {fileID: 114362276845198918, guid: 86713df7159ae0b448ed79922c279348, type: 2}
   - {fileID: 114362276845198918, guid: 66f6157462e738545b1dc34d9cf91165, type: 2}

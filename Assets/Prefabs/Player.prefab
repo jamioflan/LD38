@@ -717,8 +717,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   parent: {fileID: 114001192245144328}
-  minDamage: 8
-  maxDamage: 12
+  minDamage: 6
+  maxDamage: 9
   cooldown: 2
   animTime: 1
   timeSinceUse: 0.2854413
@@ -744,8 +744,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   parent: {fileID: 114001192245144328}
-  minDamage: 4
-  maxDamage: 12
+  minDamage: 3
+  maxDamage: 6
   cooldown: 0.5
   animTime: 0.25
   timeSinceUse: 0.26598388

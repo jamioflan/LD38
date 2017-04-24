@@ -262,11 +262,13 @@ public class Game : MonoBehaviour
         {
             bspawn.transform.position = RoomController.instance.goldRoomA.dungeonPiece.transform.position + new Vector3(2f, 2f, -3.5f);
             RoomController.instance.goldRoomA.dungeonPiece.boss = bspawn;
+            bspawn.eyes[0].currentRoom = RoomController.instance.goldRoomA.dungeonPiece;
         }
         else
         {
             bspawn.transform.position = RoomController.instance.goldRoomB.dungeonPiece.transform.position + new Vector3(2f, 2f, -3.5f);
             RoomController.instance.goldRoomB.dungeonPiece.boss = bspawn;
+            bspawn.eyes[0].currentRoom = RoomController.instance.goldRoomB.dungeonPiece;
         }
         
     }

@@ -101,8 +101,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   speed: 16
   timeToDeath: 0.6
-  aoeRange: 0.1
-  aoeInterval: 0.25
+  aoeRange: 0.5
+  aoeInterval: 0.18
   timeSinceLastAOE: 0
   decaySpeed: 0.9
   attack: {fileID: 0}
