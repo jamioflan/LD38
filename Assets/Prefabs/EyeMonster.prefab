@@ -245,7 +245,7 @@ MonoBehaviour:
   healthRegenRate: 0
   bleedRate: 2
   moveSpeed: 2
-  XP: 150
+  XP: 50
   knockback: 1
   upgrades: []
   facing: 0
