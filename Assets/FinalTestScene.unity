@@ -1965,7 +1965,7 @@ Transform:
   m_GameObject: {fileID: 399284198}
   m_LocalRotation: {x: -0.7071068, y: 0, z: 0, w: 0.7071068}
   m_LocalPosition: {x: 0, y: 0, z: 100}
-  m_LocalScale: {x: 4, y: 2, z: 2.5}
+  m_LocalScale: {x: 10, y: 10, z: 10}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 14
@@ -11750,7 +11750,7 @@ Prefab:
         type: 3}
     - target: {fileID: 1144700743826194, guid: 93f2203792cfd884ea42c64c2525ddd4, type: 2}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 224936063315596998, guid: 93f2203792cfd884ea42c64c2525ddd4,
         type: 2}
@@ -11776,6 +11776,31 @@ Prefab:
         type: 2}
       propertyPath: m_AnchorMax.y
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114207371561533082, guid: 93f2203792cfd884ea42c64c2525ddd4,
+        type: 2}
+      propertyPath: m_UiScaleMode
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 114207371561533082, guid: 93f2203792cfd884ea42c64c2525ddd4,
+        type: 2}
+      propertyPath: m_ReferenceResolution.x
+      value: 1920
+      objectReference: {fileID: 0}
+    - target: {fileID: 114207371561533082, guid: 93f2203792cfd884ea42c64c2525ddd4,
+        type: 2}
+      propertyPath: m_ReferenceResolution.y
+      value: 1080
+      objectReference: {fileID: 0}
+    - target: {fileID: 114207371561533082, guid: 93f2203792cfd884ea42c64c2525ddd4,
+        type: 2}
+      propertyPath: m_MatchWidthOrHeight
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 114207371561533082, guid: 93f2203792cfd884ea42c64c2525ddd4,
+        type: 2}
+      propertyPath: m_ScreenMatchMode
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 93f2203792cfd884ea42c64c2525ddd4, type: 2}

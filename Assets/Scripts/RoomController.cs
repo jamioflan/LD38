@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -91,17 +92,17 @@ public class RoomController : MonoBehaviour
         this.nextLayout = null;
         for (int i=2; i<num; i++)
         {
-            int size = Random.Range(2, 10);
+            int size = UnityEngine.Random.Range(2, 10);
             RoomShape roomShape = this.createShape();
-            int startx = Random.Range(0, RoomShape.maxMatrixWidth);
-            int starty = Random.Range(0, RoomShape.maxMatrixHeight);
+            int startx = UnityEngine.Random.Range(0, RoomShape.maxMatrixWidth);
+            int starty = UnityEngine.Random.Range(0, RoomShape.maxMatrixHeight);
             roomShape.addBlock(0,0);
             int blocksMade = 1;
             int loopsDone = 0;
             while(blocksMade < size && loopsDone++<1000)
             {
-                int x = Random.Range(0, RoomShape.maxMatrixWidth - 1);
-                int y = Random.Range(0, RoomShape.maxMatrixHeight - 1);
+                int x = UnityEngine.Random.Range(0, RoomShape.maxMatrixWidth - 1);
+                int y = UnityEngine.Random.Range(0, RoomShape.maxMatrixHeight - 1);
                 if (roomShape.matrix[x, y] == null) continue;
                 RoomBlock roomBlock = roomShape.matrix[x, y];
                 RoomShape.Position[] adjacentEmpties = roomBlock.getAdjacentEmptyPositions();
@@ -111,7 +112,7 @@ public class RoomController : MonoBehaviour
                     if (adjacentEmpties[j] != null) numEmpties++;
                 }
                 if (numEmpties == 0) continue;
-                RoomShape.Position nextPos = adjacentEmpties[Random.Range(0, numEmpties - 1)];
+                RoomShape.Position nextPos = adjacentEmpties[UnityEngine.Random.Range(0, numEmpties - 1)];
                 roomShape.addBlock(nextPos.x, nextPos.y);
                 blocksMade++;
             }
@@ -237,11 +238,11 @@ public class RoomController : MonoBehaviour
                             int loopsDone = 0;
                             do
                             {
-                                rotation = Random.Range(0, 4);
+                                rotation = UnityEngine.Random.Range(0, 4);
                                 positionedRoom.rotation = rotation;
                                 positionedRoom.calculateBounds();
-                                x = Random.Range(0 - positionedRoom.bounds.minX, Grid.instance.width - positionedRoom.bounds.maxX);
-                                y = Random.Range(0 - positionedRoom.bounds.minY, Grid.instance.height - positionedRoom.bounds.maxY);
+                                x = UnityEngine.Random.Range(0 - positionedRoom.bounds.minX, Grid.instance.width - positionedRoom.bounds.maxX);
+                                y = UnityEngine.Random.Range(0 - positionedRoom.bounds.minY, Grid.instance.height - positionedRoom.bounds.maxY);
                                 pos = new Grid.Position(x, y);
                                 positionedRoom.pos = pos;
                                 if (!positionedRoom.collides(attemptLayout)) break;
@@ -292,8 +293,8 @@ public class RoomController : MonoBehaviour
                 int v2;
                 do
                 {
-                    v1 = Random.Range(0, this.roomsInUse);
-                    v2 = Random.Range(0, this.roomsInUse);
+                    v1 = UnityEngine.Random.Range(0, this.roomsInUse);
+                    v2 = UnityEngine.Random.Range(0, this.roomsInUse);
                 } while (v1 == v2 || (i > 0 && (inTree[v1] || !inTree[v2])));
                 RoomWall w1 = this.roomShapes[v1].randomUndooredWall();
                 RoomWall w2 = this.roomShapes[v2].randomUndooredWall();
@@ -316,8 +317,8 @@ public class RoomController : MonoBehaviour
             int loopsDone = 0;
             do
             {
-                int v1 = Random.Range(2, this.roomsInUse);
-                int v2 = Random.Range(2, this.roomsInUse);
+                int v1 = UnityEngine.Random.Range(2, this.roomsInUse);
+                int v2 = UnityEngine.Random.Range(2, this.roomsInUse);
                 if (v1 == v2) continue;
                 RoomWall w1 = this.roomShapes[v1].randomUndooredWall();
                 RoomWall w2 = this.roomShapes[v2].randomUndooredWall();

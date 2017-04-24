@@ -32,7 +32,7 @@ public class Projectile : MonoBehaviour {
     private void OnCollisionEnter2D(Collision2D collision)
     {
         Entity entity = collision.gameObject.GetComponent<Entity>();
-        if(entity == attack.parent)
+        if(entity == attack.parent || rb == null)
         {
             return;
         }

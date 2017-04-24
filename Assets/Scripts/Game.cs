@@ -188,6 +188,7 @@ public class Game : MonoBehaviour
 
     public void OnPressStart()
     {
+        RoomController.instance.generateShapes(RoomController.MAX_ROOMS);
         StartNextLevel();
     }
 
@@ -201,8 +202,31 @@ public class Game : MonoBehaviour
         // Set new start and end nodes
 
         // Tell generator to work on the next setup
-        RoomController.instance.generateShapes( RoomController.MAX_ROOMS );
-        RoomController.instance.generateNextLayout();
-        RoomController.instance.updateToNextLayout();
+        RoomController.instance.advanceLevel();
+        generateMonsters(thePlayer.upgrades.Count);
+    }
+
+    public Enemy[] enemies;
+
+    public void generateMonsters(int level)
+    {
+        
+        foreach (RoomShape shape in RoomController.instance.roomShapes)
+        {
+            int XPForRoom = level * 20 * shape.getWidth() * shape.getHeight();
+            while(XPForRoom > 0)
+            {
+                Enemy enemy = enemies[Random.Range(0, enemies.Length)];
+                if (enemy.XP > XPForRoom)
+                    break;
+
+                XPForRoom -= enemy.XP;
+
+                Enemy spawn = Instantiate<Enemy>(enemy);
+                FloorPiece location = shape.dungeonPiece.floorPieces[Random.Range(0, shape.dungeonPiece.floorPieces.Count)];
+                spawn.transform.position = location.transform.position + (Vector3)Random.insideUnitCircle;
+            }
+        }
+
     }
 }

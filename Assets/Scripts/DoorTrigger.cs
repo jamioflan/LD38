@@ -43,8 +43,8 @@ public class DoorTrigger : MonoBehaviour
             RoomDoor targetDoor = roomWall.door.leadsTo;
             //int wallIndexThisDoorIsOn = 0;
 
-            entity.transform.position = targetDoor.myTrigger.exitPoint.position;
-
+            entity.GetComponent<Rigidbody2D>().MovePosition(targetDoor.myTrigger.exitPoint.position);
+            entity.doorTrigger = targetDoor.myTrigger;
             /*
             for (int iIndex = 0; iIndex < 4; iIndex++)
             {

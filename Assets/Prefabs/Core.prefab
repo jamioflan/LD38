@@ -172,7 +172,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1157285911225180}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -16.79, y: -8.99, z: 0}
+  m_LocalPosition: {x: -14.86, y: -7.81, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 4752321284057464}
@@ -375,6 +375,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1b02ba1bdea009a459a9afef09050c42, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  roomsInUse: 7
   roomShapes: []
   numRooms: 10
   currentLayout: []

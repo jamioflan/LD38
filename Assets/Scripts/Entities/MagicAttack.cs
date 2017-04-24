@@ -46,7 +46,13 @@ public class MagicAttack : Attack
             case 1:
                 {
                     Rigidbody2D rb = parent.GetComponent<Rigidbody2D>();
-                    rb.MovePosition(pos + aim);
+                    RaycastHit2D hit2D = Physics2D.GetRayIntersection(new Ray(pos, aim));
+                    if (hit2D)
+                    {
+                        rb.MovePosition(transform.position + (Vector3)aim.normalized * (hit2D.distance - 0.25f));
+                    }
+                    else rb.MovePosition(pos + aim);
+
                     float fAimAngle = Mathf.Rad2Deg * Mathf.Atan2(aim.y, aim.x);
 
                     for (int i = 0; i < iNumOrbs; i++)
