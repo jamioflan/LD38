@@ -58,7 +58,8 @@ public class Boss : MonoBehaviour
         {
             eyes[currentEye].Activate();
         }
-        else
+
+        if (eyes[0].health <= 0 && eyes[1].health <= 0)
         {
             OnDeath();
         }
@@ -66,6 +67,10 @@ public class Boss : MonoBehaviour
 
     public void OnDeath()
     {
-        Game.StartNextLevel();
+        if(Game.instance)
+        {
+            Game.instance.StartNextLevel();
+        }
+       
     }
 }
