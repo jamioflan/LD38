@@ -209,7 +209,7 @@ public class Game : MonoBehaviour
         generateMonsters(thePlayer.upgrades.Count);
     }
 
-    private void StartNextLevel()
+    public void StartNextLevel()
     {
 
         flipBoss = !flipBoss;

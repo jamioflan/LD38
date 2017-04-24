@@ -66,6 +66,6 @@ public class Boss : MonoBehaviour
 
     public void OnDeath()
     {
-        // We need some sort of level flow here.
+        Game.StartNextLevel();
     }
 }
