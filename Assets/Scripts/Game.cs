@@ -25,6 +25,7 @@ public class Game : MonoBehaviour
 
     public static Player thePlayer = null;
     public static SkillTree_Manager theSkillTreeManager = null;
+    public static Boss theBoss = null;
 
     public GameObject menuHUD;
     public GameObject menuStart;
@@ -234,7 +235,13 @@ public class Game : MonoBehaviour
 
     public void generateMonsters(int level)
     {
-        
+        Transform[] forms = theBoss.gameObject.GetComponentsInChildren<Transform>();
+        foreach (Transform transform in forms)
+        {
+            Destroy(transform.gameObject);
+        }
+        Destroy(theBoss.gameObject);
+
         foreach (RoomShape shape in RoomController.instance.roomShapes)
         {
             int XPForRoom = (level + 1) * 10 * shape.getWidth() * shape.getHeight();
@@ -271,6 +278,6 @@ public class Game : MonoBehaviour
             RoomController.instance.goldRoomB.dungeonPiece.boss = bspawn;
             bspawn.eyes[0].currentRoom = RoomController.instance.goldRoomB.dungeonPiece;
         }
-        
+        theBoss = bspawn;
     }
 }
