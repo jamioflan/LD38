@@ -5,10 +5,13 @@ using UnityEngine.UI;
 
 public class HUD_Manager : MonoBehaviour
 {
+    public static HUD_Manager instance;
+
     // The names of the GUI objects we're editing
     public string amountXPElementName;
     public string playerHealthElementName;
     public string equippedWeaponIconElementName;
+    public GameObject openDoorPrompt;
 
     // Equipped weapon icons to use
     public Sprite equippedMeleeSprite;
@@ -23,6 +26,8 @@ public class HUD_Manager : MonoBehaviour
 	// Use this for initialization
 	void Start ()
     {
+        instance = this;
+
         // Find and store the things we'll be modifying
 		amountXPText = GameObject.Find(amountXPElementName).GetComponent<Text>();
         playerHealthSlider = GameObject.Find(playerHealthElementName).GetComponent<Slider>();
@@ -58,5 +63,16 @@ public class HUD_Manager : MonoBehaviour
         }
 
         equippedWeaponIcon.sprite = spriteToUse;
+    }
+
+    public void ShowDoorPrompt( Vector3 position )
+    {
+        openDoorPrompt.transform.position = position;
+        openDoorPrompt.SetActive(true);
+    }
+
+    public void HideDoorPrompt()
+    {
+        openDoorPrompt.SetActive(false);
     }
 }
