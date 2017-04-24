@@ -538,15 +538,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a9a2be415852b914a889f71e383b2075, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  animState: 0
   attackAnimTimer: 0
   attackAnimDuration: 0
-  animTimer: 0
   animScale: 1
   animSpeed: 1
   isPlayer: 0
   isBoss: 0
-  bleedtimer: 0
+  isInDoorway: 0
+  doorTrigger: {fileID: 0}
   attacks: []
   currentAttack: 0
   maxHealth: 250
@@ -554,9 +553,11 @@ MonoBehaviour:
   healthRegenRate: 0
   bleedRate: 2
   moveSpeed: 1
-  XP: 0
-  timeSinceLastBleed: 0
+  XP: 300
+  knockback: 1
+  upgrades: []
   facing: 0
+  attackMoveVector: {x: 0, y: 0}
   body: {fileID: 0}
   leftHand: {fileID: 0}
   rightHand: {fileID: 0}
@@ -565,12 +566,15 @@ MonoBehaviour:
   - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
+  splatterPrefab: {fileID: 0}
+  orbPrefab: {fileID: 0}
+  orbTime: 10
+  orbDecay: 0.1
   currentRoom: {fileID: 0}
   damageNumbersPrefab: {fileID: 114657264730176768, guid: de1192e18d0f0e74e98fc998616d6471,
     type: 2}
   maxInvulnerabilityCooldown: 1
   invulnerabilityCooldown: -80.72439
-  rb: {fileID: 0}
   crosshair: {x: 0, y: 0}
   attackArcMultiplier: 1
   magicDistanceMultiplier: 1
@@ -600,15 +604,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a9a2be415852b914a889f71e383b2075, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  animState: 0
   attackAnimTimer: 0
   attackAnimDuration: 0
-  animTimer: 0
   animScale: 1
   animSpeed: 1
   isPlayer: 0
   isBoss: 0
-  bleedtimer: 0
+  isInDoorway: 0
+  doorTrigger: {fileID: 0}
   attacks: []
   currentAttack: 0
   maxHealth: 250
@@ -616,9 +619,11 @@ MonoBehaviour:
   healthRegenRate: 0
   bleedRate: 2
   moveSpeed: 1
-  XP: 0
-  timeSinceLastBleed: 0
+  XP: 300
+  knockback: 1
+  upgrades: []
   facing: 0
+  attackMoveVector: {x: 0, y: 0}
   body: {fileID: 0}
   leftHand: {fileID: 0}
   rightHand: {fileID: 0}
@@ -627,12 +632,15 @@ MonoBehaviour:
   - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
+  splatterPrefab: {fileID: 0}
+  orbPrefab: {fileID: 0}
+  orbTime: 10
+  orbDecay: 0.1
   currentRoom: {fileID: 0}
   damageNumbersPrefab: {fileID: 114657264730176768, guid: de1192e18d0f0e74e98fc998616d6471,
     type: 2}
   maxInvulnerabilityCooldown: 1
   invulnerabilityCooldown: -80.72439
-  rb: {fileID: 0}
   crosshair: {x: 0, y: 0}
   attackArcMultiplier: 1
   magicDistanceMultiplier: 1
@@ -669,7 +677,7 @@ MonoBehaviour:
   spawnable: {fileID: 114362276845198918, guid: c1271e2fb227c0e43a5d358589349491,
     type: 2}
   active: 0
-  timeBetweenSpawns: 5
+  timeBetweenSpawns: 20
   timeSinceLastSpawn: 0
 --- !u!212 &212054993658392578
 SpriteRenderer:

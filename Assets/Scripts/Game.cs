@@ -30,6 +30,11 @@ public class Game : MonoBehaviour
     public GameObject menuEndSuccess;
     public GameObject menuEndFailure;
 
+
+    public Enemy[] enemies;
+    public Boss boss;
+    bool flipBoss = false;
+
     bool gameEndSuccess = false;
 
 	// Use this for initialization
@@ -204,20 +209,25 @@ public class Game : MonoBehaviour
         // Tell generator to work on the next setup
         RoomController.instance.advanceLevel();
         generateMonsters(thePlayer.upgrades.Count);
+
+        flipBoss = !flipBoss;
     }
 
-    public Enemy[] enemies;
-    public Boss boss;
 
     public void generateMonsters(int level)
     {
         
         foreach (RoomShape shape in RoomController.instance.roomShapes)
         {
-            int XPForRoom = level * 20 * shape.getWidth() * shape.getHeight();
+            if (shape == RoomController.instance.goldRoomA || shape == RoomController.instance.goldRoomB)
+                continue;
+            if (shape.dungeonPiece.floorPieces.Count == 0)
+                continue;
+            int XPForRoom = (level + 1) * 20 * shape.getWidth() * shape.getHeight();
             while(XPForRoom > 0)
             {
-                Enemy enemy = enemies[Random.Range(0, enemies.Length)];
+                int iRet = Random.Range(0, enemies.Length);
+                Enemy enemy = enemies[iRet];
                 if (enemy.XP > XPForRoom)
                     break;
 
@@ -230,7 +240,16 @@ public class Game : MonoBehaviour
         }
 
         Boss bspawn = Instantiate<Boss>(boss);
-        bspawn.transform.position = RoomController.instance.goldRoomB.dungeonPiece.transform.position + new Vector3(1.5f, 1.5f, 0.0f);
-
+        if(flipBoss)
+        {
+            bspawn.transform.position = RoomController.instance.goldRoomA.dungeonPiece.transform.position + new Vector3(2f, 2f, -3.5f);
+            RoomController.instance.goldRoomA.dungeonPiece.boss = bspawn;
+        }
+        else
+        {
+            bspawn.transform.position = RoomController.instance.goldRoomB.dungeonPiece.transform.position + new Vector3(2f, 2f, -3.5f);
+            RoomController.instance.goldRoomB.dungeonPiece.boss = bspawn;
+        }
+        
     }
 }

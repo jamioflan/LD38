@@ -17,6 +17,8 @@ public class DungeonPiece : MonoBehaviour {
 
     public float complexity;
 
+    public Boss boss = null;
+
     // Use this for initialization
     void Start ()
     {
@@ -39,6 +41,10 @@ public class DungeonPiece : MonoBehaviour {
                 floor.SetHidden(0);
             }
         }
+
+        if(boss != null)
+            boss.ActivateBoss();
+
         inRoomCount++;
     }
     public void ExitedRoom()
@@ -48,8 +54,16 @@ public class DungeonPiece : MonoBehaviour {
         {
             foreach (FloorPiece floor in floorPieces)
             {
-                floor.SetHidden(2);
+                floor.SetHidden(1);
             }
+        }
+    }
+
+    public void ForceExitedRoom()
+    {
+        foreach (FloorPiece floor in floorPieces)
+        {
+            floor.SetHidden(2);
         }
     }
 

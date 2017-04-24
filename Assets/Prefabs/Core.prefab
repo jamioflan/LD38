@@ -357,8 +357,12 @@ MonoBehaviour:
   menuEndGame: {fileID: 0}
   menuEndSuccess: {fileID: 0}
   menuEndFailure: {fileID: 0}
-  enemies: []
-  boss: {fileID: 0}
+  enemies:
+  - {fileID: 114362276845198918, guid: 86713df7159ae0b448ed79922c279348, type: 2}
+  - {fileID: 114362276845198918, guid: 66f6157462e738545b1dc34d9cf91165, type: 2}
+  - {fileID: 114362276845198918, guid: 81502757904ff844e8e71d9d57df145e, type: 2}
+  - {fileID: 114362276845198918, guid: a131abdf0f2885d4c8da487f269ccf47, type: 2}
+  boss: {fileID: 114740769601239680, guid: aa8423262cbca244e85c608eb14224bb, type: 2}
 --- !u!114 &114178231954022246
 MonoBehaviour:
   m_ObjectHideFlags: 1

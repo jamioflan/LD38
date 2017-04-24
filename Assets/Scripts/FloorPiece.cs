@@ -22,6 +22,7 @@ public class FloorPiece : MonoBehaviour {
         if(collision.GetComponent<Player>() == Game.thePlayer)
         {
             piece.EnteredRoom();
+            Game.thePlayer.numRoomsIn++;
         }
     }
 
@@ -30,6 +31,7 @@ public class FloorPiece : MonoBehaviour {
         if (collision.GetComponent<Player>() == Game.thePlayer)
         {
             piece.ExitedRoom();
+            Game.thePlayer.numRoomsIn--;
         }
     }
 

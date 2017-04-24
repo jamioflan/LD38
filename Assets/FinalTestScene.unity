@@ -7656,11 +7656,6 @@ Prefab:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 114079933198950006, guid: 10994d05235ddad4eba9b20da4584a6d,
-        type: 2}
-      propertyPath: enemies.Array.size
-      value: 4
-      objectReference: {fileID: 0}
     - target: {fileID: 4752321284057464, guid: 10994d05235ddad4eba9b20da4584a6d, type: 2}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -7723,36 +7718,6 @@ Prefab:
       propertyPath: menuEndFailure
       value: 
       objectReference: {fileID: 875189780}
-    - target: {fileID: 114079933198950006, guid: 10994d05235ddad4eba9b20da4584a6d,
-        type: 2}
-      propertyPath: enemies.Array.data[0]
-      value: 
-      objectReference: {fileID: 114362276845198918, guid: 86713df7159ae0b448ed79922c279348,
-        type: 2}
-    - target: {fileID: 114079933198950006, guid: 10994d05235ddad4eba9b20da4584a6d,
-        type: 2}
-      propertyPath: enemies.Array.data[1]
-      value: 
-      objectReference: {fileID: 114362276845198918, guid: 66f6157462e738545b1dc34d9cf91165,
-        type: 2}
-    - target: {fileID: 114079933198950006, guid: 10994d05235ddad4eba9b20da4584a6d,
-        type: 2}
-      propertyPath: enemies.Array.data[2]
-      value: 
-      objectReference: {fileID: 114362276845198918, guid: 81502757904ff844e8e71d9d57df145e,
-        type: 2}
-    - target: {fileID: 114079933198950006, guid: 10994d05235ddad4eba9b20da4584a6d,
-        type: 2}
-      propertyPath: enemies.Array.data[3]
-      value: 
-      objectReference: {fileID: 114362276845198918, guid: a131abdf0f2885d4c8da487f269ccf47,
-        type: 2}
-    - target: {fileID: 114079933198950006, guid: 10994d05235ddad4eba9b20da4584a6d,
-        type: 2}
-      propertyPath: boss
-      value: 
-      objectReference: {fileID: 114740769601239680, guid: aa8423262cbca244e85c608eb14224bb,
-        type: 2}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 10994d05235ddad4eba9b20da4584a6d, type: 2}
   m_IsPrefabParent: 0

@@ -304,16 +304,19 @@ public class Entity : MonoBehaviour
 				attack.parent.health = Mathf.Min(attack.parent.health + fDamage * 0.2F, attack.parent.maxHealth);
 			}
 
-			// Knockback
-			Vector2 knock = new Vector2(transform.position.x - attack.parent.transform.position.x, transform.position.y - attack.parent.transform.position.y);
-			knock = knock.normalized * knockback;
-            Vector2 newPosition = new Vector2(transform.position.x + knock.x, transform.position.y + knock.y);
-            RaycastHit2D hit2D = Physics2D.GetRayIntersection(new Ray(transform.position, knock));
-            if(hit2D)
+            // Knockback
+            if (rb != null)
             {
-                rb.MovePosition(transform.position + (Vector3)knock.normalized * (hit2D.distance - 0.25f));
+                Vector2 knock = new Vector2(transform.position.x - attack.parent.transform.position.x, transform.position.y - attack.parent.transform.position.y);
+                knock = knock.normalized * knockback;
+                Vector2 newPosition = new Vector2(transform.position.x + knock.x, transform.position.y + knock.y);
+                RaycastHit2D hit2D = Physics2D.GetRayIntersection(new Ray(transform.position, knock));
+                if (hit2D)
+                {
+                    rb.MovePosition(transform.position + (Vector3)knock.normalized * (hit2D.distance - 0.25f));
+                }
+                else rb.MovePosition(newPosition);
             }
-            else rb.MovePosition(newPosition);
 
             if (splatterPrefab != null)
             {

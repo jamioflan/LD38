@@ -214,6 +214,8 @@ MonoBehaviour:
   animSpeed: 0.75
   isPlayer: 0
   isBoss: 0
+  isInDoorway: 0
+  doorTrigger: {fileID: 0}
   attacks:
   - {fileID: 114733718162316610}
   currentAttack: 0
@@ -222,7 +224,7 @@ MonoBehaviour:
   healthRegenRate: 0
   bleedRate: 2
   moveSpeed: 0.75
-  XP: 50
+  XP: 400
   knockback: 1
   upgrades: []
   facing: 0

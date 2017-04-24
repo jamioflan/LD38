@@ -503,6 +503,10 @@ public class RoomController : MonoBehaviour
             DungeonPiece dungeonPiece = this.roomShapes[i].dungeonPiece;
             dungeonPiece.positionedRoom = this.currentLayout[i];
             dungeonPiece.updatePiece();
+            if (this.roomShapes[i] != goldRoomA && this.roomShapes[i] != goldRoomB)
+            {
+                dungeonPiece.ForceExitedRoom();
+            }
         }
         this.nextLayout = null;
     }

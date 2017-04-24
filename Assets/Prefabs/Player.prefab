@@ -219,7 +219,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1850684020496204}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -3.67, y: -1.85, z: 0}
+  m_LocalPosition: {x: -15, y: -2.4, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4056889250181028}
@@ -307,6 +307,8 @@ MonoBehaviour:
   animSpeed: 1
   isPlayer: 1
   isBoss: 0
+  isInDoorway: 0
+  doorTrigger: {fileID: 0}
   attacks:
   - {fileID: 114094299990263456}
   - {fileID: 114624696844368430}
@@ -350,6 +352,8 @@ MonoBehaviour:
   magicDamageMultiplier: 1
   switchWeapon: 0
   switchWeaponLast: 0
+  enterDoor: 0
+  enterDoorLast: 0
   crosshairObject: {fileID: 4880228922104986}
 --- !u!114 &114094299990263456
 MonoBehaviour:
@@ -388,8 +392,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   parent: {fileID: 114001192245144328}
-  minDamage: 1
-  maxDamage: 2
+  minDamage: 8
+  maxDamage: 12
   cooldown: 2
   animTime: 1
   timeSinceUse: 0

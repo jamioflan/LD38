@@ -15,7 +15,7 @@ public class Boss : MonoBehaviour
     // Use this for initialization
     public void Start()
     {
-        ActivateBoss();
+        
     }
 
     // Update is called once per frame

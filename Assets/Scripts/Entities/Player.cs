@@ -8,6 +8,8 @@ public class Player : Entity
     public bool switchWeapon = false, switchWeaponLast = false;
     public bool enterDoor = false, enterDoorLast = false;
 
+    public int numRoomsIn = 0;
+
 
     public Transform crosshairObject;
 
@@ -25,6 +27,11 @@ public class Player : Entity
         base.FixedUpdate();
 
         Rigidbody2D rigidBody = GetComponent<Rigidbody2D>();
+
+        if(numRoomsIn <= 0)
+        {
+            rb.MovePosition(new Vector2(-12.89f, -1.69f));
+        }
 
         Vector2 move = new Vector2(Input.GetAxis("Horizontal"), Input.GetAxis("Vertical"));
 
