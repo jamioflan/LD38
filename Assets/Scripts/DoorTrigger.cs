@@ -5,11 +5,11 @@ using UnityEngine;
 public class DoorTrigger : MonoBehaviour
 {
     public RoomWall roomWall;
+    public Transform exitPoint;
 
 	// Use this for initialization
 	void Start ()
     {
-        roomWall = gameObject.GetComponentInParent<RoomWall>();
 	}
 	
 	// Update is called once per frame
@@ -40,11 +40,12 @@ public class DoorTrigger : MonoBehaviour
     {
         if (roomWall != null && roomWall.door != null)
         {
-            // We're gonna get a loop here with bosses! They'll flicker between two rooms. Needs fixing.
-
             RoomDoor targetDoor = roomWall.door.leadsTo;
-            int wallIndexThisDoorIsOn = 0;
+            //int wallIndexThisDoorIsOn = 0;
 
+            entity.transform.position = targetDoor.myTrigger.exitPoint.position;
+
+            /*
             for (int iIndex = 0; iIndex < 4; iIndex++)
             {
                 RoomWall wall = targetDoor.parentRoomBlock.walls[iIndex];
@@ -81,6 +82,7 @@ public class DoorTrigger : MonoBehaviour
             }
 
             entity.transform.position = targetDoor.parentRoomWall.wallDoor.transform.position + offset;
+            */
         }
     }
 }

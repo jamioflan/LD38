@@ -109,10 +109,6 @@ public class Entity : MonoBehaviour
 
     public virtual void FixedUpdate()
     {
-        if (isBoss && isInDoorway)
-        {
-            doorTrigger.MoveThroughDoorway(this);
-        }
     }
 
     public void SetAttackAnimState(AnimState s, float f) { animState = s; attackAnimDuration = f; attackAnimTimer = 0.0f; }

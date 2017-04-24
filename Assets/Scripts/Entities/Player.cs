@@ -6,6 +6,7 @@ public class Player : Entity
 {
 
     public bool switchWeapon = false, switchWeaponLast = false;
+    public bool enterDoor = false, enterDoorLast = false;
 
 
     public Transform crosshairObject;
@@ -107,8 +108,11 @@ public class Player : Entity
 			SelectWeapon((currentAttack + 2) % 3);
 		}
 
+        enterDoorLast = enterDoor;
+        enterDoor = Input.GetAxis("Open Door") > 0.0f;
+
         // Check if we want to go through a doorway
-        if (isInDoorway && Input.GetAxis("Open Door") > 0.0f)
+        if (isInDoorway && enterDoor && !enterDoorLast)
         {
             doorTrigger.MoveThroughDoorway(this);
         }

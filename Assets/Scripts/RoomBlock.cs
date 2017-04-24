@@ -101,6 +101,7 @@ public class RoomDoor
     }
 
     public RoomDoor leadsTo;
+    public DoorTrigger myTrigger = null;
 
     public RoomDoor(RoomWall parent)
     {

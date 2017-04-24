@@ -37,7 +37,7 @@ public class Projectile : MonoBehaviour {
             return;
         }
 
-        if(true)//attack.parent.isBouncy())
+        if(attack.parent.isBouncy())
         {
             float fNormalAngle = Mathf.Rad2Deg * Mathf.Atan2(collision.contacts[0].normal.y, collision.contacts[0].normal.x);
             transform.localEulerAngles = new Vector3(0.0f, 0.0f, 2.0f * fNormalAngle - transform.localEulerAngles.z);

@@ -5,7 +5,7 @@ using UnityEngine;
 public class DungeonPiece : MonoBehaviour {
 
     public static readonly float tilesToWorldUnitsConversion = 2.0f;
-    public static readonly float wallOffsetTiles = 0.05f;
+    public static readonly float wallOffsetTiles = 0.0f;//0.05f;
 
     public PositionedRoom positionedRoom;
     public Transform floorTemplate, cornerTemplate, wallTemplate, doorTemplate;
@@ -109,10 +109,13 @@ public class DungeonPiece : MonoBehaviour {
                         else
                         {
                             wall = Instantiate<Transform>(doorTemplate);
+                            wall.GetComponentInChildren<DoorTrigger>().roomWall = positionedRoom.room.matrix[i, j].walls[0];
+                            positionedRoom.room.matrix[i, j].walls[0].door.myTrigger = wall.GetComponentInChildren<DoorTrigger>();
                         }
                         wall.SetParent(transform);
                         wall.localPosition = new Vector3(i, j + 0.5f - wallOffsetTiles, 0) * tilesToWorldUnitsConversion;
-                        wall.localEulerAngles = new Vector3(0.0f, 0.0f, 90.0f);
+                        wall.localEulerAngles = new Vector3(0.0f, 0.0f, -90.0f);
+
                     }
                     if (positionedRoom.room.matrix[i, j].walls[1] != null)
                     {
@@ -124,10 +127,12 @@ public class DungeonPiece : MonoBehaviour {
                         else
                         {
                             wall = Instantiate<Transform>(doorTemplate);
+                            wall.GetComponentInChildren<DoorTrigger>().roomWall = positionedRoom.room.matrix[i, j].walls[1];
+                            positionedRoom.room.matrix[i, j].walls[1].door.myTrigger = wall.GetComponentInChildren<DoorTrigger>();
                         }
                         wall.SetParent(transform);
                         wall.localPosition = new Vector3(i - 0.5f + wallOffsetTiles, j, 0) * tilesToWorldUnitsConversion;
-                        wall.localEulerAngles = new Vector3(0.0f, 0.0f, 180.0f);
+                        wall.localEulerAngles = new Vector3(0.0f, 0.0f, 0.0f);
                     }
                     if (positionedRoom.room.matrix[i, j].walls[2] != null)
                     {
@@ -139,10 +144,12 @@ public class DungeonPiece : MonoBehaviour {
                         else
                         {
                             wall = Instantiate<Transform>(doorTemplate);
+                            wall.GetComponentInChildren<DoorTrigger>().roomWall = positionedRoom.room.matrix[i, j].walls[2];
+                            positionedRoom.room.matrix[i, j].walls[2].door.myTrigger = wall.GetComponentInChildren<DoorTrigger>();
                         }
                         wall.SetParent(transform);
                         wall.localPosition = new Vector3(i, j - 0.5f + wallOffsetTiles, 0) * tilesToWorldUnitsConversion;
-                        wall.localEulerAngles = new Vector3(0.0f, 0.0f, -90.0f);
+                        wall.localEulerAngles = new Vector3(0.0f, 0.0f, 90.0f);
                     }
                     if (positionedRoom.room.matrix[i, j].walls[3] != null)
                     {
@@ -154,10 +161,12 @@ public class DungeonPiece : MonoBehaviour {
                         else
                         {
                             wall = Instantiate<Transform>(doorTemplate);
+                            wall.GetComponentInChildren<DoorTrigger>().roomWall = positionedRoom.room.matrix[i, j].walls[3];
+                            positionedRoom.room.matrix[i, j].walls[3].door.myTrigger = wall.GetComponentInChildren<DoorTrigger>();
                         }
                         wall.SetParent(transform);
                         wall.localPosition = new Vector3(i + 0.5f - wallOffsetTiles, j, 0) * tilesToWorldUnitsConversion;
-                        wall.localEulerAngles = new Vector3(0.0f, 0.0f, 0.0f);
+                        wall.localEulerAngles = new Vector3(0.0f, 0.0f, 180.0f);
                     }
                 }
             }
