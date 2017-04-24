@@ -298,6 +298,12 @@ Prefab:
       propertyPath: maxDamage
       value: 9
       objectReference: {fileID: 0}
+    - target: {fileID: 212257753465397858, guid: 78a9250377f43ad4ea6eb308591dfa45,
+        type: 2}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 16b53935bb5a0f945ada08b184a3ce45,
+        type: 3}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 78a9250377f43ad4ea6eb308591dfa45, type: 2}
   m_IsPrefabParent: 0
@@ -1927,7 +1933,7 @@ MeshRenderer:
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
   m_Materials:
-  - {fileID: 2100000, guid: 543a0283e5ab6644eb764815ca67ad18, type: 2}
+  - {fileID: 2100000, guid: bdd015ad201835f48ad6a850863c9b5b, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
