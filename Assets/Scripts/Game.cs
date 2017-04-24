@@ -235,12 +235,15 @@ public class Game : MonoBehaviour
 
     public void generateMonsters(int level)
     {
-        Transform[] forms = theBoss.gameObject.GetComponentsInChildren<Transform>();
-        foreach (Transform transform in forms)
+        if (theBoss != null)
         {
-            Destroy(transform.gameObject);
+            Transform[] forms = theBoss.gameObject.GetComponentsInChildren<Transform>();
+            foreach (Transform transform in forms)
+            {
+                Destroy(transform.gameObject);
+            }
+            Destroy(theBoss.gameObject);
         }
-        Destroy(theBoss.gameObject);
 
         foreach (RoomShape shape in RoomController.instance.roomShapes)
         {
