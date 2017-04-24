@@ -44,6 +44,7 @@ public class DoorTrigger : MonoBehaviour
     {
         if (roomWall != null && roomWall.door != null)
         {
+            GetComponent<AudioSource>().Play();
             RoomDoor targetDoor = roomWall.door.leadsTo;
             //int wallIndexThisDoorIsOn = 0;
 

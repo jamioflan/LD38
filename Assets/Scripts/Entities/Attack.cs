@@ -35,7 +35,6 @@ public class Attack : MonoBehaviour
     }
     public virtual void Use(int attackMode, Vector2 pos, Vector2 aim)
     {
-
     }
 
     public void TryToUse(int attackMode, Vector2 pos, Vector2 aim)
@@ -43,6 +42,8 @@ public class Attack : MonoBehaviour
         if (timeSinceUse >= (isPowerAttack ? cooldown * powerAttackCooldownModifier : cooldown))
         {
             timeSinceUse = 0.0f;
+            GetComponent<AudioSource>().Play();
+            Debug.Log("Attack!");
             Use(attackMode, pos, aim);
         }
     }
