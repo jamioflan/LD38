@@ -99,11 +99,9 @@ public class RoomController : MonoBehaviour
         RoomShape roomShape = new RoomShape();
         PositionedRoom PosRoom = new PositionedRoom(roomShape);
         DungeonPiece newPiece = Instantiate<DungeonPiece>(pieceTemplate);
-
         newPiece.positionedRoom = PosRoom;
         newPiece.transform.SetParent(transform);
         roomShape.dungeonPiece = newPiece;
-        newPiece.GenerateEdges();
         return roomShape;
     }
 
@@ -207,8 +205,6 @@ public class RoomController : MonoBehaviour
         pieceB.transform.SetParent(transform);
         pieceA.positionedRoom = posRoomA;
         pieceB.positionedRoom = posRoomB;
-        pieceA. GenerateEdges(); 
-        pieceB.GenerateEdges();
         this.goldRoomA.dungeonPiece = pieceA;
         this.goldRoomB.dungeonPiece = pieceB;
     }

@@ -228,10 +228,6 @@ public class Game : MonoBehaviour
         
         foreach (RoomShape shape in RoomController.instance.roomShapes)
         {
-            if (shape == RoomController.instance.goldRoomA || shape == RoomController.instance.goldRoomB)
-                continue;
-            if (shape.dungeonPiece.floorPieces.Count == 0)
-                continue;
             int XPForRoom = (level + 1) * 20 * shape.getWidth() * shape.getHeight();
             while(XPForRoom > 0)
             {
@@ -243,8 +239,9 @@ public class Game : MonoBehaviour
                 XPForRoom -= enemy.XP;
 
                 Enemy spawn = Instantiate<Enemy>(enemy);
-                FloorPiece location = shape.dungeonPiece.floorPieces[Random.Range(0, shape.dungeonPiece.floorPieces.Count)];
-                spawn.transform.position = location.transform.position + (Vector3)Random.insideUnitCircle;
+                enemy.gameObject.SetActive(false);
+                shape.dungeonPiece.pendingEnemies.Add(enemy);
+
             }
         }
 

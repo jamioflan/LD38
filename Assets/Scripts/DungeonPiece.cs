@@ -11,6 +11,8 @@ public class DungeonPiece : MonoBehaviour {
     public Transform cornerTemplate, wallTemplate, doorTemplate;
     public FloorPiece floorTemplate;
 
+    public List<Enemy> pendingEnemies = new List<Enemy>();
+
     public List<FloorPiece> floorPieces = new List<FloorPiece>();
 
     public WallDoor wallDoorTemplate;
@@ -22,13 +24,25 @@ public class DungeonPiece : MonoBehaviour {
     // Use this for initialization
     void Start ()
     {
-        
+        GenerateEdges();
     }
-	
-	// Update is called once per frame
-	void Update ()
+
+    // Update is called once per frame
+    void Update()
     {
         updatePiece();
+
+        while (pendingEnemies.Count > 0)
+
+        {
+            
+            FloorPiece location = floorPieces[Random.Range(0, floorPieces.Count)];
+            pendingEnemies[0].transform.position = location.transform.position + (Vector3)Random.insideUnitCircle;
+            pendingEnemies[0].gameObject.SetActive(true);
+            pendingEnemies.RemoveAt(0);
+        }
+
+
     }
 
     public int inRoomCount = 0;
