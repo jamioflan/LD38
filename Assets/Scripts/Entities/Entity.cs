@@ -116,7 +116,7 @@ public class Entity : MonoBehaviour
 
     protected void UpdateAnimations()
     {
-        if (rb == null) return;
+        if (rb == null || health <= 0) return;
 
         Vector3 move = rb.velocity;
         if (move.x < move.y) // UL
@@ -263,7 +263,7 @@ public class Entity : MonoBehaviour
 
     protected void SetFacing(int dir)
     {
-        if (attackAnimTimer > attackAnimDuration)
+        if (attackAnimTimer > attackAnimDuration && health > 0)
         {
             facing = dir;
             body.sprite = directionalSprites[dir];
@@ -272,7 +272,7 @@ public class Entity : MonoBehaviour
 
     protected void UseCurrentAttack(int attackMode)
     {
-        if (attacks != null && currentAttack >= 0 && currentAttack < attacks.Length)
+        if (attacks != null && currentAttack >= 0 && currentAttack < attacks.Length && health > 0)
         {
             attacks[currentAttack].TryToUse(attackMode, transform.position, (Vector3)crosshair - transform.position);
         }
@@ -290,8 +290,11 @@ public class Entity : MonoBehaviour
         {
             return;
         }
-        if(invulnerabilityCooldown <= 0.0f)
+        if(invulnerabilityCooldown <= 0.0f && health > 0)
         {
+            // Play Sound
+            GetComponent<AudioSource>().Play();
+
             // Do damage;
 			float fDamage = Random.Range(attack.minDamage, attack.maxDamage) * attack.getDamageMultiplier();
 
@@ -346,7 +349,15 @@ public class Entity : MonoBehaviour
         {
             Game.thePlayer.XP += XP;
         }
-        Destroy(gameObject);
+        foreach (Attack attack in attacks)
+        {
+            if (attack != null) Destroy(attack);
+        }
+        Destroy(rightHand.gameObject);
+        Destroy(leftHand.gameObject);
+        Destroy(body);
+        Destroy(GetComponent<BoxCollider2D>());
+        Destroy(gameObject,2.0f);
     }
 
 	public virtual float getAttackArcMultiplier()

@@ -22,6 +22,7 @@ GameObject:
   - component: {fileID: 114362276845198918}
   - component: {fileID: 50183374662468798}
   - component: {fileID: 58622134613606956}
+  - component: {fileID: 82882953314476226}
   m_Layer: 9
   m_Name: Skeleton Archer
   m_TagString: Untagged
@@ -39,6 +40,7 @@ GameObject:
   - component: {fileID: 4344846631172540}
   - component: {fileID: 212216991307549062}
   - component: {fileID: 114355299997375260}
+  - component: {fileID: 82914950284438992}
   m_Layer: 9
   m_Name: RangedAttack
   m_TagString: Untagged
@@ -101,7 +103,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1079751474151602}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -8.007608, y: -1.4414811, z: -7.7691517}
+  m_LocalPosition: {x: -7.3018794, y: -0.19376051, z: -7.7691517}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4828953695646320}
@@ -198,6 +200,166 @@ CircleCollider2D:
   m_Offset: {x: 0, y: -0.17}
   serializedVersion: 2
   m_Radius: 0.3
+--- !u!82 &82882953314476226
+AudioSource:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1079751474151602}
+  m_Enabled: 1
+  serializedVersion: 4
+  OutputAudioMixerGroup: {fileID: 0}
+  m_audioClip: {fileID: 8300000, guid: fc787f5833d2f0347927fe19f6d6f301, type: 3}
+  m_PlayOnAwake: 0
+  m_Volume: 1
+  m_Pitch: 1
+  Loop: 0
+  Mute: 0
+  Spatialize: 0
+  SpatializePostEffects: 0
+  Priority: 128
+  DopplerLevel: 1
+  MinDistance: 1
+  MaxDistance: 500
+  Pan2D: 0
+  rolloffMode: 0
+  BypassEffects: 0
+  BypassListenerEffects: 0
+  BypassReverbZones: 0
+  rolloffCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 2
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    - serializedVersion: 2
+      time: 1
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  panLevelCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 2
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 0
+  spreadCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 2
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  reverbZoneMixCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 2
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 0
+--- !u!82 &82914950284438992
+AudioSource:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1331472606770756}
+  m_Enabled: 1
+  serializedVersion: 4
+  OutputAudioMixerGroup: {fileID: 0}
+  m_audioClip: {fileID: 8300000, guid: 585fa18142a4c45488dc8741e687ffa6, type: 3}
+  m_PlayOnAwake: 0
+  m_Volume: 1
+  m_Pitch: 1
+  Loop: 0
+  Mute: 0
+  Spatialize: 0
+  SpatializePostEffects: 0
+  Priority: 128
+  DopplerLevel: 1
+  MinDistance: 1
+  MaxDistance: 500
+  Pan2D: 0
+  rolloffMode: 0
+  BypassEffects: 0
+  BypassListenerEffects: 0
+  BypassReverbZones: 0
+  rolloffCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 2
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    - serializedVersion: 2
+      time: 1
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  panLevelCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 2
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 0
+  spreadCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 2
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  reverbZoneMixCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 2
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 0
 --- !u!114 &114355299997375260
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -215,9 +377,14 @@ MonoBehaviour:
   cooldown: 2
   animTime: 1
   timeSinceUse: 0
+  powerAttackDamageModifier: 2
+  powerAttackCooldownModifier: 2
+  powerAttackSpeedModifier: 2
   attackType: 5
   projectile: {fileID: 114051791925123022, guid: a0133550688b2974f8a37b0a5b42225d,
     type: 2}
+  attackMoveDuration: 0.3
+  multiShotSpread: 15
 --- !u!114 &114362276845198918
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -229,15 +396,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b375f393fddfbad41b598a382a3a65d9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  animState: 0
   attackAnimTimer: 0
   attackAnimDuration: 0
-  animTimer: 0
   animScale: 1
   animSpeed: 1
   isPlayer: 0
   isBoss: 0
-  bleedtimer: 0
+  isInDoorway: 0
+  doorTrigger: {fileID: 0}
   attacks:
   - {fileID: 114355299997375260}
   currentAttack: 0
@@ -247,8 +413,10 @@ MonoBehaviour:
   bleedRate: 2
   moveSpeed: 1
   XP: 10
-  timeSinceLastBleed: 0
+  knockback: 1
+  upgrades: []
   facing: 0
+  attackMoveVector: {x: 0, y: 0}
   body: {fileID: 212516273168286022}
   leftHand: {fileID: 4760701872636478}
   rightHand: {fileID: 4051714063132362}
@@ -257,12 +425,15 @@ MonoBehaviour:
   - {fileID: 21300000, guid: 2f78c28165fea9d44b3936b52d48d0c8, type: 3}
   - {fileID: 21300000, guid: 72e042ce799b47c47861bc45de58416e, type: 3}
   - {fileID: 21300000, guid: 429b7952ffcf01e48b993dd22a786656, type: 3}
+  splatterPrefab: {fileID: 0}
+  orbPrefab: {fileID: 0}
+  orbTime: 10
+  orbDecay: 0.1
   currentRoom: {fileID: 0}
   damageNumbersPrefab: {fileID: 114657264730176768, guid: de1192e18d0f0e74e98fc998616d6471,
     type: 2}
   maxInvulnerabilityCooldown: 1
   invulnerabilityCooldown: 1
-  rb: {fileID: 0}
   crosshair: {x: 0, y: 0}
   attackArcMultiplier: 1
   magicDistanceMultiplier: 1
