@@ -22,7 +22,7 @@ public class DungeonPiece : MonoBehaviour {
     // Use this for initialization
     void Start ()
     {
-        GenerateEdges();
+        
     }
 	
 	// Update is called once per frame
@@ -88,7 +88,7 @@ public class DungeonPiece : MonoBehaviour {
     }
 
 
-    void GenerateEdges()
+    public void GenerateEdges()
     {
         if(positionedRoom == null)
         {
