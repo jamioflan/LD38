@@ -32,14 +32,19 @@ public class DungeonPiece : MonoBehaviour {
     {
         updatePiece();
 
+        if(this.positionedRoom.pos == null)
+        {
+            return;
+        }
         while (pendingEnemies.Count > 0)
 
         {
             
             FloorPiece location = floorPieces[Random.Range(0, floorPieces.Count)];
-            pendingEnemies[0].transform.position = location.transform.position + (Vector3)Random.insideUnitCircle;
-            pendingEnemies[0].gameObject.SetActive(true);
-            pendingEnemies.RemoveAt(0);
+            pendingEnemies[pendingEnemies.Count - 1].transform.position = location.transform.position;// + (Vector3)Random.insideUnitCircle;
+            pendingEnemies[pendingEnemies.Count - 1].gameObject.SetActive(true);
+            pendingEnemies[pendingEnemies.Count - 1].currentRoom = this;
+            pendingEnemies.RemoveAt(pendingEnemies.Count - 1);
         }
 
 
@@ -55,6 +60,8 @@ public class DungeonPiece : MonoBehaviour {
                 floor.SetHidden(0);
             }
         }
+
+        Game.thePlayer.currentRoom = this;
 
         if(boss != null)
             boss.ActivateBoss();

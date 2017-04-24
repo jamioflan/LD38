@@ -31,7 +31,7 @@ public class DoorTrigger : MonoBehaviour
 
     private void OnTriggerExit2D(Collider2D collision)
     {
-        if (collision.gameObject.GetComponent<Entity>())
+        if (collision.gameObject.GetComponent<Entity>() && collision.gameObject.GetComponent<Entity>().doorTrigger == this)
         {
             collision.gameObject.GetComponent<Entity>().isInDoorway = false;
             collision.gameObject.GetComponent<Entity>().doorTrigger = null;

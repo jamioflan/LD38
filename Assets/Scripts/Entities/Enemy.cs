@@ -43,6 +43,8 @@ public class Enemy : Entity
                 if (Game.thePlayer.currentRoom != currentRoom)
                 {
                     state = EnemyState.IDLE;
+                    if(rb != null)
+                        rb.velocity = new Vector2(0.0f, 0.0f);
                     target = null;
                 }
                 break;

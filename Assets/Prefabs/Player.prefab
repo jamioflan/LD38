@@ -640,7 +640,7 @@ MonoBehaviour:
   currentAttack: 0
   maxHealth: 10
   health: 10
-  healthRegenRate: 0.1
+  healthRegenRate: 0.5
   bleedRate: 2
   moveSpeed: 3
   XP: 50

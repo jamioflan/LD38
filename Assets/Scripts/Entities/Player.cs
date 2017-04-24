@@ -18,8 +18,6 @@ public class Player : Entity
         base.Awake();
 
         Game.thePlayer = this;
-
-        healthRegenRate = 0.1f;
     }
 
     public override void FixedUpdate()
@@ -30,7 +28,7 @@ public class Player : Entity
 
         if(numRoomsIn <= 0)
         {
-            rb.MovePosition(new Vector2(-12.89f, -1.69f));
+            transform.position = (new Vector2(-12.89f, -1.69f));
         }
 
         Vector2 move = new Vector2(Input.GetAxis("Horizontal"), Input.GetAxis("Vertical"));
@@ -102,6 +100,7 @@ public class Player : Entity
 
         switchWeaponLast = switchWeapon;
         switchWeapon = Input.GetAxis("Mouse ScrollWheel") > 0;
+        
 
         if (switchWeapon && !switchWeaponLast)
         {

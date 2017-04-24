@@ -354,8 +354,10 @@ public class Entity : MonoBehaviour
         {
             if (attack != null) Destroy(attack);
         }
-        Destroy(rightHand.gameObject);
-        Destroy(leftHand.gameObject);
+        if(rightHand != null)
+            Destroy(rightHand.gameObject);
+        if(leftHand != null)
+            Destroy(leftHand.gameObject);
         Destroy(body);
         Destroy(GetComponent<BoxCollider2D>());
         Destroy(gameObject,2.0f);
