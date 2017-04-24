@@ -80,6 +80,7 @@ public class RoomController : MonoBehaviour
         this.levelPolarity = !this.levelPolarity;
         this.generateNextLayout();
         this.updateToNextLayout();
+        this.regenerateDungeonPieces();
     }
 
     public PositionedRoom getStartRoom()
@@ -103,6 +104,21 @@ public class RoomController : MonoBehaviour
         newPiece.transform.SetParent(transform);
         roomShape.dungeonPiece = newPiece;
         return roomShape;
+    }
+
+    private void regenerateDungeonPieces()
+    {
+        foreach (PositionedRoom posRoom in this.currentLayout)
+        {
+            if (posRoom != null && posRoom.room.dungeonPiece != null)
+            {
+                Destroy(posRoom.room.dungeonPiece);
+                DungeonPiece newPiece = Instantiate<DungeonPiece>(pieceTemplate);
+                newPiece.positionedRoom = posRoom;
+                newPiece.transform.SetParent(transform);
+                posRoom.room.dungeonPiece = newPiece;
+            }
+        }
     }
 
     public void generateShapes(int num)
