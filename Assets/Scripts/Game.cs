@@ -29,6 +29,8 @@ public class Game : MonoBehaviour
     public GameObject menuEndGame;
     public GameObject menuEndSuccess;
     public GameObject menuEndFailure;
+    public GameObject mainMusic;
+    public GameObject bossMusic;
 
 
     public Enemy[] enemies;

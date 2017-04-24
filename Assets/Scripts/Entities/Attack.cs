@@ -43,7 +43,6 @@ public class Attack : MonoBehaviour
         {
             timeSinceUse = 0.0f;
             GetComponent<AudioSource>().Play();
-            Debug.Log("Attack!");
             Use(attackMode, pos, aim);
         }
     }
